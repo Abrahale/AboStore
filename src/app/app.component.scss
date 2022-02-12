@@ -1,0 +1,32 @@
+@import './../styles.scss';
+$mobi-menu-width: 260px;
+
+.site-container {
+  height: 100%;
+}
+
+.navigation-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+.mat-drawer.mat-drawer-over {
+  background: #f1f2f2;
+}
+.mat-drawer-container {
+  background: none;
+}
+.site-wrapper {
+  display: flex;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in;
+ // background: linear-gradient(to bottom, #1E5128  11%, #FFFFFF 69%);
+  overflow: auto;
+
+  .content-container {
+    margin-top: $header-height;
+    width:100%;
+  }
+}

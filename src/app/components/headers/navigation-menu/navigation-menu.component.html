@@ -1,0 +1,29 @@
+<div class="navigation-container m-20-v-xs p-15-h-xs  font-size-5">
+
+    <div class="logo m-15-h-xs no-margin-left-xs">
+        <a [routerLink]="['/home']">
+            <img loading="lazy" src="assets/images/abo_store2.png">
+        </a>
+    </div>
+    <div class="menu-items">
+        <div class="navigation-items">
+            <a 
+               [routerLink]="[item.link]"
+               *ngFor="let item of navMenuService.navigationLinks"
+               routerLinkActive="active">
+                <div class="m-15-h-xs p-15-h-xs">
+                    {{item.label}}
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="mobi-menu-toggle">
+        <div class="hamburger arrow"
+             [class.is-active]="navMenuService.mobiMenuToggled"
+             (click)="navMenuService.toggleMobiMenu()">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.navigation-links{
+    & > a{
+      border-left: 3px transparent solid;
+      display: flex;
+      border-right: 3px solid transparent;
+  
+      &.active{
+        border-left-color: var(--main-1);
+      }
+    }
+  }
+  .logo {
+    img {
+      width: 200px;
+    }
+  }
