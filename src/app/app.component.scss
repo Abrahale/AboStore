@@ -9,6 +9,7 @@ $mobi-menu-width: 260px;
   position: fixed;
   width: 100%;
   z-index: 1000;
+  border: 2px solid orange;
 }
 .mat-drawer.mat-drawer-over {
   background: #f1f2f2;
@@ -22,11 +23,14 @@ $mobi-menu-width: 260px;
   position: relative;
   z-index: 1;
   transition: all 0.3s ease-in;
- // background: linear-gradient(to bottom, #1E5128  11%, #FFFFFF 69%);
+  background: linear-gradient(to bottom, #000000  0.1%, #FFFFFF 7.5%);
   overflow: auto;
+  border: 5px solid blue;
 
   .content-container {
     margin-top: $header-height;
     width:100%;
+    background-color:  #F2F3F4;
+    border: 5px solid greenyellow;
   }
 }
