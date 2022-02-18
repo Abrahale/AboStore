@@ -22,7 +22,10 @@ export class authenticationService {
     return throwError(errorMessage);
   }
 
-  signIn(email:any, password:any){
+  signIn(email:string, password:string){
     return this.http.post<any>("http://localhost:3000/login",{email,password}).pipe(catchError(this.handleError));
+  }
+  signUp(name:string,email:string, password:string){
+    return this.http.post<any>("http://localhost:3000/users",{name, email, password}).pipe(catchError(this.handleError));
   }
 }
