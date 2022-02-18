@@ -3,6 +3,7 @@ $mobi-menu-width: 260px;
 
 .site-container {
   height: 100%;
+
 }
 
 .navigation-wrapper {
@@ -10,6 +11,7 @@ $mobi-menu-width: 260px;
   width: 100%;
   z-index: 1000;
   border: 2px solid orange;
+  background-color: #000;
 }
 .mat-drawer.mat-drawer-over {
   background: #f1f2f2;
@@ -23,14 +25,13 @@ $mobi-menu-width: 260px;
   position: relative;
   z-index: 1;
   transition: all 0.3s ease-in;
-  background: linear-gradient(to bottom, #000000  0.1%, #FFFFFF 7.5%);
   overflow: auto;
   border: 5px solid blue;
 
   .content-container {
     margin-top: $header-height;
     width:100%;
-    background-color:  #F2F3F4;
     border: 5px solid greenyellow;
+    background-color: #354152;
   }
 }

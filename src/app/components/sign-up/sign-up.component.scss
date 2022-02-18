@@ -3,14 +3,6 @@
 *::after {
   box-sizing: border-box;
 }
-html,
-body {
-  height: 100%;
-  font-family: Open Sans;
-}
-body {
-  background: hsl(86, 85%, 95%);
-}
 
 
 /*--------------------
@@ -129,7 +121,7 @@ Signup
   transform: translate(-50%, -50%);
   z-index: 1;
   width: 800px;
-  background: hsl(0, 0, 100);
+ // background: hsl(0, 0, 100);
   border-radius: 10px;
   box-shadow: 0 3px 25px hsla(0, 0, 0, 0.2);
   overflow: hidden;
