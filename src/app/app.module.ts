@@ -12,6 +12,8 @@ import { NavigationMenuComponent } from './components/headers/navigation-menu/na
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationMenuMobiComponent } from './components/headers/navigation-menu-mobi/navigation-menu-mobi.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { authenticationService } from './services/authenticationService';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,9 +30,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     NgbModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [authenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,24 +1,37 @@
-<div class="signup">
-    <div class="signup-connect">
-      <h1>Sign In</h1>
-      <a href="#" class="btn btn-social btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
-      <a href="#" class="btn btn-social btn-twitter"><i class="fa fa-twitter"></i> Sign in with Twitter</a>
-      <a href="#" class="btn btn-social btn-google"><i class="fa fa-google"></i> Sign in with Google</a>
-      <a href="#" class="btn btn-social btn-linkedin"><i class="fa fa-linkedin"></i> Sign in with Linkedin</a>
-    </div>
-    <div class="signup-classic">
-      <h2>Or use the classical way</h2>
-      <form class="form">
-        <fieldset class="username">
-          <input type="text" placeholder="username" />
-        </fieldset>
-        <fieldset class="email">
-          <input type="email" placeholder="email" />
-        </fieldset>
-        <fieldset class="password">
-          <input type="password" placeholder="password" />
-        </fieldset>
-        <button type="submit" class="btn">sign In</button>
-      </form>
-    </div>
+<div class="align">
+
+  <div class="grid align__item">
+
+    <div class="sign-in p-40-v-xs p-30-h-xs">
+      <div class="logo logo m-15-h-xs m-30-v-xs no-m-t">
+        <a [routerLink]="['/home']">
+            <img loading="lazy" src="assets/images/abo_store2.png">
+        </a>
+      </div>
+
+      <h2 class="p-20-v-xs">Sign In</h2>
+
+      <form [formGroup]="singInForm" class="form">
+
+        <div class="form__field">
+          <label class="input-label p-10-h-xs no-m-b">Email</label>
+          <input formControlName = "email" type="email">
+        </div>
+
+        <div class="form__field">
+          <label class="input-label p-10-h-xs no-m-b">Password</label>
+          <input formControlName="password" type="password">
+        </div>
+
+        <div class="form__field">
+        <button class="signIn-button" (click)="signIn()">Sign In</button>
+      </div>
+
+    </form>
+
+    <p>Don't have an accout? <a href="#">Sign Up</a></p>
+
   </div>
+
+</div>
+</div>

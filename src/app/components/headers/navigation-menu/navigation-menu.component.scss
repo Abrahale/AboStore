@@ -60,18 +60,13 @@
 
 .navigation-container {
   display: flex;
-
+  border:2px solid green;
   & > * {
     display: flex;
     align-items: center;
 
   }
 
-  .logo {
-    img {
-      width: 200px;
-    }
-  }
 
   .menu-items {
     display: flex;
