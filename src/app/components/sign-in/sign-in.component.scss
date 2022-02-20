@@ -52,6 +52,11 @@ input {
   }
 
 }
+.input-label{
+  text-align: left;
+  width: 100%;
+  color: $input-placeholder-color;
+}
 
 .form {
 

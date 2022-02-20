@@ -72,6 +72,11 @@ input {
   }
 
 }
+.input-label{
+  text-align: left;
+  width: 100%;
+  color: $input-placeholder-color;
+}
 
 $grid-max-width: 25rem;
 $grid-width: 100%;
