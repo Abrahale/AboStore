@@ -1,0 +1,37 @@
+@import './../styles.scss';
+$mobi-menu-width: 260px;
+
+.site-container {
+  height: 100%;
+
+}
+
+.navigation-wrapper {
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  border: 2px solid orange;
+  background-color: #000;
+}
+.mat-drawer.mat-drawer-over {
+  background: #f1f2f2;
+}
+.mat-drawer-container {
+  background: none;
+}
+.site-wrapper {
+  display: flex;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease-in;
+  overflow: auto;
+  border: 5px solid blue;
+
+  .content-container {
+    margin-top: $header-height;
+    width:100%;
+    border: 5px solid greenyellow;
+    background-color: #354152;
+  }
+}
