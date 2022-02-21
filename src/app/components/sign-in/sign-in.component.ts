@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { authenticationService } from 'src/app/services/authenticationService';
+import { Store } from '@ngrx/store';
+import { SignInRequestModel } from 'src/app/models/sign-in-request.model';
+import { BaseStoreState } from 'src/app/store';
+import { SignInActions } from 'src/app/store/sign-in';
 
 @Component({
   selector: 'app-sign-in',
@@ -10,7 +13,7 @@ import { authenticationService } from 'src/app/services/authenticationService';
 })
 export class SignInComponent implements OnInit {
   singInForm:any;
-  constructor(private auth:authenticationService, private formBuilder:FormBuilder, private router:Router ) { }
+  constructor(private store:Store<BaseStoreState.State>, private formBuilder:FormBuilder, private router:Router ) { }
 
   ngOnInit(): void {
     this.singInForm = new FormGroup({
@@ -19,13 +22,18 @@ export class SignInComponent implements OnInit {
     })
   }
   signIn(){
-    this.auth.signIn(this.singInForm.get('email').value, this.singInForm.get('password').value).subscribe((res:any) =>{
-      console.log(res)
-      this.redirect();
-    },
-    (err)=>{
-      console.error(err)
-    })
+    let signInModel: SignInRequestModel = {
+      email: this.singInForm.get('email').value,
+      password: this.singInForm.get('password').value
+    };
+    this.store.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
+    // this.auth.signIn(this.singInForm.get('email').value, this.singInForm.get('password').value).subscribe((res:any) =>{
+    //   console.log(res)
+    //   this.redirect();
+    // },
+    // (err)=>{
+    //   console.error(err)
+    // })
   }
   redirect(){
     this.router.navigate(['home'])

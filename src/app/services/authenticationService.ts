@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {  throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { SignInRequestModel } from '../models/sign-in-request.model';
 
 @Injectable({
   providedIn:'root'
 })
-export class authenticationService {
+export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   handleError(error: HttpErrorResponse) {
@@ -22,8 +23,8 @@ export class authenticationService {
     return throwError(errorMessage);
   }
 
-  signIn(email:string, password:string){
-    return this.http.post<any>("http://localhost:3000/login",{email,password}).pipe(catchError(this.handleError));
+  signIn(singInModel: SignInRequestModel){
+    return this.http.post<any>("http://localhost:3000/login",singInModel).pipe(catchError(this.handleError));
   }
   signUp(name:string,email:string, password:string){
     return this.http.post<any>("http://localhost:3000/users",{name, email, password}).pipe(catchError(this.handleError));
