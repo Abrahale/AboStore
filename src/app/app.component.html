@@ -1,4 +1,4 @@
-<mat-sidenav-container class="site-container" (swipe)="swipeLeft">
+ <mat-sidenav-container class="site-container" (swipe)="swipeLeft">
     <mat-sidenav #sidenav class="d-xl-none" mode="over" (swipe)="swipeLeft" (closed)="navMenuService.closeMobiMenu()"
         [opened]="navMenuService.mobiMenuToggled">
         <abo-navigation-menu-mobi></abo-navigation-menu-mobi>
@@ -14,3 +14,5 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+<router-outlet></router-outlet>
