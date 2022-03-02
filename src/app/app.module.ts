@@ -15,6 +15,8 @@ import { AuthenticationService } from './services/authenticationService';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BaseStoreModule } from './store';
+import { CardComponent } from './components/containers/card/card.component';
+import { ProductViewComponent } from './components/widgets/products/product-view/product-view.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +25,8 @@ import { BaseStoreModule } from './store';
     NavigationMenuMobiComponent,
     SignInComponent,
     SignUpComponent,
+    CardComponent,
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,

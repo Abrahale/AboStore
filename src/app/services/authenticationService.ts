@@ -26,7 +26,7 @@ export class AuthenticationService {
   signIn(singInModel: SignInRequestModel){
     return this.http.post<any>("http://localhost:3000/login",singInModel);
   }
-  signUp(name:string,email:string, password:string){
-    return this.http.post<any>("http://localhost:3000/users",{name, email, password});
+  signUp(username:string,email:string, password:string){
+    return this.http.post<any>("http://localhost:3000/users",{username,first_name:"will implement",last_name:"will implement", email, password});
   }
 }

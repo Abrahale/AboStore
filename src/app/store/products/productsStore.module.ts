@@ -1,19 +1,19 @@
 import { NgModule } from "@angular/core";
 import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
-import { SignInReducer } from "./reducer";
-import { SignInEffects } from "./effects";
+import { ProductsReducer } from "./reducer";
+import { ProductsEffects } from "./effects";
 import { CommonModule } from "@angular/common";
 import { storeConstants } from "src/app/constants/store-constants";
 @NgModule({
   declarations:[],
   imports:[
     CommonModule,
-    StoreModule.forFeature(storeConstants.SIGN_IN, SignInReducer),
-    EffectsModule.forFeature([SignInEffects])
+    StoreModule.forFeature(storeConstants.PRODUCTS, ProductsReducer),
+    EffectsModule.forFeature([ProductsEffects])
   ],
   exports:[],
-  providers:[SignInEffects],
+  providers:[ProductsEffects],
 })
 
-export class SignInStoreModule{};
+export class ProductsStoreModule{};
