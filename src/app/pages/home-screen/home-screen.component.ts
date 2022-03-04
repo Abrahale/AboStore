@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BaseStoreState } from 'src/app/store';
+import { Subscription } from 'rxjs';
+import { mapToProducts, product } from 'src/app/models/products';
+import { ProductsSelectors, BaseStoreState } from 'src/app/store';
 import { ProductsActions } from 'src/app/store/products';
 
 @Component({
@@ -10,8 +12,22 @@ import { ProductsActions } from 'src/app/store/products';
 })
 export class HomeScreenComponent implements OnInit {
   response:any;
-  constructor(private store:Store<BaseStoreState.State>,) { }
+  products$;
+  products:product[]=[];
+  constructor(private store$:Store<BaseStoreState.State>) {
+    this.store$.dispatch(new ProductsActions.LoadRequestAction())
+   }
   ngOnInit(): void {
-    this.store.dispatch(new ProductsActions.LoadRequestAction())
+    this.products$ = this.store$.select(ProductsSelectors.selectData).subscribe(_ =>{
+      if(_){
+          console.log(_)
+          _.forEach(e=>{
+            this.products.push(mapToProducts(e))
+
+          })
+          console.log(this.products)
+        }
+    });
+
   }
 }
