@@ -8,7 +8,6 @@ import { catchError, map, switchMap } from "rxjs";
 @Injectable()
 export class SignInEffects {
   constructor(private authService: AuthenticationService, private actoins$: Actions ){
-    console.log('Sign-in effects firing!')
   }
 
   loadData$ = createEffect(() =>this.actoins$.pipe(
