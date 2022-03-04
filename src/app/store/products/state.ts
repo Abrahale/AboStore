@@ -1,13 +1,15 @@
 import { BaseResponseModel } from "src/app/models/response-base.model";
 
 export interface State{
-    data: BaseResponseModel<any> | null,
+    data: BaseResponseModel<any>,
     isLoading: boolean,
     error: string
-
 }
 export const initialState: State = {
- data: null,
+  data: {
+    status:false,
+    payload:null
+  },
   isLoading: false,
-  error:""
+  error: ""
 }

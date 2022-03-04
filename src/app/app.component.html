@@ -1,12 +1,12 @@
  <mat-sidenav-container class="site-container" (swipe)="swipeLeft">
     <mat-sidenav #sidenav class="d-xl-none" mode="over" (swipe)="swipeLeft" (closed)="navMenuService.closeMobiMenu()"
         [opened]="navMenuService.mobiMenuToggled">
-        <abo-navigation-menu-mobi></abo-navigation-menu-mobi>
+        <abo-navigation-menu-mobi class="z-high"></abo-navigation-menu-mobi>
     </mat-sidenav>
     <mat-sidenav-content class="m-xl-0" (swipe)="swipeLeft">
         <div class="site-wrapper" [class.menu-is-open]="navMenuService.mobiMenuToggled">
             <div class="navigation-wrapper">
-                <abo-navigation-menu class="header-container"></abo-navigation-menu>
+                <abo-navigation-menu class="header-container z-high"></abo-navigation-menu>
             </div>
             <div class="content-container padding-h-4-xs">
                 <router-outlet></router-outlet>
@@ -14,5 +14,3 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-
-<router-outlet></router-outlet>

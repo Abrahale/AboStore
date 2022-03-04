@@ -10,23 +10,10 @@ import { SignInRequestModel } from '../models/sign-in-request.model';
 export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
-  handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
-    if (error.error instanceof ErrorEvent) {
-      // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    window.alert(errorMessage);
-    return throwError(errorMessage);
-  }
-
   signIn(singInModel: SignInRequestModel){
-    return this.http.post<any>("http://localhost:3000/login",singInModel).pipe(catchError(this.handleError));
+    return this.http.post<any>("http://localhost:3000/login",singInModel);
   }
-  signUp(name:string,email:string, password:string){
-    return this.http.post<any>("http://localhost:3000/users",{name, email, password}).pipe(catchError(this.handleError));
+  signUp(username:string,email:string, password:string){
+    return this.http.post<any>("http://localhost:3000/users",{username,first_name:"will implement",last_name:"will implement", email, password});
   }
 }

@@ -1,4 +1,4 @@
-div{
-    border:2px solid red;
-    color:black;
+@import '../../../assets/styles/constants.scss';
+.home-container{
+  background-color: $background-color ;
 }

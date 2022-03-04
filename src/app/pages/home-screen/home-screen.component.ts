@@ -1,6 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NavMenuService } from 'src/app/services/navigation-menu.service';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
+import { mapToProducts, product } from 'src/app/models/products';
+import { ProductsSelectors, BaseStoreState } from 'src/app/store';
+import { ProductsActions } from 'src/app/store/products';
 
 @Component({
   selector: 'abo-home-screen',
@@ -8,14 +11,23 @@ import { NavMenuService } from 'src/app/services/navigation-menu.service';
   styleUrls: ['./home-screen.component.scss']
 })
 export class HomeScreenComponent implements OnInit {
-
-  constructor(private http: HttpClient) { }
   response:any;
+  products$;
+  products:product[]=[];
+  constructor(private store$:Store<BaseStoreState.State>) {
+    this.store$.dispatch(new ProductsActions.LoadRequestAction())
+   }
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/users/61ef2ae201679aa89745730a').subscribe(data => {
-      this.response = data;
-      console.log(this.response);
-  },
-  error => console.error(error)) 
+    this.products$ = this.store$.select(ProductsSelectors.selectData).subscribe(_ =>{
+      if(_){
+          console.log(_)
+          _.forEach(e=>{
+            this.products.push(mapToProducts(e))
+
+          })
+          console.log(this.products)
+        }
+    });
+
   }
 }
