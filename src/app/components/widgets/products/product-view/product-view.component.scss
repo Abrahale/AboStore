@@ -47,22 +47,22 @@ body {background: #f4f4f4; font-family: sans-serif; }
     }
 
     h3 {
-      font-size: 16px;
-      line-height: 20px;
-      height: 39px;
       overflow: hidden;
       @media (max-width: var(--breakpoint-xs)) {
         height: auto;
       }
       &.product-title{
-
+        font-size: 22px;
+        font-weight: 600;
+        color: #41464bba;
+        line-height: 24px;
       }
     }
 
     > a {
       position: relative;
       display: block;
-      color: #333;
+      color: #9b9b9b;
       text-decoration: none;
 
       &:hover {
@@ -102,8 +102,7 @@ body {background: #f4f4f4; font-family: sans-serif; }
     }
 
     .price {
-      font-size: 14px;
-
+      font-size: 30px;
       ins {
         text-decoration: none;
         font-weight: 700;
@@ -112,14 +111,14 @@ body {background: #f4f4f4; font-family: sans-serif; }
 
       del {
         color: #666;
-        font-size: 11px;
+        font-size: 14px;
         padding-right: 7px;
         white-space: nowrap;
       }
 
       .sale-tag {
         color: red;
-        font-size: 12px;
+        font-size: 20px;
         padding-left: 7px;
         font-weight: 700;
       }

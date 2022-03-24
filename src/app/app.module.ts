@@ -18,6 +18,7 @@ import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
 import { ProductViewComponent } from './components/widgets/products/product-view/product-view.component';
 import { SliderComponent } from './components/widgets/products/slider/slider.component';
+import { CurrencyPipe } from './pipes/currency.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import { SliderComponent } from './components/widgets/products/slider/slider.com
     CardComponent,
     ProductViewComponent,
     SliderComponent,
+    CurrencyPipe,
   ],
   imports: [
     BrowserModule,
