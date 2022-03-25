@@ -12,5 +12,14 @@ export class ProductViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  wtf(input):void{
+    console.log('wtf',input)
+  }
+  wtf2(input):void{
+    console.log('wtf2',input)
+  }
+  wtf3(input):void{
+    console.log('wtf3',input)
+  }
 
 }
