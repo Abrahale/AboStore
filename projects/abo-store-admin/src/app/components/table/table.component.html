@@ -1,0 +1,12 @@
+<div class="table-responsive">
+    <table class="table">
+        <thead class="text-primary">
+            <th *ngFor="let a of theaders">{{a}}</th>
+          </thead>
+        <tbody>
+            <tr *ngFor="let a of tbody">
+                <td *ngFor="let b of keys">{{a[b]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
