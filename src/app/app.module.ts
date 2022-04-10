@@ -19,6 +19,7 @@ import { CardComponent } from './components/containers/card/card.component';
 import { ProductViewComponent } from './components/widgets/products/product-view/product-view.component';
 import { SliderComponent } from './components/widgets/products/slider/slider.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
+import { AdminModule } from 'projects/abo-store-admin/src/app/app.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { CurrencyPipe } from './pipes/currency.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AdminModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
