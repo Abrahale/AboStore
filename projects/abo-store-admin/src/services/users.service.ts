@@ -13,5 +13,7 @@ export class UsersService {
   getUsers(){
     return this.http.get<any>("http://localhost:3000/users");
   }
-
+  AddNewProfile(input:any){
+    return this.http.post<any>("http://localhost:3000/users",input);
+  }
 }
