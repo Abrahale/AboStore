@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavigationMenuMobiComponent } from './components/headers/navigation-menu-mobi/navigation-menu-mobi.component';
@@ -12,14 +11,14 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { AuthenticationService } from './services/authenticationService';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
 import { ProductViewComponent } from './components/widgets/products/product-view/product-view.component';
 import { SliderComponent } from './components/widgets/products/slider/slider.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
-import { AdminModule } from 'projects/abo-store-admin/src/app/app.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,8 +34,8 @@ import { AdminModule } from 'projects/abo-store-admin/src/app/app.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    AdminModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -44,7 +43,6 @@ import { AdminModule } from 'projects/abo-store-admin/src/app/app.module';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
-    BrowserAnimationsModule,
     MatSidenavModule,
     BaseStoreModule
   ],
