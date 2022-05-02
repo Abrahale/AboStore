@@ -3,15 +3,17 @@ $mobi-menu-width: 260px;
 
 .site-container {
   height: 100%;
-
+  box-shadow: 0 0 10px rgb(147, 148, 148) inset;
 }
 
 .navigation-wrapper {
+  box-shadow: 12px -6px 43px 5px rgba(21,201,201,0.76);
+  -webkit-box-shadow: 12px -6px 43px 5px rgba(21,201,201,0.76);
+  -moz-box-shadow: 12px -6px 43px 5px rgba(21,201,201,0.76);
   position: fixed;
   width: 100%;
-  z-index: 1000;
-  border: 2px solid orange;
-  background-color: #000;
+  z-index: 9999;
+  background-color: #ffffff;
 }
 .mat-drawer.mat-drawer-over {
   background: #f1f2f2;
@@ -23,15 +25,12 @@ $mobi-menu-width: 260px;
   display: flex;
   height: 100%;
   position: relative;
-  z-index: 1;
   transition: all 0.3s ease-in;
   overflow: auto;
-  border: 5px solid blue;
 
   .content-container {
     margin-top: $header-height;
     width:100%;
-    border: 5px solid greenyellow;
-    background-color: #354152;
   }
 }
+

@@ -60,7 +60,6 @@
 
 .navigation-container {
   display: flex;
-  border:2px solid green;
   & > * {
     display: flex;
     align-items: center;
@@ -128,6 +127,7 @@
     .navigation-items {
       height: 100%;
       align-items: center;
+      font-size: 18px;
       & > a {
         cursor: pointer;
         height: 100%;

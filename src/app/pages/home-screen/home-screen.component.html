@@ -1,6 +1,14 @@
-<div class="col-12">
-  <h1>Welcome to the home page! </h1>
+<div class="container-fluid">
+  <div class="col-12">
+    <abo-slider [products]="products" [slider]="products.slice(40,45)"></abo-slider>
+  </div>
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 home-container">
+			<div class="row">
+				<div *ngFor="let p of products" class="col-xs-12  col-md-6 col-lg-4">
+					<abo-product-view [product]="p"></abo-product-view>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
-
-
-
