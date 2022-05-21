@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "pre-deploy":"ng build --prod --base-href 'https://abrahale.github.io/AboStore/' ",
+    "gb": "ng build --prod --base-href \"https://abrahale.github.io/AboStore/\" ",
     "deploy": "npx angular-cli-ghpages --dir=dist/AboStore"
   },
   "private": true,
