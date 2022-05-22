@@ -7,6 +7,10 @@ import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 
 const routes: Routes = [
   {
+    path:'',
+    component: HomeScreenComponent
+  },
+  {
     path:'home',
     component: HomeScreenComponent
   },
