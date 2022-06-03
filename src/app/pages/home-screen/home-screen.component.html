@@ -1,13 +1,12 @@
 <div class="container-fluid">
-	<h1>Is this showing</h1>
-  <div class="col-12">
+  <!-- <div class="col-12">
     <abo-slider [products]="products" [slider]="products.slice(0,5)"></abo-slider>
-  </div>
+  </div> -->
 	<div class="row">
 		<div class="col-xs-12 col-sm-12 col-md-12 home-container">
 			<div class="row">
 				<div *ngFor="let p of products" class="col-xs-12  col-md-6 col-lg-4">
-					<abo-product-view [product]="p"></abo-product-view>
+					<abo-product-card [product]="p"></abo-product-card>
 				</div>
 			</div>
 		</div>

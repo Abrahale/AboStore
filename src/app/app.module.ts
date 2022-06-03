@@ -19,6 +19,7 @@ import { SliderComponent } from './components/widgets/products/slider/slider.com
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductCardComponent } from './components/widgets/products/product-card/product-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductViewComponent,
     SliderComponent,
     CurrencyPipe,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,

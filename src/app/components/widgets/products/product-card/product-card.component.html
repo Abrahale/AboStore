@@ -1,0 +1,25 @@
+<div class="product">
+    <div (click)="onClick($event)">
+        <span class="onsale">Sale!</span>
+        <div class="d-flex">
+            <span class="discount">-33%</span>
+            <span class="love">heart</span>
+        </div>
+        <img alt="" class="attachment-shop_catalog " [src]="product.imagePath" />
+        <h3 class="product-title m-20-v-xs">{{product.title}}</h3>
+        <span class="price">
+            <ins> 
+                <span class="amount">{{(product.price * 0.33) | currency}}</span>
+            </ins>
+            <del> 
+                <span class="amount">{{product.price | currency}}</span> 
+            </del>
+        </span>
+    </div>
+    <div class="m-20-v-xs">
+        <button class="button add_to_cart_button" (click)="addToCart($event)">
+            Add to Cart
+        </button>
+    </div>
+    <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>
+</div>
