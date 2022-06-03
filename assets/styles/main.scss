@@ -1,3 +1,7 @@
+/*
+*Author Ab_Kiros
+*email abrahalekiros@gmail.com
+*/
 //adding some margin and vertical, horizontal
 //usage m-s-o-ss
 /*
@@ -6,6 +10,23 @@
 * o for oreintation
 * ss for screen size
 */
+
+.m-0-v-xs{
+    margin-top:0px;
+    margin-bottom:0px;
+}
+.m-0-h-xs{
+    margin-left:0px;
+    margin-right:0px;
+}
+.m-20-v-xs{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.m-20-h-xs{
+    margin-left:20px;
+    margin-right:20px;
+}
 
 .m-0-v-lg{
     margin-top:0px;
