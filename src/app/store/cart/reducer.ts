@@ -24,6 +24,14 @@ export function CartsReducer(state = initialState, action: Actions): State{
           error: action.payload.error,
         }
       }
+      case ActionTypes.ADD_TO_CART : {
+        return {
+          ...state,
+          isLoading: false,
+          content: [...state.content,action.payload.cartModel],
+          error:null
+        }
+      }
 
       default: return state;
   }
