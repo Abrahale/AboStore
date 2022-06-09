@@ -20,6 +20,9 @@ import { CurrencyPipe } from './pipes/currency.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductCardComponent } from './components/widgets/products/product-card/product-card.component';
+import { CartComponent } from './pages/home-screen/cart/cart.component';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +36,9 @@ import { ProductCardComponent } from './components/widgets/products/product-card
     SliderComponent,
     CurrencyPipe,
     ProductCardComponent,
+    CartComponent,
+    CartItemComponent,
+    CartFooterComponent,
   ],
   imports: [
     BrowserModule,

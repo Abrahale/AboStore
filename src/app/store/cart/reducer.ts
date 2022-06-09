@@ -32,7 +32,23 @@ export function CartsReducer(state = initialState, action: Actions): State{
           error:null
         }
       }
-
+    // Delete Single
+    case ActionTypes.DELETE_ITEM:
+      return {...state, 
+        isLoading:false,
+        content: state.content.filter(item => item._id !== action.payload),
+        error: null
+      }
+    // Delete All
+    case ActionTypes.DELETE_All_ITEM:
+        return initialState;
+    // Update
+    case ActionTypes.UPDATE_ITEM:
+       return { ...state,
+        isLoading: false,
+        content: action.payload,
+        error:null
+      }
       default: return state;
   }
 }

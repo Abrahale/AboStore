@@ -1,0 +1,8 @@
+<div class="container">
+
+    <section id="cart" *ngFor="let c of cartModel"> 
+        <abo-cart-item [cartItem]="c" (decrement)="qty_update($event,false)" (increment)="qty_update($event,true)"></abo-cart-item>        
+    </section>
+    <abo-cart-footer></abo-cart-footer>
+</div>
+
