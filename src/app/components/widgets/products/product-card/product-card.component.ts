@@ -21,14 +21,12 @@ export class ProductCardComponent implements OnInit {
     console.log('onclick',input)
   }
   addToCart():void{
-    console.log('Add To Cart',this.product)
     const cartModel = new CartModel();
     cartModel._id = this.product._id;
     cartModel.imagePath = this.product.imagePath;
     cartModel.price = this.product.price;
     cartModel.quanitity = 1,
     cartModel.title = this.product.title
-    console.log('CartModel',cartModel)
     this._store.dispatch(new LoadAddToCartAction({cartModel}));
   }
   wtf3(input):void{

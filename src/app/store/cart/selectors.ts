@@ -26,3 +26,12 @@ createSelector(getState, getIsLoading);
 
 export const selectCartItems: MemoizedSelector<object, CartModel[]> =
 createSelector(getState, getContnet);
+
+export const selectTotal: MemoizedSelector<object, number> =
+createSelector(getState, getContnet =>{
+ let x=0;
+  getContnet.content.map(i =>{
+    x += i.price * i.quanitity
+  })
+  return x;
+});

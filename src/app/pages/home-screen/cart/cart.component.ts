@@ -10,13 +10,16 @@ import { BaseStoreState, CartsActions, CartsSelectors } from 'src/app/store';
 })
 export class CartComponent implements OnInit {
   cartModel: CartModel[];
+  total: number;
 
   constructor(private store$:Store<BaseStoreState.State>) { }
 
   ngOnInit(): void {
     this.store$.select(CartsSelectors.selectCartItems).subscribe(_ => {
       this.cartModel = _
-      console.log(_)
+    })
+    this.store$.select(CartsSelectors.selectTotal).subscribe(_ => {
+      this.total=_;
     })
   }
   qty_update = (id,inc = false) =>{
