@@ -23,5 +23,7 @@ export class CartItemComponent implements OnInit {
     this.increment.emit(id);
   }
 
+  removeItem(id){}
+
 
 }

@@ -9,6 +9,7 @@ export class CartFooterComponent implements OnInit {
   @Input() subTotal;
   @Input() tax=15;
   @Input() shipping=15;
+  @Input() totalItems = 10;
   totalTax;
   constructor() { }
 
