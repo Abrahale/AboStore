@@ -1,0 +1,53 @@
+.qt, .qt-plus, .qt-minus {
+	display: block;
+	float: left;
+}
+
+.qt {
+	font-size: 20px;
+	line-height: 50px;
+	text-align: center;
+	padding: 0 12px;
+}
+
+.qt-plus, .qt-minus {
+	background: #fcfcfc;
+	box-shadow: 0 6px 20px 0 rgb(0 0 0 / 19%);
+	border: none;
+	font-size: 30px;
+	font-weight: 300;
+	height: 100%;
+	padding: 0 12px;
+	transition: background .2s linear;
+	border-radius: 50%;
+}
+
+.qt-plus:hover, .qt-minus:hover {
+	background: #53b5aa;
+	color: #fff;
+	cursor: pointer;
+}
+
+.qt-plus {
+	line-height: 35px;
+}
+
+.qt-minus {
+	line-height: 35px;
+}
+
+.close{
+	line-height: 50px;
+    margin-left: auto;
+}
+.price{
+	line-height: 50px;
+	margin: auto;
+	font-weight: 500;
+}
+img{
+    width: 3.5rem;
+}
+.back-to-shop{
+    margin-top: 4.5rem;
+}

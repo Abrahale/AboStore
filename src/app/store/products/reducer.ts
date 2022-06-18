@@ -24,6 +24,14 @@ export function ProductsReducer(state = initialState, action: Actions): State{
           error: action.payload.error,
         }
       }
+      case ActionTypes.UPDATE_PRODUCT_VIEW : {
+          return {
+              ...state,
+              productView: action.payload,
+              isLoading: false,
+              error:null,
+          }
+      }
 
       default: return state;
   }

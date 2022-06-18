@@ -1,0 +1,20 @@
+<div class="row border-top border-bottom">
+    <div class="row main align-items-center">
+        <div class="col-xs-4 col-sm-2 col"><img class="img-fluid" src="https://i.imgur.com/ba3tvGm.jpg"></div>
+        <div class="col-xs-8 col-sm-4 col">
+            <div class="row text-muted">Shirt</div>
+            <div class="row">{{cartItem.title}}</div>
+        </div>
+        <div class="col-xs-12 col-sm-6 d-flex">
+            <span class="qt-minus"(click)="onDecrement(cartItem._id)">-</span>
+            <span class="qt">{{cartItem.quanitity}}</span>
+            <span class="qt-plus" (click)="onIncrement(cartItem._id)">+</span>
+
+                <span class="price">
+                R  {{cartItem.price * cartItem.quanitity}}
+                </span>
+                <span (click)="removeItem(cartItem._id)" class="close">&#10005;</span>
+
+        </div>
+    </div>
+</div>

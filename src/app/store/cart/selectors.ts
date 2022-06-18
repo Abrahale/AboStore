@@ -3,16 +3,16 @@ import {
   createSelector,
   MemoizedSelector,
 } from '@ngrx/store';
-import { BaseResponseModel } from 'src/app/models/response-base.model';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
-import {product} from "../../models/products";
+import { CartModel } from 'src/app/models/cartModel';
 
 export const getData = (state: State): any[] => state.data['result'];
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
-export const getproductView = (state: State): product => state.productView;
-export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.PRODUCTS);
+export const getContnet = (state: State): CartModel[] => state.content;
+
+export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.CART);
 
 export const selectData: MemoizedSelector<object, any[]> =
 createSelector(getState, getData);
@@ -24,5 +24,14 @@ createSelector(getState, getError);
 export const selectIsLoading: MemoizedSelector<object, boolean> =
 createSelector(getState, getIsLoading);
 
-export const selectproductView: MemoizedSelector<object, product> =
-    createSelector(getState, getproductView);
+export const selectCartItems: MemoizedSelector<object, CartModel[]> =
+createSelector(getState, getContnet);
+
+export const selectTotal: MemoizedSelector<object, number> =
+createSelector(getState, getContnet =>{
+ let x=0;
+  getContnet.content.map(i =>{
+    x += i.price * i.quanitity
+  })
+  return x;
+});

@@ -20,12 +20,9 @@ export class HomeScreenComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.store$.select(ProductsSelectors.selectData).subscribe(_ =>{
       if(_){
-          console.log(_)
           _.forEach(e=>{
             this.products.push(mapToProducts(e))
-
           })
-          console.log(this.products)
         }
     });
 

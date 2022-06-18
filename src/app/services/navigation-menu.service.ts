@@ -41,6 +41,7 @@ export class NavMenuService {
             link: `/profile`,
         }, {
             label: 'My Cart',
+            icon:'fa fa-shopping-cart',
             link: `/cart`,
         }];
     }

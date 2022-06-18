@@ -14,11 +14,15 @@ import { AuthenticationService } from './services/authenticationService';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
-import { ProductViewComponent } from './components/widgets/products/product-view/product-view.component';
 import { SliderComponent } from './components/widgets/products/slider/slider.component';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductCardComponent } from './components/widgets/products/product-card/product-card.component';
+import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
+import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.component';
+import {ProductViewComponent} from "./pages/product-view/product-view.component";
+import {CartComponent} from "./pages/cart/cart.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +35,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProductViewComponent,
     SliderComponent,
     CurrencyPipe,
+    ProductCardComponent,
+    CartItemComponent,
+    CartFooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

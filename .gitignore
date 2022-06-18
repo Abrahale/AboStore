@@ -12,7 +12,6 @@
 .editorconfig
 .browserslistrc
 /src/environments
-/projects/abo-store-admin/src/environments
 
 # dependencies
 /node_modules
