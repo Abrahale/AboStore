@@ -4,6 +4,8 @@ import { CartModel, mapToCartModels } from 'src/app/models/cartModel';
 import { Store } from '@ngrx/store';
 import { BaseStoreState } from 'src/app/store';
 import { LoadAddToCartAction } from 'src/app/store/cart/actions';
+import {Router} from "@angular/router";
+import {UpadateProductView} from "../../../../store/products/actions";
 
 @Component({
   selector: 'abo-product-card',
@@ -13,12 +15,14 @@ import { LoadAddToCartAction } from 'src/app/store/cart/actions';
 export class ProductCardComponent implements OnInit {
 
   @Input() product:product;
-  constructor(private _store:Store<BaseStoreState.State>) { }
+  constructor(private _store:Store<BaseStoreState.State>, private router: Router) { }
 
   ngOnInit(): void {
   }
   onClick(input):void{
-    console.log('onclick',input)
+    this._store.dispatch(new UpadateProductView(input))
+    console.log(input)
+    this.router.navigate(['/product-view'])
   }
   addToCart():void{
     const cartModel = new CartModel();

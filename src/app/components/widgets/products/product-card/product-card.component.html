@@ -1,5 +1,5 @@
 <div class="product">
-    <div (click)="onClick($event)">
+    <div (click)="onClick(product)">
         <span class="onsale">Sale!</span>
         <div class="d-flex">
             <span class="discount">-33%</span>
@@ -15,7 +15,7 @@
                 <span class="amount">{{product.price | currency}}</span> 
             </del>
         </span>
-        <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>
+       <!-- <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>-->
     </div>
     <div class="m-20-v-xs">
         <button class="button add_to_cart_button" (click)="addToCart()">
