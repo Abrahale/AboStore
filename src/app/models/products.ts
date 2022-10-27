@@ -1,15 +1,21 @@
 export class product {
-  available:boolean;
-  category:string;
-  createdDate:Date;
-  description:string;
-  imagePath:string;
-  manufacturer:string;
-  modifiedDate:string;
-  price:number;
+  id: string;
   productCode:string;
-  title:string;
-  _id:string
+  title: string;
+  sku: string;
+  category: string[];
+  manufacturer: string[];
+  quantity:number;
+  available:boolean;
+  inventory: string[];
+  price: number;
+  discount: string[];
+  description: string;
+  image:string[];
+  rating:number;
+  createdDate: Date;
+  modifiedDate: Date;
+  deletedDate: Date;
 }
 
 export const mapToProducts=(input:any) => {

@@ -26,8 +26,8 @@ export class ProductCardComponent implements OnInit {
   }
   addToCart():void{
     const cartModel = new CartModel();
-    cartModel._id = this.product._id;
-    cartModel.imagePath = this.product.imagePath;
+    cartModel.id = this.product.id;
+    cartModel.image = this.product.image;
     cartModel.price = this.product.price;
     cartModel.quanitity = 1,
     cartModel.title = this.product.title
