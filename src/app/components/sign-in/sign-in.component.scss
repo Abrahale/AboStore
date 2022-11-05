@@ -13,7 +13,7 @@ $base-font-family-fallback: sans-serif;
   flex-direction: row;
 
   &__item {
-    background-color: $base-bgcolor;
+    background-color: var(--background-color);
     border-radius: 1rem;
     &--start {
       align-self: flex-start;
