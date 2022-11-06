@@ -25,6 +25,7 @@ export class ProductCardComponent implements OnInit {
     this.router.navigate(['/product-view'])
   }
   addToCart():void{
+    console.log("the button has been clicked!")
     const cartModel = new CartModel();
     cartModel.id = this.product.id;
     cartModel.image = this.product.image;

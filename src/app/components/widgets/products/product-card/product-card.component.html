@@ -15,11 +15,9 @@
                 <span class="amount">{{product.price | currency}}</span> 
             </del>
         </span>
-       <!-- <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>-->
     </div>
     <div class="m-20-v-xs">
-        <button class="button add_to_cart_button" (click)="addToCart()">
-            Add to Cart
-        </button>
+        <abo-button [ngClass]="['button']" (abo_click)="addToCart()"></abo-button>
+        <abo-button (abo_click)="addToCart()"></abo-button>
     </div>
 </div>

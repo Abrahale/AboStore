@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { NavMenuService } from 'src/app/services/navigation-menu.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'abo-navigation-menu',
@@ -18,9 +19,14 @@ export class NavigationMenuComponent implements OnInit {
     constructor(
         public navMenuService: NavMenuService,
         private router: Router,
+        private themeService:ThemeService
     ) { }
 
     ngOnInit(): void {
     }
      clickMenuItem(): void { }
+     changeTheme():void{
+      console.log('changing the theme')
+      this.themeService.changeActiveTheme();
+    }
 }

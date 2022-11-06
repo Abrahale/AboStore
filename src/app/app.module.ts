@@ -24,6 +24,7 @@ import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.c
 import {ProductViewComponent} from "./pages/product-view/product-view.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import { ThemeService } from './services/theme.service';
+import { ButtonComponent } from './components/components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { ThemeService } from './services/theme.service';
     ProductCardComponent,
     CartItemComponent,
     CartFooterComponent,
-    CartComponent
+    CartComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

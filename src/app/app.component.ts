@@ -9,7 +9,7 @@ import { ThemeService } from './services/theme.service';
 })
 export class AppComponent implements OnInit {
   constructor(
-    public navMenuService: NavMenuService, private themeService:ThemeService) { }
+    public navMenuService: NavMenuService) { }
 
     ngOnInit(): void {
         
@@ -18,8 +18,5 @@ export class AppComponent implements OnInit {
   swipeLeft(event:any): void {
     console.log('Swiped', event);
   }
-  changeTheme():void{
-    console.log('changing the theme')
-    this.themeService.changeActiveTheme();
-  }
+
 }
