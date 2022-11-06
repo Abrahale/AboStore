@@ -23,6 +23,7 @@ $my-app-theme: mat.define-light-theme(
 @import 'node_modules/bootstrap/scss/_functions.scss';
 @import 'node_modules/bootstrap/scss/_variables.scss';
 @import 'node_modules/bootstrap/scss/_mixins.scss';
+@import './assets/scss/modules/icon';
 $white: #ffffff;
 $black: #000000;
 $primary1: #f7444e;
