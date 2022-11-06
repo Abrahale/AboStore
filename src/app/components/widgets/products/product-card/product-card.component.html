@@ -2,10 +2,11 @@
     <div (click)="onClick(product)">
         <span class="onsale">Sale!</span>
         <div class="d-flex">
+            <span class="onsale">Sale!</span>
             <span class="discount">-33%</span>
-            <span class="love">heart</span>
+            <span class="icon icon-heart"></span>
         </div>
-        <img alt="" class="attachment-shop_catalog " [src]="product.imagePath" />
+        <img alt="" class="attachment-shop_catalog " [src]="product.image[0]" />
         <h3 class="product-title m-20-v-xs">{{product.title}}</h3>
         <span class="price">
             <ins> 
@@ -15,11 +16,8 @@
                 <span class="amount">{{product.price | currency}}</span> 
             </del>
         </span>
-       <!-- <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>-->
     </div>
     <div class="m-20-v-xs">
-        <button class="button add_to_cart_button" (click)="addToCart()">
-            Add to Cart
-        </button>
+        <abo-button (abo_click)="addToCart()"></abo-button>
     </div>
 </div>

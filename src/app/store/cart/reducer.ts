@@ -36,7 +36,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
     case ActionTypes.DELETE_ITEM:
       return {...state, 
         isLoading:false,
-        content: state.content.filter(item => item._id !== action.payload),
+        content: state.content.filter(item => item.id !== action.payload),
         error: null
       }
     // Delete All

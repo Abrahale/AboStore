@@ -1,6 +1,6 @@
 export class CartModel {
-  _id:string
-  imagePath:string;
+  id:string
+  image:string[]|string;
   price:number;
   title:string;
   quanitity:number;

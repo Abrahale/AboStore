@@ -23,6 +23,8 @@ import { CartItemComponent } from './components/cart/cart-item/cart-item.compone
 import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.component';
 import {ProductViewComponent} from "./pages/product-view/product-view.component";
 import {CartComponent} from "./pages/cart/cart.component";
+import { ThemeService } from './services/theme.service';
+import { ButtonComponent } from './components/components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,8 @@ import {CartComponent} from "./pages/cart/cart.component";
     ProductCardComponent,
     CartItemComponent,
     CartFooterComponent,
-    CartComponent
+    CartComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +57,7 @@ import {CartComponent} from "./pages/cart/cart.component";
     MatSidenavModule,
     BaseStoreModule
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService,ThemeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

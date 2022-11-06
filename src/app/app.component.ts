@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavMenuService } from './services/navigation-menu.service';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -17,4 +18,5 @@ export class AppComponent implements OnInit {
   swipeLeft(event:any): void {
     console.log('Swiped', event);
   }
+
 }
