@@ -1,4 +1,5 @@
 <div class="navigation-container p-20-v-xs p-15-h-xs">
+    <i (click)="changeTheme()" class="icon icon-cogs"></i>
     <div class="logo m-15-h-xs no-margin-left-xs">
         <a [routerLink]="['/home']">
             <img loading="lazy" src="assets/images/abo_store2.png">
@@ -10,13 +11,13 @@
                [routerLink]="[item.link]"
                *ngFor="let item of navMenuService.navigationLinks"
                routerLinkActive="active">
-                <div class="m-15-h-xs p-15-h-xs p-5-v-xs ">
+                <div *ngIf="item.displayLabel" class="m-15-h-xs p-15-h-xs p-5-v-xs ">
                     {{item.label}}
-                    <i class="item?.icon"></i>
                 </div>
+                <i [class]="item?.icon" class="m-5-h-xs p-5-h-xs p-5-v-xs"></i>
             </a>
         </div>
-        <button (click)="changeTheme()">Change theme</button>
+      
     </div>
     <div class="mobi-menu-toggle">
         <div class="hamburger arrow"

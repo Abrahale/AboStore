@@ -30,18 +30,30 @@ export class NavMenuService {
     }
 
     getNavigationLinks(): any[] {
-        return [{
+        return [
+            {
+                displayLabel:false,
+                label: 'Search',
+                link: `/search`,
+                icon: 'icon icon-search1'
+            },
+            {
+                displayLabel:false,
+                label: 'Wish',
+                link: `/wish`,
+                icon: 'icon icon-heart'
+            },
+            { 
+            displayLabel:false,
             label: 'Sign In',
             link: `/sign-in`,
-        }, {
-            label: 'Sign Up',
-            link: `/sign-up`,
-        }, {
-            label: 'Profile',
-            link: `/profile`,
-        }, {
+            icon:'icon icon-enter'
+        }, 
+ 
+        {
+            displayLabel:false,
             label: 'My Cart',
-            icon:'fa fa-shopping-cart',
+            icon:'icon icon-shopping-cart',
             link: `/cart`,
         }];
     }

@@ -26,7 +26,6 @@ export class NavigationMenuComponent implements OnInit {
     }
      clickMenuItem(): void { }
      changeTheme():void{
-      console.log('changing the theme')
       this.themeService.changeActiveTheme();
     }
 }
