@@ -8,9 +8,17 @@
   padding: 10px 0;
   transition: all 0.5s;
   width: 100%;
-  text-transform: uppercase;
   text-align: center;
   align-items: center;
+
+  &.c1{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(5, 170, 19);
+    border-radius: 0;
+    text-transform: uppercase;
+  }
   cursor: pointer;
   }
   .btn:hover {

@@ -25,6 +25,9 @@ import {ProductViewComponent} from "./pages/product-view/product-view.component"
 import {CartComponent} from "./pages/cart/cart.component";
 import { ThemeService } from './services/theme.service';
 import { ButtonComponent } from './components/components/button/button.component';
+import { SaleTagComponent } from './components/components/sale-tag/sale-tag.component';
+import { HeartTagComponent } from './components/components/heart-tag/heart-tag.component';
+import { DiscountTagComponent } from './components/components/discount-tag/discount-tag.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,10 @@ import { ButtonComponent } from './components/components/button/button.component
     CartItemComponent,
     CartFooterComponent,
     CartComponent,
-    ButtonComponent
+    ButtonComponent,
+    SaleTagComponent,
+    HeartTagComponent,
+    DiscountTagComponent
   ],
   imports: [
     BrowserModule,
