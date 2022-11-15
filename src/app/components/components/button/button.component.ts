@@ -17,5 +17,4 @@ export class ButtonComponent implements OnInit {
   buttonClick():void{
     this.abo_click.emit();
   }
-
 }

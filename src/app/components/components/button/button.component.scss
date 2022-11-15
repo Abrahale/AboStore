@@ -1,15 +1,20 @@
 .btn {
-    display: inline-block;
-    background-color: #7DC855;
-    border-radius: 6px;
-    font-size: 16px;
-    color: #FFFFFF;
-    text-decoration: none;
-    padding: 12px 30px;
-    transition: all .5s;
+  display: inline-block;
+  background-color: #000;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 10px 0;
+  transition: all 0.5s;
+  width: 100%;
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
   }
   .btn:hover {
-    background-color: #64af3d;
+    background-color: #0b0c0a;
   }
 .button {
     border: 2px solid #E1E8EE;

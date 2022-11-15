@@ -1,6 +1,6 @@
 <div class="product">
     <div (click)="onClick(product)">
-        <span class="onsale">Sale!</span>
+        <!-- <span class="onsale">Sale!</span> -->
         <div class="d-flex">
             <span class="onsale">Sale!</span>
             <span class="discount">-33%</span>
@@ -10,7 +10,7 @@
         <h3 class="product-title m-20-v-xs">{{product.title}}</h3>
         <span class="price">
             <ins> 
-                <span class="amount">{{(product.price * 0.33) | currency}}</span>
+                <span class="amount">{{(product.price) | currency}}</span>
             </ins>
             <del> 
                 <span class="amount">{{product.price | currency}}</span> 
