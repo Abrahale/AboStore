@@ -42,16 +42,19 @@ $textCol: #1f1f1f;
   font-family: 'Playfair Display', serif;
 }
 :root {
-  --background-color: #264653;
+  --background-color: #F7F5F2;
   --color-option-1: #2a9d8f;
   --color-option-2: #e9c46a;
   --color-option-3: #f4a261;
   --color-option-4: #e76f51;
+  --color-option-5: #264653;
+  --color-option-6: #ddd;
   --text-color: white;
   --button-background: var(--color-option-3);
  }
 html, body { height: 100%;
-background-color: #ffffff; }
+//background-color: #ffffff; 
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .logo {

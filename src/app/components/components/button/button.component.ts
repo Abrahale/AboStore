@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   constructor() { }
   @Input() buttonText = "Add To Cart"
+  @Input() theme:string;
   @Output() abo_click =new  EventEmitter();
 
   ngOnInit(): void {
@@ -17,5 +18,4 @@ export class ButtonComponent implements OnInit {
   buttonClick():void{
     this.abo_click.emit();
   }
-
 }

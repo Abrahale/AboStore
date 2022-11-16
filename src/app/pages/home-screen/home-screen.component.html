@@ -2,13 +2,19 @@
   <!-- <div class="col-12">
     <abo-slider [products]="products" [slider]="products.slice(0,5)"></abo-slider>
   </div> -->
-	<div class="row">
-		<div class="col-xs-12 col-sm-12 col-md-12 home-container">
-			<div class="row">
-				<div *ngFor="let p of products" class="col-xs-12  col-md-6 col-lg-4">
-					<abo-product-card [product]="p"></abo-product-card>
+	<div class="row home-container">
+				<div class="d-none d-md-block col-md-3 col-lg-2">
+					<h1>this showing?</h1>
 				</div>
-			</div>
-		</div>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+					<div class="row">
+						<div *ngFor="let p of products" class="col">
+							<abo-product-card [product]="p" class="col mx-auto"></abo-product-card>
+						</div>
+					</div>
+				</div>
+				<div class="d-none d-md-block col-md-3 col-lg-2">
+						<h1>this showing?</h1> 
+				</div>
 	</div>
 </div>

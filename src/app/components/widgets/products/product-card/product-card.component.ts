@@ -25,7 +25,6 @@ export class ProductCardComponent implements OnInit {
     this.router.navigate(['/product-view'])
   }
   addToCart():void{
-    console.log("the button has been clicked!")
     const cartModel = new CartModel();
     cartModel.id = this.product.id;
     cartModel.image = this.product.image;
@@ -34,8 +33,4 @@ export class ProductCardComponent implements OnInit {
     cartModel.title = this.product.title
     this._store.dispatch(new LoadAddToCartAction({cartModel}));
   }
-  wtf3(input):void{
-    console.log('wtf3',input)
-  }
-
 }
