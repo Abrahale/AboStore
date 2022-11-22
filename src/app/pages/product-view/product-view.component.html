@@ -1,55 +1,32 @@
-<!--<div class="container-fluid">
-	<div class="row">
-<section class="mystyle-products">
-    <h1>Is this shit showing</h1>
-    <div class="product">
-      <a (click)="wtf($event)">
-          <span class="onsale">Sale!</span>
-          <img alt="" class="attachment-shop_catalog " [src]="product.imagePath" />
-          <h3 class="product-title m-20-v-xs">{{product.title}}</h3>
-          <span class="price">
-              <del> 
-                  <span class="amount">{{product.price | currency}}</span> 
-            </del>
-            <ins> 
-                <span class="amount">{{(product.price * 0.33) | currency}}</span>
-            </ins>
-            <span class="sale-tag sale-tag-square">-33%</span>
-          </span>
-      </a>
-      <a class="button add_to_cart_button product_type_simple" rel="nofollow" (click)="wtf2($event)">
-          {{product.description}}
-      </a>
-      <a (click)="wtf3($event)" class="btn btn-dark btn-circle btn-review" data-toggle="tooltip" data-placement="top" title="Quick View"><i class="ion ion-ios-move"></i></a>
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
+        <div class="img-container">
+            <div class="thumb-container">
+                <div class="thumb" *ngFor="let img of product.image" (click)="activeImage(img)">
+                    <img [src]="img" alt="">
+                </div>
+            </div>
+            <div class="main-img-container">
+                <img class="active" [src]="imagePath" alt="">
+            </div>
+        </div>
     </div>
-  </section>
-   	</div>
-</div>-->
-<main class="container">
-
-    <!-- Left Column / Headphones Image -->
-    <div class="left-column">
-        <img class="active" [src]="imagePath" alt="">
-    </div>
-
-
     <!-- Right Column -->
-    <div class="right-column">
+    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
 
         <!-- Product Description -->
         <div class="product-description">
-            <span>Headphones</span>
-            <h1>Beats EP</h1>
-            <p>The preferred choice of a vast range of acclaimed DJs. Punchy, bass-focused sound and high isolation. Sturdy headband and on-ear cushions suitable for live performance</p>
+            <!-- <span>Headphones</span> -->
+            <h1>{{product.title}}</h1>
+            <p>{{product.description}}</p>
         </div>
 
         <!-- Product Configuration -->
         <div class="product-configuration">
 
-            <!-- Product Color -->
+            <!-- Product Color 
             <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
                 <span>Color</span>
-
                 <div class="color-choose">
                     <div>
                         <input data-image="red" type="radio" id="red" name="color" value="red" formControlName="color">
@@ -66,7 +43,7 @@
                 </div>
 
             </form>
-
+        -->
             <!-- Cable Configuration -->
             <div class="cable-config">
                 <span>Cable configuration</span>
@@ -83,8 +60,8 @@
 
         <!-- Product Pricing -->
         <div class="product-price">
-            <span>148$</span>
+            <span>{{product.price}}</span>
             <a href="#" class="cart-btn">Add to cart</a>
         </div>
     </div>
-</main>
+</div>

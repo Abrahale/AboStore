@@ -22,7 +22,7 @@ export class ProductCardComponent implements OnInit {
   onClick(input):void{
     this._store.dispatch(new UpadateProductView(input))
     console.log(input)
-    this.router.navigate(['/product-view'])
+    this.router.navigate(['/product/'+input._id+'/'+input.productCode])
   }
   addToCart():void{
     const cartModel = new CartModel();

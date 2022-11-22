@@ -24,7 +24,7 @@ const routes: Routes = [
     component: SignUpComponent
   },
   {
-    path:'product-view',
+    path:'product/:id/:productCode',
     component: ProductViewComponent
   },
   {

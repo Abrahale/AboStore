@@ -3,7 +3,7 @@ import { product } from 'src/app/models/products';
 import {BaseStoreState, ProductsSelectors} from "../../store";
 import {Store} from "@ngrx/store";
 import {FormBuilder, FormGroup} from "@angular/forms";
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'abo-product-view',
   templateUrl: './product-view.component.html',
@@ -12,29 +12,26 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class ProductViewComponent implements OnInit {
   @Input() product:product;
   colorForm: FormGroup;
-  imagePath = "assets/images/red.png";
-  constructor(private _store:Store<BaseStoreState.State>, private formBuilder: FormBuilder) { }
+  imagePath = "";
+  constructor(
+    private _store:Store<BaseStoreState.State>,
+    private formBuilder: FormBuilder,
+    private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
     this._store.select(ProductsSelectors.selectproductView).subscribe((_) => {
       this.product = _;
+      this.imagePath = _.image[0];
     })
     this.colorForm = this.formBuilder.group({
       color:['red']
     })
+    console.log(this.activatedRoute.snapshot.params['productCode']);
+    console.log(this.product)
   }
-  activeImage():void{
-    switch (this.colorForm.getRawValue().color){
-      case "red":
-         this.imagePath = "assets/images/red.png";
-         break;
-     case "blue":
-         this.imagePath = "assets/images/blue.png";
-         break;      
-     case "black":
-         this.imagePath = "assets/images/black.png";
-         break;
-    }
+  activeImage(imgsrc):void{
+    console.log('the imge src',imgsrc)
+    this.imagePath = imgsrc;
   }
 
 }
