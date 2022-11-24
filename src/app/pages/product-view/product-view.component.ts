@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { product } from 'src/app/models/products';
 import {BaseStoreState, ProductsSelectors} from "../../store";
 import {Store} from "@ngrx/store";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'abo-product-view',
@@ -11,11 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProductViewComponent implements OnInit {
   @Input() product:product;
-  colorForm: FormGroup;
+  colorForm: UntypedFormGroup;
   imagePath = "";
   constructor(
     private _store:Store<BaseStoreState.State>,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
