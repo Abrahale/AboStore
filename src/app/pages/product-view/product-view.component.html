@@ -1,14 +1,14 @@
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
-        <div class="img-container">
-            <div class="thumb-container">
-                <div class="thumb" *ngFor="let img of product.image" (click)="activeImage(img)">
-                    <img [src]="img" alt="">
+        <div class="gallery-display-container">
+                <div class="thumb-container">
+                    <div class="thumb" *ngFor="let img of product.image"  (click)="activeImage(img)" (mouseenter)="activeImage(img)">
+                        <img [src]="img" alt="">
+                    </div>
                 </div>
-            </div>
-            <div class="main-img-container">
-                <img class="active" [src]="imagePath" alt="">
-            </div>
+                <div class="main-img-container">
+                    <img class="active" [src]="imagePath" alt="">
+                </div>
         </div>
     </div>
     <!-- Right Column -->
