@@ -14,6 +14,8 @@ import { SignInActions, SignInSelectors } from 'src/app/store/sign-in';
 export class SignInComponent implements OnInit {
   singInForm:any;
   session:any;
+  emailValidators = [Validators.required, Validators.email]
+  passordValidators = [Validators.required]
   constructor(private store:Store<BaseStoreState.State>, private formBuilder:UntypedFormBuilder, private router:Router ) { }
 
   ngOnInit(): void {

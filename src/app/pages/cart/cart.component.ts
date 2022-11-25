@@ -32,4 +32,7 @@ export class CartComponent implements OnInit {
     })
     this.store$.dispatch(new CartsActions.UpdateItemAction(x))
   }
+  removeCartItem = (id) =>{
+    console.log('removing id: ',id)
+  }
 }

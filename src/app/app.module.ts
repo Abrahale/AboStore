@@ -12,6 +12,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { AuthenticationService } from './services/authenticationService';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
 import { SliderComponent } from './components/widgets/products/slider/slider.component';
@@ -28,6 +29,9 @@ import { ButtonComponent } from './components/components/button/button.component
 import { SaleTagComponent } from './components/components/sale-tag/sale-tag.component';
 import { HeartTagComponent } from './components/components/heart-tag/heart-tag.component';
 import { DiscountTagComponent } from './components/components/discount-tag/discount-tag.component';
+import { TextInputComponent } from './components/components/text-input/text-input.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +51,8 @@ import { DiscountTagComponent } from './components/components/discount-tag/disco
     ButtonComponent,
     SaleTagComponent,
     HeartTagComponent,
-    DiscountTagComponent
+    DiscountTagComponent,
+    TextInputComponent
   ],
   imports: [
     BrowserModule,
@@ -56,12 +61,16 @@ import { DiscountTagComponent } from './components/components/discount-tag/disco
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatExpansionModule,
     RouterModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
     MatSidenavModule,
-    BaseStoreModule
+    BaseStoreModule,
+    MatFormFieldModule,
+    MatInputModule
+
   ],
   providers: [AuthenticationService,ThemeService],
   bootstrap: [AppComponent]

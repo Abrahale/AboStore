@@ -27,7 +27,7 @@
     "@ngrx/effects": "^14.3.2",
     "@ngrx/store": "^14.3.2",
     "@ngrx/store-devtools": "^14.3.2",
-    "bootstrap": "^5.1.3",
+    "bootstrap": "^5.2.3",
     "chartist": "^0.11.4",
     "classlist": "^2.0.0",
     "classlist.js": "^1.1.20150312",

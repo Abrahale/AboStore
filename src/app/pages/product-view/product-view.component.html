@@ -1,7 +1,8 @@
+<div class="container">
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
         <div class="gallery-display-container">
-                <div class="thumb-container">
+                <div class="thumb-container d-none d-sm-block">
                     <div class="thumb" *ngFor="let img of product.image"  (click)="activeImage(img)" (mouseenter)="activeImage(img)">
                         <img [src]="img" alt="">
                     </div>
@@ -60,8 +61,11 @@
 
         <!-- Product Pricing -->
         <div class="product-price">
-            <span>{{product.price}}</span>
-            <a href="#" class="cart-btn">Add to cart</a>
+            <span>{{product.price | currency}}</span>
+        </div>
+        <div class="m-20-v-xs">
+            <abo-button (abo_click)="addToCart()" theme=""></abo-button>
         </div>
     </div>
+</div>
 </div>

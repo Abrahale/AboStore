@@ -11,4 +11,13 @@ export class CartService {
   checkOut(){
     return this.http.get<any>(`${this.baseUrl}products`);
   }
+
+  addToCart(){
+    return this.http.get<any>(`${this.baseUrl}cart`);
+  }
+
+  updateCart({}){
+    return this.http.post<any>(`${this.baseUrl}products`,{});
+  }
+
 }

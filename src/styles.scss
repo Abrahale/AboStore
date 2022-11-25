@@ -27,7 +27,8 @@ $my-app-theme: mat.define-light-theme(
 
 @include mat.all-legacy-component-themes($my-app-theme);
 
-@import '~bootstrap/scss/bootstrap';
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'bootstrap/scss/bootstrap';
 @import './assets/styles/globals.scss';
 @import 'node_modules/bootstrap/scss/_functions.scss';
 @import 'node_modules/bootstrap/scss/_variables.scss';
@@ -39,10 +40,6 @@ $primary1: #f7444e;
 $primary2: #002c3e;
 $textCol: #1f1f1f;
 
-// import fonts -  font-family: 'Poppins', sans-serif and  font-family: 'Playfair Display', serif
-
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @mixin main-font {
   font-family: 'Poppins', sans-serif;
 }
@@ -73,4 +70,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 a{
   text-decoration: none;
+}
+.icon{
+  align-self: center;
+  cursor: pointer;
+  &:hover{
+    color:rgba(3, 3, 103, 0.92);
+  }
 }

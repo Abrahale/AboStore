@@ -10,6 +10,7 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem: CartModel
   @Output() decrement = new EventEmitter<string>()
   @Output() increment = new EventEmitter<string>()
+  @Output() remove = new EventEmitter<string>()
   constructor() { }
 
   ngOnInit(): void {
@@ -23,7 +24,9 @@ export class CartItemComponent implements OnInit {
     this.increment.emit(id);
   }
 
-  removeItem(id){}
+  removeItem(id){
+    this.remove.emit(id)
+  }
 
 
 }

@@ -1,37 +1,34 @@
-<div class="align">
 
-  <div class="grid align__item">
-
+<div class="container-fluid">
     <div class="sign-in p-40-v-xs p-30-h-xs">
-      <div class="logo logo m-15-h-xs m-30-v-xs no-m-t">
-        <a [routerLink]="['/home']">
-            <img loading="lazy" src="assets/images/abo_store2.png">
-        </a>
-      </div>
-
       <h2 class="p-20-v-xs">Sign In</h2>
 
-      <form [formGroup]="singInForm" class="form">
+      <form [formGroup]="singInForm" class="form">       
+          <abo-text-input
+              label = "Email address"
+              [controlName] = "singInForm.email"
+              placeholder="Ex abkiros@abostore.com"
+              [validators] = "emailValidators"
+              errorMessage = "Please enter a valid email"
+          ></abo-text-input>
 
-        <div class="form__field">
-          <label class="input-label p-10-h-xs no-m-b">Email</label>
-          <input formControlName = "email" type="email">
-        </div>
-
-        <div class="form__field">
-          <label class="input-label p-10-h-xs no-m-b">Password</label>
-          <input formControlName="password" type="password">
-        </div>
+          <abo-text-input
+              label = "Password"
+              [controlName] = "singInForm.password"
+              [validators] = "passordValidators"
+              errorMessage = "Please enter a valid email"
+          ></abo-text-input>
 
         <div class="form__field">
         <button class="signIn-button" (click)="signIn()">Sign In</button>
       </div>
+
+     
 
     </form>
 
     <p>Don't have an accout? <a [routerLink]="['/sign-up']">Sign Up</a></p>
 
   </div>
+</div>
 
-</div>
-</div>

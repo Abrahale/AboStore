@@ -1,0 +1,15 @@
+
+    <mat-form-field class="example-full-width">
+      <mat-label>{{label}}</mat-label>
+      <input type="email" matInput [formControl]="controlName" [errorStateMatcher]="matcher"
+             [placeholder]="placeholder">
+      <mat-hint>{{hint}}</mat-hint>
+      <mat-error *ngIf="controlName.hasError('email') && !controlName.hasError('required')">
+        {{errorMessage}}
+      </mat-error>
+      <mat-error *ngIf="controlName.hasError('required')">
+        This is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  
+  

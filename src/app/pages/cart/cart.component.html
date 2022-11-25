@@ -9,9 +9,9 @@
             </div>    
             <div *ngIf="cartModel.length == 0" class="col"><h4><strong>Your shopping cart is empty</strong></h4></div>
             <section id="cart" *ngFor="let c of cartModel"> 
-                <abo-cart-item [cartItem]="c" (decrement)="qty_update($event,false)" (increment)="qty_update($event,true)"></abo-cart-item>        
+                <abo-cart-item [cartItem]="c" (decrement)="qty_update($event,false)" (increment)="qty_update($event,true)" (remove)="removeCartItem($event)"></abo-cart-item>        
             </section>
-            <div class="back-to-shop"><span routerLink="/home">&leftarrow;<span class="text-muted">Back to shop</span></span></div>
+            <div class="back-to-shop" routerLink="/home"><span class="text-muted"><span class="icon icon-arrow-thin-left"></span> Back to shop</span></div>
         </div>
         <div class="col-xs-6 col-md-4 summary">
             <abo-cart-footer [subTotal]="total" [totalItems]="cartModel.length"></abo-cart-footer>
