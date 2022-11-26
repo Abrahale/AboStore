@@ -7,14 +7,13 @@ import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
 import { CartModel } from 'src/app/models/cartModel';
 
-export const getData = (state: State): any[] => state.data['result'];
+export const getData = (state: State): CartModel => state.cart;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
-export const getContnet = (state: State): CartModel => state.content;
 
 export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.CART);
 
-export const selectData: MemoizedSelector<object, any[]> =
+export const selectData: MemoizedSelector<object, CartModel> =
 createSelector(getState, getData);
 
 
@@ -23,9 +22,6 @@ createSelector(getState, getError);
 
 export const selectIsLoading: MemoizedSelector<object, boolean> =
 createSelector(getState, getIsLoading);
-
-export const selectCartItems: MemoizedSelector<object, CartModel> =
-createSelector(getState, getContnet);
 
 export const selectTotal: MemoizedSelector<object, number> =
 createSelector(getState, getContnet =>{

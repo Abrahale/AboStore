@@ -13,7 +13,7 @@ export enum ActionTypes{
 
 export class LoadRequestAction implements Action{
   readonly type = ActionTypes.LOAD_REQUEST;
-  constructor(){}
+  constructor(public payload:{id:string}){}
 }
 
 export class LoadFailureAction implements Action{
@@ -23,7 +23,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:{data: BaseResponseModel<any>}){}
+  constructor(public payload:CartModel){}
 }
 //add to cart
 export class LoadAddToCartAction implements Action{

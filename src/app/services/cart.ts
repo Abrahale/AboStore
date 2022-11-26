@@ -13,6 +13,10 @@ export class CartService {
     return this.http.get<any>(`${this.baseUrl}products`);
   }
 
+  getCart(id:string){
+    return this.http.get<any>(`${this.baseUrl}cart?id=${id}`);
+  }
+
   addToCart(userId:string, cartId:string, cartItem:CartItem){
     const payload={
       ...cartItem,

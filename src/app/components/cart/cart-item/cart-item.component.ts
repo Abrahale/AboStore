@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { CartModel } from 'src/app/models/cartModel';
+import { product } from 'src/app/models/products';
 
 @Component({
   selector: 'abo-cart-item',
@@ -7,7 +8,7 @@ import { CartModel } from 'src/app/models/cartModel';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input() cartItem: CartModel
+  @Input() cartItem: product //Don't forget to make it Product
   @Output() decrement = new EventEmitter<string>()
   @Output() increment = new EventEmitter<string>()
   @Output() remove = new EventEmitter<string>()

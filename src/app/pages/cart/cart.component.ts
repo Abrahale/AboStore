@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CartModel } from 'src/app/models/cartModel';
+import { CartItem, CartModel } from 'src/app/models/cartModel';
 import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 'src/app/store';
 
 @Component({
@@ -9,18 +9,20 @@ import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 's
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartModel: CartModel[];
+  cartModel: CartModel;
   total: number;
 
-  constructor(private store$:Store<BaseStoreState.State>) { }
-
+  constructor(private store$:Store<BaseStoreState.State>) {
+  }
+  
   ngOnInit(): void {
-    this.store$.select(SignInSelectors.selectCartId).subscribe(_ => {
-      console.log(_)
+    this.store$.select(SignInSelectors.selectCartId).subscribe(id => {
+      console.log(id)
+      this.store$.dispatch(new CartsActions.LoadRequestAction({id}))
     })
-    // this.store$.select(CartsSelectors.selectCartItems).subscribe(_ => {
-    //   this.cartModel = _
-    // })
+    this.store$.select(CartsSelectors.selectData).subscribe(_ => {
+      this.cartModel = _
+    })
     // this.store$.select(CartsSelectors.selectTotal).subscribe(_ => {
     //   this.total=_;
     // })

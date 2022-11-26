@@ -13,7 +13,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          data:action.payload.data,
+          cart:action.payload,
           isLoading: false,
           error: null
         }
@@ -25,14 +25,14 @@ export function CartsReducer(state = initialState, action: Actions): State{
           error: action.payload.error,
         }
       }
-      case ActionTypes.ADD_TO_CART : {
-        return {
-          ...state,
-          isLoading: false,
-          cartItem: action.payload.cartItem,
-          error:null
-        }
-      }
+      // case ActionTypes.ADD_TO_CART : {
+      //   return {
+      //     ...state,
+      //     isLoading: false,
+      //     cartItem: action.payload.cartItem,
+      //     error:null
+      //   }
+      // }
     // Delete Single
     case ActionTypes.DELETE_ITEM:
       return {...state, 

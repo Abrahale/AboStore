@@ -1,24 +1,23 @@
+import { product } from "./products";
+
 export class CartModel {
   id:string;
-  user:string;
-  price:number;
-  title:string;
-  quanitity:number;
-  total:number;
-  totalItems:number;
-  active:boolean;
-  processed:boolean;
-  createdDate: Date;
-  modifiedDate: Date;
-  deletedDate: Date;
-  cartItem: CartItem[];
+  user?:string;
+  total?:number;
+  totalItems?:number;
+  active?:boolean;
+  processed?:boolean;
+  createdDate?: Date;
+  modifiedDate?: Date;
+  deletedDate?: Date;
+  cartItem?: CartItem[];
 
 }
 
 export class CartItem{
   id: string;
   user: string;
-  product: string;
+  product: product | string | any;
   cart:string;
   qty:number;
   active:boolean;
