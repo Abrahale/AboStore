@@ -4,7 +4,7 @@ import {BaseStoreState, ProductsSelectors} from "../../store";
 import {Store} from "@ngrx/store";
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
-import { CartModel } from 'src/app/models/cartModel';
+import { CartItem, CartModel } from 'src/app/models/cartModel';
 import { LoadAddToCartAction } from 'src/app/store/cart/actions';
 @Component({
   selector: 'abo-product-view',
@@ -37,13 +37,11 @@ export class ProductViewComponent implements OnInit {
   }
 
   addToCart():void{
-    const cartModel = new CartModel();
-    cartModel.id = this.product.id;
-    cartModel.image = this.product.image;
-    cartModel.price = this.product.price;
-    cartModel.quanitity = 1,
-    cartModel.title = this.product.title
-    this._store.dispatch(new LoadAddToCartAction({cartModel}));
+    const cartItem = new CartItem();
+    cartItem.product = this.product.id;
+    cartItem.qty = 1,
+    cartItem.active = true
+   // this._store.dispatch(new LoadAddToCartAction({cartItem}));
   }
 
 }

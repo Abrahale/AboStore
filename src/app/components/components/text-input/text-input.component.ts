@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {FormControl, FormGroupDirective, NgForm} from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {FormControl, FormGroup, FormGroupDirective, NgForm} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 
 @Component({
@@ -9,6 +9,8 @@ import {ErrorStateMatcher} from '@angular/material/core';
 })
 
 export class TextInputComponent implements OnInit {
+  @Output() abo_vchange = new EventEmitter<{controlName:FormControl, value:any}>();
+  @Input() formGroup:FormGroup;
   @Input() controlName:FormControl;
   @Input() validators = []
   @Input() label = ''
@@ -16,6 +18,7 @@ export class TextInputComponent implements OnInit {
   @Input() placeholder = ''
   @Input() errorMessage = ''
   @Input() hint = ''
+  @Input() type = ''
   constructor(){}
 
   ngOnInit(): void {
@@ -23,6 +26,10 @@ export class TextInputComponent implements OnInit {
   }
 
   matcher = new MyErrorStateMatcher();
+
+  onChangeValue = (val) =>{
+    this.abo_vchange.emit({controlName:this.controlName,value:val});
+  }
 }
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {

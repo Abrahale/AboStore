@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AboErrorStateMatcher } from 'src/app/helpers/abo-error-state-matcher';
 import { SignInRequestModel } from 'src/app/models/sign-in-request.model';
 import { BaseStoreState } from 'src/app/store';
 import { SignInActions, SignInSelectors } from 'src/app/store/sign-in';
@@ -14,22 +15,20 @@ import { SignInActions, SignInSelectors } from 'src/app/store/sign-in';
 export class SignInComponent implements OnInit {
   singInForm:any;
   session:any;
-  emailValidators = [Validators.required, Validators.email]
-  passordValidators = [Validators.required]
-  constructor(private store:Store<BaseStoreState.State>, private formBuilder:UntypedFormBuilder, private router:Router ) { }
+  constructor(private store:Store<BaseStoreState.State>, private formBuilder:FormBuilder, private router:Router ) { }
 
   ngOnInit(): void {
     this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
       if(a.success){
         this.redirect();
       }
-    }
-    )
-    this.singInForm = new UntypedFormGroup({
-      email: new UntypedFormControl('',[Validators.required]),
-      password: new UntypedFormControl('',[Validators.required]),
+    })
+    this.singInForm = new FormGroup({
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required]),
     })
   }
+  matcher = new AboErrorStateMatcher();
   signIn(){
     let signInModel: SignInRequestModel = {
       email: this.singInForm.get('email').value,
@@ -40,5 +39,4 @@ export class SignInComponent implements OnInit {
   redirect(){
     this.router.navigate(['home'])
   }
-
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CartModel } from 'src/app/models/cartModel';
-import { BaseStoreState, CartsActions, CartsSelectors } from 'src/app/store';
+import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 'src/app/store';
 
 @Component({
   selector: 'app-cart',
@@ -15,12 +15,15 @@ export class CartComponent implements OnInit {
   constructor(private store$:Store<BaseStoreState.State>) { }
 
   ngOnInit(): void {
-    this.store$.select(CartsSelectors.selectCartItems).subscribe(_ => {
-      this.cartModel = _
+    this.store$.select(SignInSelectors.selectCartId).subscribe(_ => {
+      console.log(_)
     })
-    this.store$.select(CartsSelectors.selectTotal).subscribe(_ => {
-      this.total=_;
-    })
+    // this.store$.select(CartsSelectors.selectCartItems).subscribe(_ => {
+    //   this.cartModel = _
+    // })
+    // this.store$.select(CartsSelectors.selectTotal).subscribe(_ => {
+    //   this.total=_;
+    // })
   }
   qty_update = (id,inc = false) =>{
     let x = JSON.parse(JSON.stringify(this.cartModel));

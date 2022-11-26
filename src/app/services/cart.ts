@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { CartItem } from '../models/cartModel';
 @Injectable({
   providedIn:'root'
 })
@@ -12,8 +13,14 @@ export class CartService {
     return this.http.get<any>(`${this.baseUrl}products`);
   }
 
-  addToCart(){
-    return this.http.get<any>(`${this.baseUrl}cart`);
+  addToCart(userId:string, cartId:string, cartItem:CartItem){
+    const payload={
+      ...cartItem,
+      user:userId,
+      cart:cartId
+    }
+    console.log(payload)
+    return this.http.post<any>(`${this.baseUrl}cart-item`,payload);
   }
 
   updateCart({}){

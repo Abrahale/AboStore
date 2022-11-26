@@ -1,5 +1,6 @@
 import { initialState, State } from "./state";
 import { Actions, ActionTypes} from "./actions";
+import { ContentChild } from "@angular/core";
 export function CartsReducer(state = initialState, action: Actions): State{
   switch(action.type){
       case ActionTypes.LOAD_REQUEST : {
@@ -28,7 +29,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
         return {
           ...state,
           isLoading: false,
-          content: [...state.content,action.payload.cartModel],
+          cartItem: action.payload.cartItem,
           error:null
         }
       }
@@ -36,7 +37,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
     case ActionTypes.DELETE_ITEM:
       return {...state, 
         isLoading:false,
-        content: state.content.filter(item => item.id !== action.payload),
+        //content: state.content.cartItem.filter(item => item.id !== action.payload),
         error: null
       }
     // Delete All
@@ -46,7 +47,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
     case ActionTypes.UPDATE_ITEM:
        return { ...state,
         isLoading: false,
-        content: action.payload,
+        //content: action.payload,
         error:null
       }
       default: return state;
