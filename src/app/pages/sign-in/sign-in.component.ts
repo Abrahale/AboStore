@@ -19,7 +19,7 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
-      if(a.success){
+      if(a.id){
         this.redirect();
       }
     })

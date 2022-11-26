@@ -16,8 +16,8 @@ export class CartsEffects {
     ofType<featureActions.LoadRequestAction>(
       featureActions.ActionTypes.LOAD_REQUEST,
     ),
-    switchMap(action => this.cartService.checkOut().pipe(
-      map(data => new featureActions.LoadSuccessAction({data}),
+    switchMap(action => this.cartService.getCart(action.payload.id).pipe(
+      map(data => new featureActions.LoadSuccessAction(data.result),
         ),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
         ),
@@ -30,8 +30,8 @@ export class CartsEffects {
       featureActions.ActionTypes.ADD_TO_CART,
     ),
     withLatestFrom(this._store.select(SignInSelectors.selectCartId),this._store.select(SignInSelectors.selectUserId)),
-    switchMap(([action,cartId,userId]) => this.cartService.addToCart(cartId,userId,action.payload.cartItem).pipe(
-      map(data => new featureActions.LoadSuccessAction({data}),
+    switchMap(([action,userId,cartId]) => this.cartService.addToCart(cartId,userId,action.payload.cartItem).pipe(
+      map(data => new featureActions.LoadSuccessAction(data.result),
       ),
       catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
       ),

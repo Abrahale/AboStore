@@ -7,7 +7,7 @@ export interface State{
 
 }
 export const initialState: State = {
-  result: {id:'6359cbe753130be7ca5cdd02',email:'ab@abostore.com',userName:'Abrahale',cartId:'63826a40a35d1904c3480e6e'},
+  result: {id:'',email:'',userName:'',cartId:''},
   isLoading: false,
   error:""
 }

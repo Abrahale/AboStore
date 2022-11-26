@@ -30,4 +30,4 @@ export const selectCartId: MemoizedSelector<object,string> =
 createSelector(getState, getCartId)
 
 export const selectUserId: MemoizedSelector<object,string> =
-createSelector(getState, getCartId)
+createSelector(getState, getUserId)
