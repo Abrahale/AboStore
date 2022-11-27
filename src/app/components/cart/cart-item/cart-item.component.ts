@@ -9,6 +9,7 @@ import { product } from 'src/app/models/products';
 })
 export class CartItemComponent implements OnInit {
   @Input() cartItem: product //Don't forget to make it Product
+  @Input() qty:number = 1;
   @Output() decrement = new EventEmitter<string>()
   @Output() increment = new EventEmitter<string>()
   @Output() remove = new EventEmitter<string>()

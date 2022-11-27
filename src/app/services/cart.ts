@@ -14,7 +14,7 @@ export class CartService {
   }
 
   getCart(id:string){
-    return this.http.get<any>(`${this.baseUrl}cart?id=${id}`);
+    return this.http.post<any>(`${this.baseUrl}cart/id`,{id});
   }
 
   addToCart(userId:string, cartId:string, cartItem:CartItem){

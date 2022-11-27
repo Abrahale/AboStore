@@ -11,11 +11,13 @@ import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 's
 export class CartComponent implements OnInit {
   cartModel: CartModel;
   total: number;
-
+  totalItems$;
   constructor(private store$:Store<BaseStoreState.State>) {
+    this.totalItems$ = this.store$.select(CartsSelectors.selectTotalItems);
   }
   
   ngOnInit(): void {
+    
     this.store$.select(SignInSelectors.selectCartId).subscribe(id => {
       console.log(id)
       this.store$.dispatch(new CartsActions.LoadRequestAction({id}))

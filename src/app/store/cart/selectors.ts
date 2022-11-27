@@ -10,6 +10,8 @@ import { CartModel } from 'src/app/models/cartModel';
 export const getData = (state: State): CartModel => state.cart;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
+export const getTotal = (state: State): number => state.cart.total;
+export const getTotalItems = (state: State): number => state.cart.totalItems;
 
 export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.CART);
 
@@ -24,10 +26,8 @@ export const selectIsLoading: MemoizedSelector<object, boolean> =
 createSelector(getState, getIsLoading);
 
 export const selectTotal: MemoizedSelector<object, number> =
-createSelector(getState, getContnet =>{
- let x=0;
-  // getContnet.content.map(i =>{
-  //   x += i.price * i.quanitity
-  // })
-  return x;
-});
+createSelector(getState, getTotal)
+
+export const selectTotalItems: MemoizedSelector<object, number> =
+createSelector(getState, getTotalItems)
+

@@ -1,17 +1,17 @@
 <div class="row border-top border-bottom">
     <div class="row main align-items-center">
-        <div class="col-xs-4 col-sm-2 col"><img class="img-fluid" src=""></div>
+        <div class="col-xs-4 col-sm-2 col"><img class="img-fluid" src="{{cartItem.image[0]}}"></div>
         <div class="col-xs-8 col-sm-4 col">
             <div class="row text-muted">Shirt</div>
             <div class="row">{{cartItem.title}}</div>
         </div>
         <div class="col-xs-12 col-sm-6 d-flex">
             <span class="qt-minus"(click)="onDecrement(cartItem.id)" class="icon icon-minus"></span>
-            <span class="qt">{{cartItem.quantity}}</span>
+            <span class="qt">{{qty}}</span>
             <span class="qt-plus" (click)="onIncrement(cartItem.id)" class="icon icon-plus"></span>
 
                 <span class="price">
-                R  {{cartItem.price * cartItem.quantity}}
+                R  {{cartItem.price * qty}}
                 </span>
                 <span (click)="removeItem(cartItem.id)" class="close" class="icon icon-bin"></span>
 
