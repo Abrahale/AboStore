@@ -21,7 +21,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:{data: BaseResponseModel<any>}){}
+  constructor(public payload:{data: any}){}
 }
 
 export class UpadateProductView implements Action{

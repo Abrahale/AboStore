@@ -1,7 +1,7 @@
 import { product } from "./products";
 
 export class CartModel {
-  id:string;
+  id!: string;
   user?:string;
   total?:number;
   totalItems?:number;
@@ -15,15 +15,15 @@ export class CartModel {
 }
 
 export class CartItem{
-  id: string;
-  user: string;
+  id!: string;
+  user!: string;
   product: product | string | any;
-  cart:string;
-  qty:number;
-  active:boolean;
-  createdDate: Date;
-  modifiedDate: Date;
-  deletedDate: Date;
+  cart!:string;
+  qty!:number;
+  active!:boolean;
+  createdDate!: Date;
+  modifiedDate!: Date;
+  deletedDate!: Date;
 }
 
 export const mapToCartModels = (input:any) => {

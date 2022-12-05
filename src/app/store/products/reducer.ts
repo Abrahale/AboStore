@@ -6,7 +6,7 @@ export function ProductsReducer(state = initialState, action: Actions): State{
         return {
           ...state,
           isLoading: true,
-          error: null
+          error: ''
         }
       }
       case ActionTypes.LOAD_SUCCESS : {
@@ -14,7 +14,7 @@ export function ProductsReducer(state = initialState, action: Actions): State{
           ...state,
           data:action.payload.data,
           isLoading: false,
-          error: null
+          error: ''
         }
       }
       case ActionTypes.LOAD_FAILURE : {
@@ -29,7 +29,7 @@ export function ProductsReducer(state = initialState, action: Actions): State{
               ...state,
               productView: action.payload,
               isLoading: false,
-              error:null,
+              error:'',
           }
       }
 

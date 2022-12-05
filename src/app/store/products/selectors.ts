@@ -3,12 +3,11 @@ import {
   createSelector,
   MemoizedSelector,
 } from '@ngrx/store';
-import { BaseResponseModel } from 'src/app/models/response-base.model';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
 import {product} from "../../models/products";
 
-export const getData = (state: State): any[] => state.data['result'];
+export const getData = (state: State): any[] => state.data;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
 export const getproductView = (state: State): product => state.productView;

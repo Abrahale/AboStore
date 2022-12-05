@@ -12,7 +12,7 @@ import { ProductsActions } from 'src/app/store/products';
 })
 export class HomeScreenComponent implements OnInit {
   response:any;
-  products$;
+  products$: Subscription = new Subscription;
   products:product[]=[];
   constructor(private store$:Store<BaseStoreState.State>) {
     this.store$.dispatch(new ProductsActions.LoadRequestAction())

@@ -6,11 +6,11 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./cart-footer.component.scss']
 })
 export class CartFooterComponent implements OnInit {
-  @Input() subTotal;
+  @Input() subTotal:number = 1;
   @Input() tax=15;
   @Input() shipping=15;
   @Input() totalItems = 10;
-  totalTax;
+  totalTax=0;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,5 +1,4 @@
-import { CartItem, CartModel } from "src/app/models/cartModel"
-import { BaseResponseModel } from "src/app/models/response-base.model"
+import { CartModel } from "src/app/models/cartModel"
 
 export interface State{
     cart:CartModel,

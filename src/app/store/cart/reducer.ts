@@ -7,7 +7,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
         return {
           ...state,
           isLoading: true,
-          error: null
+          error: ""
         }
       }
       case ActionTypes.LOAD_SUCCESS : {
@@ -15,7 +15,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
           ...state,
           cart:action.payload,
           isLoading: false,
-          error: null
+          error: ""
         }
       }
       case ActionTypes.LOAD_FAILURE : {
@@ -38,7 +38,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
       return {...state, 
         isLoading:false,
         //content: state.content.cartItem.filter(item => item.id !== action.payload),
-        error: null
+        error: ""
       }
     // Delete All
     case ActionTypes.DELETE_All_ITEM:
@@ -48,7 +48,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
        return { ...state,
         isLoading: false,
         //content: action.payload,
-        error:null
+        error:""
       }
       default: return state;
   }

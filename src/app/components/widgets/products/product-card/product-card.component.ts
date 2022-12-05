@@ -14,19 +14,20 @@ import {UpadateProductView} from "../../../../store/products/actions";
 })
 export class ProductCardComponent implements OnInit {
 
-  @Input() product:product;
+  @Input()
+  product: product = new product;
   constructor(private _store:Store<BaseStoreState.State>, private router: Router) { }
 
   ngOnInit(): void {
   }
-  onClick(input):void{
+  onClick(input:product):void{
     this._store.dispatch(new UpadateProductView(input))
-    this.router.navigate(['/product/'+input._id+'/'+input.productCode])
+    this.router.navigate(['/product/'+input.id+'/'+input.productCode])
   }
-  addToCart(input):void{
+  addToCart(input:product):void{
     console.log('trying to add to cart')
     const cartItem = new CartItem();
-    cartItem.product = input._id;
+    cartItem.product = input.id;
     cartItem.qty = 1;
     cartItem.active = true;
     this._store.dispatch(new LoadAddToCartAction({cartItem}));

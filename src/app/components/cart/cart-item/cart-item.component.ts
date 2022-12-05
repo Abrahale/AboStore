@@ -8,7 +8,8 @@ import { product } from 'src/app/models/products';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input() cartItem: product //Don't forget to make it Product
+  @Input()
+  cartItem: product = new product; //Don't forget to make it Product
   @Input() qty:number = 1;
   @Output() decrement = new EventEmitter<string>()
   @Output() increment = new EventEmitter<string>()
@@ -19,15 +20,15 @@ export class CartItemComponent implements OnInit {
     
   }
 
-  onDecrement(id){
+  onDecrement(id:string){
     this.decrement.emit(id);
   }
 
-  onIncrement(id){
+  onIncrement(id:string){
     this.increment.emit(id);
   }
 
-  removeItem(id){
+  removeItem(id:string){
     this.remove.emit(id)
   }
 

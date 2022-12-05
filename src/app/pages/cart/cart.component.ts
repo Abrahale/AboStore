@@ -9,8 +9,8 @@ import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 's
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent implements OnInit {
-  cartModel: CartModel;
-  total: number;
+  cartModel: CartModel = new CartModel;
+  total: number = 0;
   totalItems$;
   constructor(private store$:Store<BaseStoreState.State>) {
     this.totalItems$ = this.store$.select(CartsSelectors.selectTotalItems);
@@ -29,9 +29,9 @@ export class CartComponent implements OnInit {
     //   this.total=_;
     // })
   }
-  qty_update = (id,inc = false) =>{
+  qty_update = (id:string,inc = false) =>{
     let x = JSON.parse(JSON.stringify(this.cartModel));
-    x.map(item =>{
+    x.map((item: { _id: string; quanitity: number; }) =>{
       if(item._id === id){
        return inc ? item.quanitity ++ : item.quanitity --
       }
@@ -39,7 +39,7 @@ export class CartComponent implements OnInit {
     })
     this.store$.dispatch(new CartsActions.UpdateItemAction(x))
   }
-  removeCartItem = (id) =>{
+  removeCartItem = (id: any) =>{
     console.log('removing id: ',id)
   }
 }

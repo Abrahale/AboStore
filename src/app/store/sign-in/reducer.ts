@@ -6,7 +6,7 @@ export function SignInReducer(state = initialState, action: Actions): State{
         return {
           ...state,
           isLoading: true,
-          error: null
+          error: ''
         }
       }
       case ActionTypes.LOAD_SUCCESS : {
@@ -14,7 +14,7 @@ export function SignInReducer(state = initialState, action: Actions): State{
           ...state,
           result:action.payload,
           isLoading: false,
-          error: null
+          error: ''
         }
       }
       case ActionTypes.LOAD_FAILURE : {

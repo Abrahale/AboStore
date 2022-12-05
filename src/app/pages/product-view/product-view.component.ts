@@ -12,8 +12,9 @@ import { LoadAddToCartAction } from 'src/app/store/cart/actions';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
-  @Input() product:product;
-  colorForm: UntypedFormGroup;
+  @Input()
+  product: product = new product;
+  colorForm!: UntypedFormGroup;
   imagePath = "";
   constructor(
     private _store:Store<BaseStoreState.State>,
@@ -31,7 +32,7 @@ export class ProductViewComponent implements OnInit {
     console.log(this.activatedRoute.snapshot.params['productCode']);
     console.log(this.product)
   }
-  activeImage(imgsrc):void{
+  activeImage(imgsrc:string):void{
     console.log('the imge src',imgsrc)
     this.imagePath = imgsrc;
   }
