@@ -15,7 +15,7 @@ export class SignInEffects {
       featureActions.ActionTypes.LOAD_REQUEST,
     ),
     switchMap(action => this.authService.signIn(action.payload.signInRequestModel).pipe(
-      map(data => new featureActions.LoadSuccessAction(data.result),
+      map(data => new featureActions.LoadSuccessAction(data),
         ),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
         ),

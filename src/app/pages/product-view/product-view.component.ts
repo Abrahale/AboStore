@@ -39,7 +39,7 @@ export class ProductViewComponent implements OnInit {
 
   addToCart():void{
     const cartItem = new CartItem();
-    cartItem.product = this.product.id;
+    cartItem.product = this.product._id;
     cartItem.qty = 1,
     cartItem.active = true
    // this._store.dispatch(new LoadAddToCartAction({cartItem}));

@@ -15,7 +15,7 @@ import { SignInActions, SignInSelectors } from 'src/app/store/sign-in';
 export class SignInComponent implements OnInit {
   singInForm:any;
   session:any;
-  constructor(private store:Store<BaseStoreState.State>, private formBuilder:FormBuilder, private router:Router ) { }
+  constructor(private store:Store<BaseStoreState.State>, private router:Router ) { }
 
   ngOnInit(): void {
     this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
@@ -24,8 +24,8 @@ export class SignInComponent implements OnInit {
       }
     })
     this.singInForm = new FormGroup({
-      email: new FormControl('',[Validators.required, Validators.email]),
-      password: new FormControl('',[Validators.required]),
+      email: new FormControl('ab@abostore.com',[Validators.required, Validators.email]),
+      password: new FormControl('P@ssword123',[Validators.required]),
     })
   }
   matcher = new AboErrorStateMatcher();

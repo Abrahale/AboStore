@@ -31,7 +31,7 @@ export class CartsEffects {
     ),
     withLatestFrom(this._store.select(SignInSelectors.selectCartId),this._store.select(SignInSelectors.selectUserId)),
     switchMap(([action,userId,cartId]) => this.cartService.addToCart(cartId,userId,action.payload.cartItem).pipe(
-      map(data => new featureActions.LoadSuccessAction(data.result),
+      map(data => new featureActions.LoadSuccessAction(data),
       ),
       catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
       ),

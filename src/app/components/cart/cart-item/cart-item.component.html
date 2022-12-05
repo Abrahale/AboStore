@@ -6,14 +6,14 @@
             <div class="row">{{cartItem.title}}</div>
         </div>
         <div class="col-xs-12 col-sm-6 d-flex">
-            <span class="qt-minus"(click)="onDecrement(cartItem.id)" class="icon icon-minus"></span>
+            <span class="qt-minus"(click)="onDecrement(cartItem._id)" class="icon icon-minus"></span>
             <span class="qt">{{qty}}</span>
-            <span class="qt-plus" (click)="onIncrement(cartItem.id)" class="icon icon-plus"></span>
+            <span class="qt-plus" (click)="onIncrement(cartItem._id)" class="icon icon-plus"></span>
 
                 <span class="price">
                 R  {{cartItem.price * qty}}
                 </span>
-                <span (click)="removeItem(cartItem.id)" class="close" class="icon icon-bin"></span>
+                <span (click)="removeItem(cartItem._id)" class="close" class="icon icon-bin"></span>
 
         </div>
     </div>

@@ -22,12 +22,12 @@ export class ProductCardComponent implements OnInit {
   }
   onClick(input:product):void{
     this._store.dispatch(new UpadateProductView(input))
-    this.router.navigate(['/product/'+input.id+'/'+input.productCode])
+    this.router.navigate(['/product/'+input._id+'/'+input.productCode])
   }
   addToCart(input:product):void{
     console.log('trying to add to cart')
     const cartItem = new CartItem();
-    cartItem.product = input.id;
+    cartItem.product = input._id;
     cartItem.qty = 1;
     cartItem.active = true;
     this._store.dispatch(new LoadAddToCartAction({cartItem}));

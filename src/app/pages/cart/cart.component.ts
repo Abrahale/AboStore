@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Subscription, Observable } from 'rxjs';
 import { CartItem, CartModel } from 'src/app/models/cartModel';
 import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 'src/app/store';
 
@@ -11,7 +12,7 @@ import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 's
 export class CartComponent implements OnInit {
   cartModel: CartModel = new CartModel;
   total: number = 0;
-  totalItems$;
+  totalItems$: Observable<any>;
   constructor(private store$:Store<BaseStoreState.State>) {
     this.totalItems$ = this.store$.select(CartsSelectors.selectTotalItems);
   }
