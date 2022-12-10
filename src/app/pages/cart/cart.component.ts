@@ -31,7 +31,23 @@ export class CartComponent implements OnInit {
     // })
   }
   qty_update = (pro_id:string,cartItem_id:string,inc:boolean) =>{
-    this.store$.dispatch(new CartsActions.UpdateQuantity({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,inc:inc}))
+    const cartItem = this.cartModel.cartItem?.find(el =>el._id == cartItem_id) ?? new CartItem;
+    if(inc){
+      if(cartItem.product.quantity > cartItem.qty){
+        this.store$.dispatch(new CartsActions.UpdateQuantity({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,inc:inc}))
+      }
+      else{
+        console.log(`We are out of stock, we can only supply you ${cartItem.qty} items this time`);
+      }
+    }
+    else{
+      if(cartItem?.qty >=2){
+        this.store$.dispatch(new CartsActions.UpdateQuantity({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,inc:inc}))
+      }
+      else{
+        this.removeCartItem(cartItem._id)
+      }
+    }
   }
   removeCartItem = (id: any) =>{
     console.log('removing id: ',id)
