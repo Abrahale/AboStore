@@ -2,8 +2,8 @@
     <div><h5><b>Summary</b></h5></div>
     <hr>
     <div class="row">
-        <div class="col">TOTAL ITEMS <b class="margin-h-16-xs">{{totalItems}}</b></div>
-        <div class="col text-right"><strong>R {{subTotal}}</strong></div>
+        <div class="col">TOTAL ITEMS: <b class="margin-h-16-xs">{{totalItems}}</b></div>
+        <div class="col text-right">AMOUNT: <strong>R {{subTotal}}</strong></div>
     </div>
     <form>
         <p>SHIPPING</p>
@@ -12,7 +12,7 @@
         <input id="code" placeholder="Enter your code">
     </form>
     <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-        <div class="col">TOTAL PRICE</div>
+        <div class="col">AMOUNT DUE + DELIVERY + (VAT)</div>
         <div class="col text-right"><strong>R {{subTotal + shipping + totalTax}}</strong> </div>
     </div>
     <button class="btn" >CHECKOUT</button>

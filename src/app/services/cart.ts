@@ -31,4 +31,8 @@ export class CartService {
     return this.http.post<any>(`${this.baseUrl}products`,{});
   }
 
+  updateCartQty(payload:{cartId:string,product_id:string,cartItem_id:string,inc:boolean}){
+    return this.http.post<any>(`${this.baseUrl}cart-item/updateQty`,{cartId:payload.cartId,product_id:payload.product_id,cartItem_id:payload.cartItem_id,inc:payload.inc});
+  }
+
 }

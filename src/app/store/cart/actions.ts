@@ -8,7 +8,7 @@ export enum ActionTypes{
   ADD_TO_CART = '[CART] Add to cart request',
   DELETE_ITEM = '[CART] Delete Item',
   DELETE_All_ITEM = '[CART] Delete All Item',
-  UPDATE_ITEM = '[CART] Update Item'
+  UPDATE_ITEM_QTY = '[CART] Update Item Quantity'
 }
 
 export class LoadRequestAction implements Action{
@@ -41,9 +41,9 @@ export class DeleteAllItemAction implements Action {
   constructor() { }
 }
 // Update
-export class UpdateItemAction implements Action {
-  readonly type = ActionTypes.UPDATE_ITEM;
-  constructor(public payload: CartModel[]) { }
+export class UpdateQuantity implements Action {
+  readonly type = ActionTypes.UPDATE_ITEM_QTY;
+  constructor(public payload: {cartId:string,product_id:string,cartItem_id:string,inc:boolean}) { }
 }
 
 export type Actions = 
@@ -53,4 +53,4 @@ LoadRequestAction
 | LoadAddToCartAction
 | DeleteItemAction 
 | DeleteAllItemAction 
-| UpdateItemAction;
+| UpdateQuantity;

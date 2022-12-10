@@ -1,7 +1,7 @@
 import { product } from "./products";
 
 export class CartModel {
-  id!: string;
+  _id!: string;
   user?:string;
   total?:number;
   totalItems?:number;
@@ -15,7 +15,7 @@ export class CartModel {
 }
 
 export class CartItem{
-  id!: string;
+  _id!: string;
   user!: string;
   product: product | string | any;
   cart!:string;

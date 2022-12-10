@@ -36,7 +36,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
     // Delete Single
     case ActionTypes.DELETE_ITEM:
       return {...state, 
-        isLoading:false,
+        isLoading:true,
         //content: state.content.cartItem.filter(item => item.id !== action.payload),
         error: ""
       }
@@ -44,9 +44,9 @@ export function CartsReducer(state = initialState, action: Actions): State{
     case ActionTypes.DELETE_All_ITEM:
         return initialState;
     // Update
-    case ActionTypes.UPDATE_ITEM:
+    case ActionTypes.UPDATE_ITEM_QTY:
        return { ...state,
-        isLoading: false,
+        isLoading: true,
         //content: action.payload,
         error:""
       }

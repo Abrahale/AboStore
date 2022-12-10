@@ -30,15 +30,8 @@ export class CartComponent implements OnInit {
     //   this.total=_;
     // })
   }
-  qty_update = (id:string,inc = false) =>{
-    let x = JSON.parse(JSON.stringify(this.cartModel));
-    x.map((item: { _id: string; quanitity: number; }) =>{
-      if(item._id === id){
-       return inc ? item.quanitity ++ : item.quanitity --
-      }
-      return item
-    })
-    this.store$.dispatch(new CartsActions.UpdateItemAction(x))
+  qty_update = (pro_id:string,cartItem_id:string,inc:boolean) =>{
+    this.store$.dispatch(new CartsActions.UpdateQuantity({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,inc:inc}))
   }
   removeCartItem = (id: any) =>{
     console.log('removing id: ',id)

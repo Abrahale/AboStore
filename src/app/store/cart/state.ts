@@ -6,7 +6,7 @@ export interface State{
     error: string
 }
 export const initialState: State = {
-  cart:{id:'',totalItems:0,cartItem:[]},
+  cart:{_id:'',totalItems:0,cartItem:[]},
   isLoading: false,
   error: ""
 }
