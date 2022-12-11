@@ -31,6 +31,7 @@ import { DiscountTagComponent } from './components/components/discount-tag/disco
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
+import { SidenavMainComponent } from './components/widgets/sidenav-main/sidenav-main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,7 @@ import { EffectsModule } from '@ngrx/effects';
     SaleTagComponent,
     HeartTagComponent,
     DiscountTagComponent,
+    SidenavMainComponent,
   ],
   imports: [
     BrowserModule,
