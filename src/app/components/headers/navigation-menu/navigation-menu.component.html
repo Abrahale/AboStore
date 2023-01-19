@@ -17,10 +17,10 @@
                 </div>
             </a>
             <div class="d-flex flex-column cart-container">
-            <div class="cart-content" (mouseover)="cartService.toggleCartDropdown('open')" (mouseout)="cartService.toggleCartDropdown()" >
-              <abo-cart-icon ></abo-cart-icon>
+            <div class="cart-content">
+              <abo-cart-icon cart-dropdown  [routerLink]="['/cart']"></abo-cart-icon>
             </div>
-            <abo-cart-dropdown class="cart-dropdown"></abo-cart-dropdown>
+            <abo-cart-dropdown *showHide="cartService.cartDropdown"  class="cart-dropdown"></abo-cart-dropdown>
           </div>
         </div>
         <div class="d-flex text-left">

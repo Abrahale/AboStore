@@ -34,6 +34,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { SidenavMainComponent } from './components/widgets/sidenav-main/sidenav-main.component';
+import { CartDropdownDirective } from './Directives/cart-dropdown.directive';
+import { ShowHideDirective } from './Directives/show-hide.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -55,7 +57,11 @@ import { SidenavMainComponent } from './components/widgets/sidenav-main/sidenav-
     DiscountTagComponent,
     SidenavMainComponent,
     CartIconComponent,
-    CartDropdownComponent
+    CartDropdownComponent,
+
+    //Directives
+    CartDropdownDirective,
+    ShowHideDirective
   ],
   imports: [
     BrowserModule,

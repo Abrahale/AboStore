@@ -8,8 +8,7 @@ import { product } from 'src/app/models/products';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input()
-  cartItem: product = new product; //Don't forget to make it Product
+  @Input()  cartItem: product = new product; //Don't forget to make it Product
   @Input() qty:number = 1;
   @Output() decrement = new EventEmitter<string>()
   @Output() increment = new EventEmitter<string>()
@@ -17,7 +16,7 @@ export class CartItemComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
   onDecrement(id:string){

@@ -3,8 +3,8 @@ import { product } from "./products";
 export class CartModel {
   _id!: string;
   user?:string;
-  total?:number;
-  totalItems?:number;
+  total!:number;
+  totalItems!:number;
   active?:boolean;
   processed?:boolean;
   createdDate?: Date;

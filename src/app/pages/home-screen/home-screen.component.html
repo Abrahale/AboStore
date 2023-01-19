@@ -2,8 +2,8 @@
 	<div class="row home-container">
 		<mat-sidenav-container class="site-container" (swipe)="swipeLeft">
 			<mat-sidenav #sidenav class="d-xl-none col-6" mode="over"  (swipe)="swipeLeft" (closed)="sideNavMainService.close()"
-			[opened]="sideNavMainService.toggled">			
-				<abo-sidenav-main class="z-high"></abo-sidenav-main>			
+			[opened]="sideNavMainService.toggled">
+				<abo-sidenav-main class="z-high"></abo-sidenav-main>
 			</mat-sidenav>
 		<mat-sidenav-content class="d-flex flex-row" (swipe)="swipeLeft">
 				<div class="d-none d-md-block col-md-3 col-lg-2">
@@ -17,9 +17,10 @@
 					</div>
 				</div>
 				<div class="d-none d-md-block col-md-3 col-lg-2">
-						<h1>this showing?</h1> 
+						<h1>this showing?</h1>
 				</div>
 			</mat-sidenav-content>
 			</mat-sidenav-container>
 	</div>
 </div>
+

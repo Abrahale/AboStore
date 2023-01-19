@@ -33,11 +33,12 @@ export class ProductViewComponent implements OnInit {
     console.log(this.product)
   }
   activeImage(imgsrc:string):void{
-    console.log('the imge src',imgsrc)
+    console.log('the imge src',imgsrc);
     this.imagePath = imgsrc;
   }
 
   addToCart():void{
+
     const cartItem = new CartItem();
     cartItem.product = this.product._id;
     cartItem.qty = 1,

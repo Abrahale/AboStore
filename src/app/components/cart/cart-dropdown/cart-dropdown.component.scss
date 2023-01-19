@@ -1,39 +1,15 @@
 .cart-dropdown-cont{
-  .widget{
-    position: absolute;
-    top: 4rem;
-    left: 0;
-    left: -14.25rem;
-    max-width: 320px;
-    min-width: 320px;
-    background-color: #000;
-    z-index: 1;
-    color:#FFF;
-    display:none;
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  right: 0;
+  width:340px;
+  max-width: 520px; /* Full width */
+  background-color: #F7F5F2;
+  margin:1rem;
+  padding:1rem;
 
-    &.inline:not(.open){
-      .widget{
-        position: relative;
-        top:0;
-        margin-top: 0;
-        max-width: 240px;
-        min-width: 240px;
-      }
-    }
-
-    &.open:not(.inline){
-      .widget{
-        display: block;
-        transform: scale(1);
-      }
-    }
-
-    &.open{
-      border:10px solid red;
-      .widget{
-        display: block;
-        transform: scale(1);
-      }
-    }
+  .border-bottom{
+    border-bottom:2px solid gray;
+    border-width: medium;
   }
 }

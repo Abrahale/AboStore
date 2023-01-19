@@ -1,5 +1,16 @@
-<section class="cart-dropdown-cont">
-    <div class="widget"  [class.open]="1>0" [class.inline]="inlineDisplay">
-      <h1>Hi is this showing?</h1>
-    </div>
-</section>
+    <div class="cart-dropdown-cont">
+      <div class="row border-bottom main align-items-center" *ngFor="let i of cartItem">
+           <div class="col-2"><img class="img-fluid" src="{{i.product.image[0]}}"></div>
+          <div class="col-7">
+              <div class="font-14">{{i.product.title}}</div>
+              <div class="font-12">Qty: {{i.qty}}</div>
+          </div>
+          <div class="col-3">
+              <div class="font-12">{{i.t_amnt | currency}}</div>
+              <span (click)="removeItem(i._id)" class="close" class="icon icon-bin"></span>
+          </div>
+      </div>
+      <div class="d-flex">
+        <span class="font-16 text-center">Total: {{cartModel.total | currency}}</span>
+      </div>
+  </div>

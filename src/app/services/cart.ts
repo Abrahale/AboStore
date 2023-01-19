@@ -11,9 +11,8 @@ export class CartService {
   //some configurations for related to cart
   private _cartDropdown: 'open'|'close' = 'close';
 
-  get cartDropdown(){return this._cartDropdown}
-  toggleCartDropdown(status?: 'open'| 'close'):void{
-    console.log('is it open or closed? ', this._cartDropdown)
+  get cartDropdown(){return this._cartDropdown == 'open'}
+    toggleCartDropdown(status?: 'open'| 'close'):void{
     if(!status){
       this._cartDropdown = this._cartDropdown === 'open' ? 'close': 'open'
     }
