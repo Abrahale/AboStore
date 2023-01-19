@@ -45,11 +45,11 @@ export class CartComponent implements OnInit {
         this.store$.dispatch(new CartsActions.UpdateQuantity({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,inc:inc}))
       }
       else{
-        this.removeCartItem(cartItem._id)
+        this.removeCartItem(pro_id,cartItem_id,true)
       }
     }
   }
-  removeCartItem = (id: any) =>{
-    console.log('removing id: ',id)
+  removeCartItem = (pro_id:string,cartItem_id:string,remove:boolean) =>{
+    this.store$.dispatch(new CartsActions.DeleteItemAction({cartId:this.cartModel._id,product_id:pro_id,cartItem_id:cartItem_id,remove:remove}))
   }
 }

@@ -11,13 +11,24 @@
                [routerLink]="[item.link]"
                *ngFor="let item of navMenuService.navigationLinks"
                routerLinkActive="active">
-                <div *ngIf="item.displayLabel" class="m-15-h-xs p-15-h-xs p-5-v-xs ">
-                    {{item.label}}
+                <div  class="m-15-h-xs p-5-v-xs ">
+                  <span *ngIf="item.displayLabel"> {{item.label}}</span>
+                    <i [class]="item?.icon" class="m-5-h-xs p-5-h-xs p-5-v-xs"></i>
                 </div>
-                <i [class]="item?.icon" class="m-5-h-xs p-5-h-xs p-5-v-xs"></i>
             </a>
+            <div class="d-flex flex-column cart-container">
+            <div class="cart-content" (mouseover)="cartService.toggleCartDropdown('open')" (mouseout)="cartService.toggleCartDropdown()" >
+              <abo-cart-icon ></abo-cart-icon>
+            </div>
+            <abo-cart-dropdown class="cart-dropdown"></abo-cart-dropdown>
+          </div>
         </div>
-      
+        <div class="d-flex text-left">
+            <span *ngFor="let dep of navMenuService.departments | slice:0:8" class="dep m-5-h-xs p-5-h-xs p-5-v-xs">
+              {{dep.name}}
+            </span>
+        </div>
+
     </div>
     <div class="mobi-menu-toggle">
         <div class="hamburger arrow"

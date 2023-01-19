@@ -1,0 +1,19 @@
+.shopping-icon-cont{
+  position: relative;
+  color:rgb(5, 170, 19);
+  .shopping-icon{
+    font-size: 40px;
+  }
+
+  .qty-counter{
+    position: absolute;
+    background: #FFF;
+    border-radius: 50%;
+    padding:3px;
+    top: 0.6em;
+    left: 1.8em;
+    font-size: 14px;
+    font-weight: 700;
+    color:#000000;
+  }
+}

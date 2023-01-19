@@ -20,6 +20,7 @@ export class CartItem{
   product: product | string | any;
   cart!:string;
   qty!:number;
+  t_amnt!: number;
   active!:boolean;
   createdDate!: Date;
   modifiedDate!: Date;

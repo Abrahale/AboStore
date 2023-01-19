@@ -52,4 +52,17 @@ export class CartsEffects {
     )
   ))
 
+  removeCartItem = createEffect(()=>this.actoins$.pipe(
+    ofType<featureActions.DeleteItemAction>(
+      featureActions.ActionTypes.DELETE_ITEM,
+    ),
+    switchMap((action) => this.cartService.removeCartItem(action.payload).pipe(
+      map(data => new featureActions.LoadSuccessAction(data),
+      ),
+      catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
+      ),
+    ),
+    )
+  ))
+
 }

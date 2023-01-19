@@ -7,6 +7,20 @@ import { CartItem } from '../models/cartModel';
 })
 export class CartService {
   baseUrl = environment.BASE_BE_URL;
+
+  //some configurations for related to cart
+  private _cartDropdown: 'open'|'close' = 'close';
+
+  get cartDropdown(){return this._cartDropdown}
+  toggleCartDropdown(status?: 'open'| 'close'):void{
+    console.log('is it open or closed? ', this._cartDropdown)
+    if(!status){
+      this._cartDropdown = this._cartDropdown === 'open' ? 'close': 'open'
+    }
+    else{
+      this._cartDropdown = status
+    }
+  }
   constructor(private http: HttpClient) { }
 
   checkOut(){
@@ -23,8 +37,7 @@ export class CartService {
       user:userId,
       cart:cartId
     }
-    console.log(payload)
-    return this.http.post<any>(`${this.baseUrl}cart-item`,payload);
+    return this.http.post<any>(`${this.baseUrl}cart/add-to-cart`,payload);
   }
 
   updateCart({}){
@@ -32,7 +45,11 @@ export class CartService {
   }
 
   updateCartQty(payload:{cartId:string,product_id:string,cartItem_id:string,inc:boolean}){
-    return this.http.post<any>(`${this.baseUrl}cart-item/updateQty`,{cartId:payload.cartId,product_id:payload.product_id,cartItem_id:payload.cartItem_id,inc:payload.inc});
+    return this.http.post<any>(`${this.baseUrl}cart/updateQty`,{cartId:payload.cartId,product_id:payload.product_id,cartItem_id:payload.cartItem_id,inc:payload.inc});
+  }
+
+  removeCartItem(payload:{cartId:string,product_id:string,cartItem_id:string,remove:boolean}){
+    return this.http.post<any>(`${this.baseUrl}cart/remove-from-cart`,{cartId:payload.cartId,product_id:payload.product_id,cartItem_id:payload.cartItem_id,remove:payload.remove});
   }
 
 }

@@ -1,3 +1,4 @@
+import { CartService } from 'src/app/services/cart';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,11 +16,13 @@ export class NavigationMenuComponent implements OnInit {
     photo = '';
     initials = '';
     policyNumber = '';
+    inlineDisplay = false;
 
     constructor(
         public navMenuService: NavMenuService,
         private router: Router,
-        private themeService:ThemeService
+        private themeService:ThemeService,
+        public cartService:CartService
     ) { }
 
     ngOnInit(): void {

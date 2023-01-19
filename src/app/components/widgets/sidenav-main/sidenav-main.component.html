@@ -1,1 +1,13 @@
-<p>sidenav-main works!</p>
+<div class="col bg-danger">
+    <div class="m-20-v-xs m-10-h-xs">
+        <a [routerLink]="[item.link]"
+           *ngFor="let item of sideNavService.getDepartments"
+           routerLinkActive="active"
+           (click)="sideNavService.toggleMenu()">
+          <div class="m-15-v-xs p-10-h-xs">
+            {{item.name}}
+          </div>
+        </a>
+      </div>
+      <h1>Why this not showing</h1>
+</div>

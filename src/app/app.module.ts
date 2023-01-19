@@ -1,3 +1,5 @@
+import { CartDropdownComponent } from './components/cart/cart-dropdown/cart-dropdown.component';
+import { CartIconComponent } from './components/cart/cart-icon/cart-icon.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -52,6 +54,8 @@ import { SidenavMainComponent } from './components/widgets/sidenav-main/sidenav-
     HeartTagComponent,
     DiscountTagComponent,
     SidenavMainComponent,
+    CartIconComponent,
+    CartDropdownComponent
   ],
   imports: [
     BrowserModule,

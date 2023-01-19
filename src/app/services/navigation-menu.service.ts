@@ -1,11 +1,14 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class NavMenuService {
-
+    baseUrl = environment.BASE_BE_URL;
+    private _department: {id:string, name:string, description:string}[]=[];
     private _mobiMenuToggled = false;
     private _navigationLinks: any[] = [];
 
@@ -17,8 +20,17 @@ export class NavMenuService {
         return this._navigationLinks;
     }
 
-    constructor( private router: Router) {
+    get departments(){
+      return this._department;
+    }
+
+    constructor( private router: Router, private http:HttpClient) {
         this._navigationLinks = this.getNavigationLinks();
+        this.http.get<any>(`${this.baseUrl}departments`).subscribe(data => this._department = data);
+    }
+
+    getDepart(){
+      return this.http.get<any>(`${this.baseUrl}departments`);
     }
 
     toggleMobiMenu(): void {
@@ -43,18 +55,12 @@ export class NavMenuService {
                 link: `/wish`,
                 icon: 'icon icon-heart'
             },
-            { 
-            displayLabel:false,
-            label: 'Sign In',
+            {
+            displayLabel:true,
+            label: 'SignIn',
             link: `/sign-in`,
             icon:'icon icon-enter'
-        }, 
- 
-        {
-            displayLabel:false,
-            label: 'My Cart',
-            icon:'icon icon-shopping-cart',
-            link: `/cart`,
-        }];
+        }
+];
     }
 }

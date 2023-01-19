@@ -33,7 +33,7 @@ export class LoadAddToCartAction implements Action{
 // Delete Single
 export class DeleteItemAction implements Action {
   readonly type = ActionTypes.DELETE_ITEM;
-  constructor(public payload: string) { }
+  constructor(public payload: {cartId:string,product_id:string,cartItem_id:string,remove:boolean}) { }
 }
 // Delete All
 export class DeleteAllItemAction implements Action {

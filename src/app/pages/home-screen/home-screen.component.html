@@ -1,10 +1,13 @@
-<div class="container-fluid">
-  <!-- <div class="col-12">
-    <abo-slider [products]="products" [slider]="products.slice(0,5)"></abo-slider>
-  </div> -->
+<div class="container">
 	<div class="row home-container">
+		<mat-sidenav-container class="site-container" (swipe)="swipeLeft">
+			<mat-sidenav #sidenav class="d-xl-none col-6" mode="over"  (swipe)="swipeLeft" (closed)="sideNavMainService.close()"
+			[opened]="sideNavMainService.toggled">			
+				<abo-sidenav-main class="z-high"></abo-sidenav-main>			
+			</mat-sidenav>
+		<mat-sidenav-content class="d-flex flex-row" (swipe)="swipeLeft">
 				<div class="d-none d-md-block col-md-3 col-lg-2">
-					<h1>this showing?</h1>
+	  				  <span (click)="sideNavMainService.toggleMenu()" class="shop_by_department">Shop By Department</span>
 				</div>
 				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
 					<div class="row">
@@ -16,5 +19,7 @@
 				<div class="d-none d-md-block col-md-3 col-lg-2">
 						<h1>this showing?</h1> 
 				</div>
+			</mat-sidenav-content>
+			</mat-sidenav-container>
 	</div>
 </div>

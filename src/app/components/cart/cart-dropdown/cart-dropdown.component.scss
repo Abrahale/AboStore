@@ -1,0 +1,39 @@
+.cart-dropdown-cont{
+  .widget{
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    left: -14.25rem;
+    max-width: 320px;
+    min-width: 320px;
+    background-color: #000;
+    z-index: 1;
+    color:#FFF;
+    display:none;
+
+    &.inline:not(.open){
+      .widget{
+        position: relative;
+        top:0;
+        margin-top: 0;
+        max-width: 240px;
+        min-width: 240px;
+      }
+    }
+
+    &.open:not(.inline){
+      .widget{
+        display: block;
+        transform: scale(1);
+      }
+    }
+
+    &.open{
+      border:10px solid red;
+      .widget{
+        display: block;
+        transform: scale(1);
+      }
+    }
+  }
+}

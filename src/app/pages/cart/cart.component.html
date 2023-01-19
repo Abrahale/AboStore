@@ -9,7 +9,7 @@
             </div>    
             <div *ngIf="(totalItems$ | async) == 0" class="col"><h4><strong>Your shopping cart is empty</strong></h4></div>
             <section id="cart" *ngFor="let c of cartModel?.cartItem as CartItem"> 
-                <abo-cart-item [cartItem]="c.product" [qty]="c.qty" (decrement)="qty_update($event,c._id,false)" (increment)="qty_update($event,c._id,true)" (remove)="removeCartItem($event)"></abo-cart-item>        
+                <abo-cart-item [cartItem]="c.product" [qty]="c.qty" (decrement)="qty_update($event,c._id,false)" (increment)="qty_update($event,c._id,true)" (remove)="removeCartItem($event,c._id,true)"></abo-cart-item>        
             </section>
             <div class="back-to-shop" routerLink="/home"><span class="text-muted"><span class="icon icon-arrow-thin-left"></span> Back to shop</span></div>
         </div>
