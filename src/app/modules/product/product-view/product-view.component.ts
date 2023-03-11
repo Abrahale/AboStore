@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { product } from 'src/app/models/products';
-import {BaseStoreState, ProductsSelectors} from "../../store";
+import {BaseStoreState, ProductsSelectors} from "../../../store";
 import {Store} from "@ngrx/store";
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';

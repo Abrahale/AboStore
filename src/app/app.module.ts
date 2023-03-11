@@ -23,7 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductCardComponent } from './components/widgets/products/product-card/product-card.component';
 import { CartItemComponent } from './components/cart/cart-item/cart-item.component';
 import { CartFooterComponent } from './components/cart/cart-footer/cart-footer.component';
-import {ProductViewComponent} from "./pages/product-view/product-view.component";
+import {ProductViewComponent} from "./modules/product/product-view/product-view.component";
 import {CartComponent} from "./pages/cart/cart.component";
 import { ThemeService } from './services/theme.service';
 import { ButtonComponent } from './components/components/button/button.component';
