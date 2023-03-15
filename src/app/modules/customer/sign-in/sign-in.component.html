@@ -6,13 +6,13 @@
       <form [formGroup]="singInForm" class="form">
         <mat-form-field class="example-full-width">
           <mat-label for="email">Email</mat-label>
-          <input matInput type="email" name="email"  formControlName="email" [errorStateMatcher]="matcher" 
-                 placeholder="E.g abkiros@abostore.com">
+          <input matInput type="email" name="email" formControlName="email" [errorStateMatcher]="matcher"
+            placeholder="E.g abkiros@abostore.com">
           <mat-error *ngIf="singInForm.hasError('email') && !singInForm.hasError('required')">
             Please enter a valid email address
           </mat-error>
           <mat-error *ngIf="singInForm.hasError('required')">
-          Email <strong>required</strong>
+            Email <strong>required</strong>
           </mat-error>
         </mat-form-field>
         <mat-form-field class="example-full-width">
@@ -22,16 +22,16 @@
             Password <strong>required</strong>
           </mat-error>
         </mat-form-field>
- 
+
         <div class="m-20-v-xs">
           <abo-button (abo_click)="signIn()" theme="" buttonText="Sign In"></abo-button>
         </div>
-  
+
       </form>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6">
 
-    </div>  
+    </div>
     <p>Don't have an accout? <a [routerLink]="['/sign-up']">Sign Up</a></p>
   </div>
 </div>

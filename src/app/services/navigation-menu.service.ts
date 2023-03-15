@@ -58,7 +58,7 @@ export class NavMenuService {
             {
             displayLabel:true,
             label: 'SignIn',
-            link: `/sign-in`,
+            link: `/customers`,
             icon:'icon icon-enter'
         }
 ];

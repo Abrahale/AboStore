@@ -16,6 +16,12 @@ import { CartItemComponent } from './cart-item/cart-item.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports:[
+    CartDropdownComponent,
+    CartFooterComponent,
+    CartIconComponent,
+    CartItemComponent
   ]
 })
 export class CartModule { }

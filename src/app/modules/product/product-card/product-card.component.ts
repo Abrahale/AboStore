@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { BaseStoreState } from 'src/app/store';
 import { LoadAddToCartAction } from 'src/app/store/cart/actions';
 import {Router} from "@angular/router";
-import {UpadateProductView} from "../../../../store/products/actions";
+import { UpadateProductView } from 'src/app/store/products/actions';
 
 @Component({
   selector: 'abo-product-card',
