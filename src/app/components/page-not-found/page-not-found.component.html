@@ -1,1 +1,14 @@
 <p>page-not-found works!</p>
+<form [formGroup]="form">
+    <mat-form-field>
+        <input matInput formControlName="name" placeholder="Name" required>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select formControlName="language" placeholder="Language" required>
+            <mat-option *ngFor="let language of languages" [value]="language">
+                {{language}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+</form>

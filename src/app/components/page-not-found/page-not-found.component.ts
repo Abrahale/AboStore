@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-page-not-found',
@@ -6,5 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-not-found.component.scss']
 })
 export class PageNotFoundComponent {
+    form: FormGroup;
+    languages = ['English','Tigrinya', 'Amharic']
 
-}
+    constructor(private formBuilder:FormBuilder){
+      this.form = this.formBuilder.group({
+        name:['', Validators.required],
+        language:['', Validators.required]
+      })
+    }
+
+    onSubmit = ()=>{
+      console.log(this.form.value)
+    }
+  }
