@@ -1,40 +1,59 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
-import {ProductViewComponent} from "./pages/product-view/product-view.component";
-import {CartComponent} from "./pages/cart/cart.component";
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+
+const productModule = () => import('./modules/product/product.module').then(m=>m.ProductModule);
+const customerModule = () => import('./modules/customer/customer.module').then(m=>m.CustomerModule);
+const cartModule = () => import('./modules/cart/cart.module').then(m=>m.CartModule);
 
 const routes: Routes = [
   {
-    path:'',
-    component: HomeScreenComponent
-  },
-  {
     path:'home',
-    component: HomeScreenComponent
-  },
-  {
-    path:'sign-in',
-    component: SignInComponent
-  },
-  {
-    path:'sign-up',
-    component: SignUpComponent
-  },
-  {
-    path:'product/:id/:productCode',
-    component: ProductViewComponent
+    component: HomeScreenComponent,
+    // children:[
+    //     {
+    //       path:'product',
+    //       loadChildren:productModule
+    //     },
+
+    //     {
+    //       path:'cart',
+    //       loadChildren: cartModule
+    //     }
+    // ]
   },
   {
     path:'cart',
-    component: CartComponent
+    children:[{
+      path:'',
+      loadChildren:cartModule
+    }]
+  },
+  {
+    path:'customers',
+    children:[{
+      path:'',
+      loadChildren:customerModule
+    }]
+  },
+  {
+    path:'product',
+    children:[{
+      path:'',
+      loadChildren:productModule
+    }]
+  },
+  {
+    path:'**',
+    component:PageNotFoundComponent
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),
+  imports: [
+    RouterModule.forRoot(routes),
+
   ],
   exports: [RouterModule]
 })

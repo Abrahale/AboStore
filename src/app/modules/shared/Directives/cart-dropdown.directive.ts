@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, TemplateRef, ViewContainerRef } from '@angular/core';
-import { CartService } from '../services/cart';
+import { CartService } from 'src/app/services/cart';
 
 @Directive({
   selector: '[cart-dropdown]'

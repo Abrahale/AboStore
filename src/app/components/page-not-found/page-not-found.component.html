@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="row">
+        <div class="col-xs-12 ">
+            <div class="title">
+                <div class="row">
+                    <div class="col">
+                        <h4><b>PAGE NOT FOUND!</b></h4>
+                    </div>
+                </div>
+            </div>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <mat-form-field>
+                    <input matInput formControlName="name" placeholder="Name" required>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-select formControlName="language" placeholder="Language" required>
+                        <mat-option *ngFor="let language of languages" [value]="language">
+                            {{language}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
