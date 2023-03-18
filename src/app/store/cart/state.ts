@@ -1,4 +1,4 @@
-import { CartModel } from "src/app/models/cartModel"
+import { CartModel } from "src/app/modules/cart/models/cartModel"
 
 export interface State{
     cart:CartModel,

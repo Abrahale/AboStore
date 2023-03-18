@@ -1,6 +1,5 @@
 import { Action } from "@ngrx/store";
-import { CartItem, CartModel } from "src/app/models/cartModel";
-import { BaseResponseModel } from "src/app/models/response-base.model";
+import { CartItem, CartModel } from "src/app/modules/cart/models/cartModel";
 export enum ActionTypes{
   LOAD_REQUEST = '[CARTS] Load Requeust',
   LOAD_FAILURE = '[CARTS] Load Failure',

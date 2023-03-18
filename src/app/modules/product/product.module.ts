@@ -5,6 +5,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
 import { productRoutes } from './product-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -16,7 +17,8 @@ import { productRoutes } from './product-routing.module';
   imports: [
     CommonModule,
     RouterModule.forChild(productRoutes),
-    ComponentsModule
+    ComponentsModule,
+    SharedModule
   ],
   exports:[
     ProductViewComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { mapToProducts, product } from 'src/app/models/products';
+import { mapToProducts, product } from 'src/app/modules/product/models/products';
 import { SideNavMainService } from 'src/app/services/sideNavMain.service';
 import { ProductsSelectors, BaseStoreState } from 'src/app/store';
 import { ProductsActions } from 'src/app/store/products';

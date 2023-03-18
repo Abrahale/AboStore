@@ -36,6 +36,9 @@ import { CurrencyPipe } from './pipes/currency.pipe';
     //Directives
     CartDropdownDirective,
     ShowHideDirective,
+
+    //pipes
+    CurrencyPipe,
   ]
 })
 export class SharedModule { }

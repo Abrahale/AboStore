@@ -1,10 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { CartItem, CartModel } from 'src/app/models/cartModel';
-import { product } from 'src/app/models/products';
 import { CartService } from 'src/app/services/cart';
 import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 'src/app/store';
+import { CartItem, CartModel } from '../models/cartModel';
 
 @Component({
   selector: 'abo-cart-dropdown',

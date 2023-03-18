@@ -1,4 +1,4 @@
-import { product } from "./products";
+import { product } from "../../product/models/products";
 
 export class CartModel {
   _id!: string;

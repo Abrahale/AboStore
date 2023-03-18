@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import {  throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { SignInRequestModel } from '../models/sign-in-request.model';
 import { environment } from 'src/environments/environment';
+import { SignInRequestModel } from '../modules/customer/models/sign-in-request.model';
 
 @Injectable({
   providedIn:'root'

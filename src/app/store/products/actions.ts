@@ -1,7 +1,5 @@
 import { Action } from "@ngrx/store";
-import { BaseResponseModel } from "src/app/models/response-base.model";
-import { SignInRequestModel } from "src/app/models/sign-in-request.model";
-import {product} from "../../models/products";
+import { product } from "src/app/modules/product/models/products";
 export enum ActionTypes{
   LOAD_REQUEST = '[PRODUCTS] Load Requeust',
   LOAD_FAILURE = '[PRODUCTS] Load Failure',
