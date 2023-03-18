@@ -11,20 +11,16 @@ import { AuthenticationService } from './services/authenticationService';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
-import { CurrencyPipe } from './pipes/currency.pipe';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CartComponent} from "./pages/cart/cart.component";
 import { ThemeService } from './services/theme.service';
 import { EffectsModule } from '@ngrx/effects';
 import { SidenavMainComponent } from './components/widgets/sidenav-main/sidenav-main.component';
-import { ProductModule } from './modules/product/product.module';
-import { CartModule } from './modules/cart/cart.module';
-import { CheckoutModule } from './modules/checkout/checkout.module';
 import { ComponentsModule } from './modules/components/components.module';
-import { CustomerModule } from './modules/customer/customer.module';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SharedModule } from './modules/shared/shared.module';
+import { ProductModule } from './modules/product/product.module';
+import { CartModule } from './modules/cart/cart.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,8 +28,6 @@ import { SharedModule } from './modules/shared/shared.module';
     NavigationMenuComponent,
     NavigationMenuMobiComponent,
     CardComponent,
-    CurrencyPipe,
-    CartComponent,
     SidenavMainComponent,
     PageNotFoundComponent,
     //Directives
@@ -51,10 +45,10 @@ import { SharedModule } from './modules/shared/shared.module';
     MatSidenavModule,
     BaseStoreModule,
     EffectsModule.forRoot([]),
-    ProductModule,
-    CartModule,
-    CheckoutModule,
     ComponentsModule,
+
+    ProductModule,
+    CartModule
   ],
   providers: [AuthenticationService,ThemeService],
   bootstrap: [AppComponent]

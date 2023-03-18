@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
-import {CartComponent} from "./pages/cart/cart.component";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const productModule = () => import('./modules/product/product.module').then(m=>m.ProductModule);
