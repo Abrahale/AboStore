@@ -29,6 +29,8 @@ import { CartModule } from './modules/cart/cart.module';
 import { CheckoutModule } from './modules/checkout/checkout.module';
 import { ComponentsModule } from './modules/components/components.module';
 import { CustomerModule } from './modules/customer/customer.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { CustomerModule } from './modules/customer/customer.module';
     CartComponent,
     DiscountTagComponent,
     SidenavMainComponent,
+    PageNotFoundComponent,
     //Directives
 
   ],
@@ -47,11 +50,12 @@ import { CustomerModule } from './modules/customer/customer.module';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     MatExpansionModule,
     RouterModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSlideToggleModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
@@ -64,7 +68,8 @@ import { CustomerModule } from './modules/customer/customer.module';
     CartModule,
     CustomerModule,
     CheckoutModule,
-    ComponentsModule
+    ComponentsModule,
+    MatSlideToggleModule
   ],
   providers: [AuthenticationService,ThemeService],
   bootstrap: [AppComponent]

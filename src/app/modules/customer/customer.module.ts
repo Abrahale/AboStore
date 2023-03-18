@@ -8,8 +8,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { BrowserModule } from '@angular/platform-browser';
 import { CartDropdownDirective } from './Directives/cart-dropdown.directive';
 import { ShowHideDirective } from './Directives/show-hide.directive';
+import { ComponentsModule } from '../components/components.module';
 
-
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { customerRoutes } from './customer-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,14 +20,18 @@ import { ShowHideDirective } from './Directives/show-hide.directive';
   ],
   imports: [
     CommonModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule,
+    RouterModule.forChild(customerRoutes),
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
+    ComponentsModule,
+    MatSlideToggleModule
 
+  ],
+  exports:[
+    ShowHideDirective
   ]
 })
 export class CustomerModule { }

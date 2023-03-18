@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductViewComponent } from './product-view/product-view.component';
-import { ProductRoutingModule } from './product-routing.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { ComponentsModule } from '../components/components.module';
 import { RouterModule } from '@angular/router';
+import { productRoutes } from './product-routing.module';
 
 
 
@@ -15,8 +15,7 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule,
-    ProductRoutingModule,
+    RouterModule.forChild(productRoutes),
     ComponentsModule
   ],
   exports:[
