@@ -11,6 +11,7 @@ export const getData = (state: State): CartModel => state.cart;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
 export const getTotal = (state: State): number => state.cart.total ?? 0;
+export const getSubTotal = (state: State): number => state.cart ?? 0;
 export const getTotalItems = (state: State): number => state.cart.totalItems ?? 0;
 
 export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.CART);

@@ -11,6 +11,7 @@ import { BaseStoreState, CartsSelectors } from 'src/app/store';
 })
 export class CartIconComponent implements OnInit {
   cartQty$ = this.store$.select(CartsSelectors.selectTotalItems);
+  cartTotal$ = this.store$.select(CartsSelectors.selectTotal);
   constructor(private store$:Store<BaseStoreState.State>,public cartService:CartService) { }
 
   ngOnInit() {
