@@ -13,7 +13,7 @@ export class AuthenticationService {
   constructor(private http: HttpClient) { }
 
   signIn(singInModel: SignInRequestModel){
-    return this.http.post<any>(`${this.baseUrl}login`,singInModel);
+    return this.http.post<any>(`${this.baseUrl}auth/login`,singInModel);
   }
   signUp(username:string,email:string, password:string){
     return this.http.post<any>(`${this.baseUrl}users`,{username,first_name:"will implement",last_name:"will implement", email, password});

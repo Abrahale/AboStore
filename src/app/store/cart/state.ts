@@ -1,12 +1,12 @@
 import { CartModel } from "src/app/modules/cart/models/cartModel"
-
+import * as cartStatic from '../../config/json-files/cart.json';
 export interface State{
-    cart:CartModel,
+    cart:CartModel | any,
     isLoading: boolean,
     error: string
 }
 export const initialState: State = {
-  cart:{_id:'',total:0,totalItems:0,cartItem:[]},
+  cart:{...cartStatic},
   isLoading: false,
   error: ""
 }
