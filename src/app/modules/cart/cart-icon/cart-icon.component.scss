@@ -1,8 +1,7 @@
-.shopping-icon-cont{
+.shopping-icon-container{
   position: relative;
-  color:rgb(5, 170, 19);
   .shopping-icon{
-    font-size: 40px;
+    font-size: 20px;
   }
 
   .qty-counter{
@@ -16,4 +15,27 @@
     font-weight: 700;
     color:#000000;
   }
+
+
+.cart-dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 320px;
+  box-shadow: 0px 8px 16px 0px tgba(0,0,0,0.2);
+}
+
+.my-cart{
+  font-size: 12px;
+}
+
+.dropup .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: .125rem
+}
+}
+.shopping-icon-container:hover  .cart-dropdown-content{
+  display: block;
 }

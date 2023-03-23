@@ -7,6 +7,7 @@ export interface State{
 }
 export const initialState: State = {
   cart:{...cartStatic},
+  //cart:{_id:'',total:0,totalItems:0,cartItem:[]},
   isLoading: false,
   error: ""
 }

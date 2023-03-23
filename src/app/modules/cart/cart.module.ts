@@ -8,6 +8,7 @@ import { CartComponent } from './cart/cart.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { cartRoutes } from './cart-routing.module';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -22,6 +23,7 @@ import { cartRoutes } from './cart-routing.module';
   imports: [
     CommonModule,
     SharedModule,
+    ComponentsModule,
     RouterModule.forChild(cartRoutes),
   ],
   exports:[
