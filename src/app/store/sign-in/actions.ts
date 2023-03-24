@@ -1,6 +1,7 @@
 import { Action } from "@ngrx/store";
 import { BaseResponseModel } from "src/app/models/response-base.model";
-import { SignInRequestModel } from "src/app/models/sign-in-request.model";
+import { SignInRequestModel } from "src/app/modules/customer/models/sign-in-request.model";
+
 import { signInResponse } from "./state";
 export enum ActionTypes{
   LOAD_REQUEST = '[SIGN-IN] Load Requeust',

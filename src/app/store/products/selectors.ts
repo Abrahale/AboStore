@@ -5,7 +5,7 @@ import {
 } from '@ngrx/store';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
-import {product} from "../../models/products";
+import { product } from 'src/app/modules/product/models/products';
 
 export const getData = (state: State): any[] => state.data;
 export const getError = (state: State): string => state.error;

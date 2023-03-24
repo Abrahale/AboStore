@@ -6,9 +6,9 @@ export class Order {
     shoppingItem: CartModel[];
 
     constructor() {
-        this.id = null;
-        this.orderDate = null;
-        this.orderTotal = null;
+        this.id = 0;
+        this.orderDate = new Date;
+        this.orderTotal = 0;
         this.shoppingItem = [];
     }
 }

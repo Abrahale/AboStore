@@ -5,12 +5,13 @@ import {
 } from '@ngrx/store';
 import { State } from './state';
 import { storeConstants } from 'src/app/constants/store-constants';
-import { CartModel } from 'src/app/models/cartModel';
+import { CartModel } from 'src/app/modules/cart/models/cartModel';
 
 export const getData = (state: State): CartModel => state.cart;
 export const getError = (state: State): string => state.error;
 export const getIsLoading = (state: State): boolean => state.isLoading;
 export const getTotal = (state: State): number => state.cart.total ?? 0;
+export const getSubTotal = (state: State): number => state.cart ?? 0;
 export const getTotalItems = (state: State): number => state.cart.totalItems ?? 0;
 
 export const getState: MemoizedSelector<object, State> = createFeatureSelector<State>(storeConstants.CART);

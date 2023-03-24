@@ -1,19 +1,52 @@
-.shopping-icon-cont{
+.shopping-icon-container{
   position: relative;
-  color:rgb(5, 170, 19);
   .shopping-icon{
-    font-size: 40px;
+    font-size: 18px;
+    background: #e8edf7;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    padding-top: 18px;
   }
 
   .qty-counter{
     position: absolute;
-    background: #FFF;
+    background: #e8edf7;
+    border-top:2px solid #DF2E38;
     border-radius: 50%;
-    padding:3px;
-    top: 0.6em;
-    left: 1.8em;
-    font-size: 14px;
-    font-weight: 700;
-    color:#000000;
+    top: -2px;
+    left: 24px;
+    font-weight: 500;
+    color: #4e54c8;
+    padding: 2px 5px;
   }
+
+
+.cart-dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 320px;
+  box-shadow: 0px 8px 16px 0px tgba(0,0,0,0.2);
+}
+
+.my-cart{
+  font-size: 12px;
+}
+
+.text-accent {
+  color: #4e54c8 !important
+}
+
+.dropup .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: .125rem
+}
+
+}
+.shopping-icon-container:hover  .cart-dropdown-content{
+  display: block;
 }

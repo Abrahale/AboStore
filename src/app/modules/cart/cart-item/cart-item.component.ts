@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { CartModel } from 'src/app/models/cartModel';
-import { product } from 'src/app/models/products';
+import { product } from '../../product/models/products';
+
 
 @Component({
   selector: 'abo-cart-item',

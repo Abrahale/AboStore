@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { product } from 'src/app/models/products';
-import { CartItem, CartModel, mapToCartModels } from 'src/app/models/cartModel';
 import { Store } from '@ngrx/store';
 import { BaseStoreState } from 'src/app/store';
 import { LoadAddToCartAction } from 'src/app/store/cart/actions';
 import {Router} from "@angular/router";
 import { UpadateProductView } from 'src/app/store/products/actions';
+import { product } from '../models/products';
+import { CartItem } from '../../cart/models/cartModel';
 
 @Component({
   selector: 'abo-product-card',
