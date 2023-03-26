@@ -6,21 +6,15 @@
 				<abo-sidenav-main class="z-high"></abo-sidenav-main>
 			</mat-sidenav>
 		<mat-sidenav-content class="d-flex flex-row" (swipe)="swipeLeft">
-				<div class="d-none d-md-block col-md-3 col-lg-2">
-	  				  <span (click)="sideNavMainService.toggleMenu()" class="shop_by_department">Shop By Department</span>
-				</div>
-				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+				<div class="col-xs-12">
 					<div class="row">
-						<div *ngFor="let p of products" class="col">
+						<div *ngFor="let p of products" class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
 							<abo-product-card [product]="p" class="col mx-auto"></abo-product-card>
 						</div>
 					</div>
 				</div>
-				<div class="d-none d-md-block col-md-3 col-lg-2">
-						<h1>this showing?</h1>
-				</div>
 			</mat-sidenav-content>
-			</mat-sidenav-container>
+		</mat-sidenav-container>
 	</div>
 </div>
 

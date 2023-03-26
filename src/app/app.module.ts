@@ -21,36 +21,36 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SharedModule } from './modules/shared/shared.module';
 import { ProductModule } from './modules/product/product.module';
 import { CartModule } from './modules/cart/cart.module';
+import { CustomerModule } from "./modules/customer/customer.module";
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeScreenComponent,
-    NavigationMenuComponent,
-    NavigationMenuMobiComponent,
-    CardComponent,
-    SidenavMainComponent,
-    PageNotFoundComponent,
-    //Directives
-
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    SharedModule,
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-    }),
-    MatSidenavModule,
-    BaseStoreModule,
-    EffectsModule.forRoot([]),
-    ComponentsModule,
-
-    ProductModule,
-    CartModule
-  ],
-  providers: [AuthenticationService,ThemeService],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeScreenComponent,
+        NavigationMenuComponent,
+        NavigationMenuMobiComponent,
+        CardComponent,
+        SidenavMainComponent,
+        PageNotFoundComponent,
+        //Directives
+    ],
+    providers: [AuthenticationService, ThemeService],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        SharedModule,
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+        }),
+        MatSidenavModule,
+        BaseStoreModule,
+        EffectsModule.forRoot([]),
+        ComponentsModule,
+        ProductModule,
+        CartModule,
+        CustomerModule
+    ]
 })
 export class AppModule { }

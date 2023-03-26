@@ -55,12 +55,6 @@ export class NavMenuService {
                 link: `/wish`,
                 icon: 'icon icon-heart'
             },
-            {
-            displayLabel:true,
-            label: 'SignIn',
-            link: `/customers/login`,
-            icon:'icon icon-enter'
-        }
 ];
     }
 }

@@ -1,5 +1,4 @@
 import { Action } from "@ngrx/store";
-import { BaseResponseModel } from "src/app/models/response-base.model";
 import { SignInRequestModel } from "src/app/modules/customer/models/sign-in-request.model";
 
 import { signInResponse } from "./state";

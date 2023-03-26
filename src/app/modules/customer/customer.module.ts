@@ -7,12 +7,13 @@ import { SharedModule } from '../shared/shared.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ComponentsModule } from '../components/components.module';
+import { UserIconComponent } from './components/user-icon/user-icon.component';
 
 @NgModule({
   declarations: [
-
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserIconComponent
   ],
   imports: [
     CommonModule,
@@ -21,6 +22,10 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule
 
   ],
+
+  exports:[
+    UserIconComponent
+  ]
 
 })
 export class CustomerModule { }
