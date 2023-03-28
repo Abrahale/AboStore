@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of as observableOf } from 'rxjs';
 import * as featureActions from './actions';
 import { catchError, map, switchMap } from "rxjs";
-import { CategoryService } from "src/services/category.service";
+import { CategoryService } from "src/app/modules/admin/services/category.service";
 
 @Injectable()
 export class CategoryEffects {

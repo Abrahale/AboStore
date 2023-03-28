@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import { BaseResponse } from "src/app/models/baseResponse.model";
-import { departmentForm } from "src/app/models/departmentForm.model";
+import { BaseResponseModel } from "src/app/models/response-base.model";
+import { Department } from "src/app/modules/models/department.model";
 export enum ActionTypes{
   LOAD_REQUEST = '[DEPARTMENT] Load Requeust',
   LOAD_FAILURE = '[DEPARTMENT] Load Failure',
@@ -20,12 +20,12 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:{data: BaseResponse<any>}){}
+  constructor(public payload:{data: BaseResponseModel<any>}){}
 }
 
 export class UpdateFormInput implements Action{
   readonly type = ActionTypes.UPDATE_FORMINPUT;
-  constructor(public payload:departmentForm){}
+  constructor(public payload:Department){}
 }
 
 export type Actions = 

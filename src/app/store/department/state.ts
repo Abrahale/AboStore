@@ -1,11 +1,12 @@
-import { BaseResponse } from "src/app/models/baseResponse.model";
-import { departmentForm } from "src/app/models/departmentForm.model";
+import { BaseResponseModel } from "src/app/models/response-base.model"
+import { Department } from "src/app/modules/models/department.model"
+
 
 export interface State{
-    data: BaseResponse<any> | null,
-    formData: departmentForm,
+    data: BaseResponseModel<any> | null,
+    formData: Department | null,
     isLoading: boolean,
-    error: string
+    error: string | null
 
 }
 export const initialState: State = {
