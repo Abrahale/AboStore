@@ -8,7 +8,6 @@ import { NavigationMenuMobiComponent } from './components/headers/navigation-men
 import { NavigationMenuComponent } from './components/headers/navigation-menu/navigation-menu.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { AuthenticationService } from './services/authenticationService';
-import { MatSidenavModule} from '@angular/material/sidenav';
 import { BaseStoreModule } from './store';
 import { CardComponent } from './components/containers/card/card.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -22,6 +21,9 @@ import { SharedModule } from './modules/shared/shared.module';
 import { ProductModule } from './modules/product/product.module';
 import { CartModule } from './modules/cart/cart.module';
 import { CustomerModule } from "./modules/customer/customer.module";
+import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
+import { DialogComponent } from './modules/shared/dialog/dialog.component';
+import { MainComponent } from './components/containers/main/main.component';
 @NgModule({
     declarations: [
         AppComponent,
@@ -31,6 +33,7 @@ import { CustomerModule } from "./modules/customer/customer.module";
         CardComponent,
         SidenavMainComponent,
         PageNotFoundComponent,
+        MainComponent,
         //Directives
     ],
     providers: [AuthenticationService, ThemeService],
@@ -44,7 +47,6 @@ import { CustomerModule } from "./modules/customer/customer.module";
         StoreDevtoolsModule.instrument({
             maxAge: 25,
         }),
-        MatSidenavModule,
         BaseStoreModule,
         EffectsModule.forRoot([]),
         ComponentsModule,
