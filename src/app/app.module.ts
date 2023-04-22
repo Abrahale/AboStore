@@ -22,7 +22,6 @@ import { ProductModule } from './modules/product/product.module';
 import { CartModule } from './modules/cart/cart.module';
 import { CustomerModule } from "./modules/customer/customer.module";
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from './modules/shared/dialog/dialog.component';
 import { MainComponent } from './components/containers/main/main.component';
 @NgModule({
     declarations: [

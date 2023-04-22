@@ -1,33 +1,8 @@
 <div [formGroup]="form" class="department-details-form">
 
+    <!-- <abo-text-input [fControl]="courseTitle"></abo-text-input>
+    <abo-radio-button></abo-radio-button> -->
 
-    <mat-form-field>
-
-
-        <input matInput placeholder="Department Name" formControlName="title" #title>
-
-        <mat-hint align="end">
-
-            {{title.value.length}} / 60
-
-        </mat-hint>
-
-        <mat-error *ngIf="courseTitle.errors">
-
-            A minimum length of 5 characters is required.
-
-        </mat-error>
-
-
-    </mat-form-field>
-
-    <mat-radio-group class="department-type" formControlName="courseType">
-
-        <mat-radio-button  value="free">Free</mat-radio-button>
-
-        <mat-radio-button value="premium">Premium</mat-radio-button>
-
-    </mat-radio-group>
 
     <mat-form-field>
 
@@ -51,42 +26,11 @@
 
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-
-        <input matInput formControlName="releasedAt"
-               placeholder="Release date" [matDatepicker]="releasedAtPicker">
-
-        <mat-datepicker-toggle matSuffix [for]="releasedAtPicker">
 
 
-        </mat-datepicker-toggle>
-
-        <mat-datepicker #releasedAtPicker [dateClass]="dateClass">
 
 
-        </mat-datepicker>
 
-
-    </mat-form-field>
-
-    <mat-checkbox color="primary" formControlName="downloadsAllowed"
-        [indeterminate]="true">
-
-        Downloads allowed?
-
-    </mat-checkbox>
-
-    <mat-form-field appearance="outline">
-
-        <textarea matInput placeholder="Description" formControlName="longDescription"
-
-                  cdkTextareaAutosize [cdkAutosizeMinRows]="2"
-                  [cdkAutosizeMaxRows]="5">
-
-
-        </textarea>
-
-    </mat-form-field>
 
 
 </div>

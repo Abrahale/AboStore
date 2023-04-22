@@ -8,23 +8,26 @@ import {  MatRadioModule } from '@angular/material/radio';
 import { CartDropdownDirective } from './Directives/cart-dropdown.directive';
 import { ShowHideDirective } from './Directives/show-hide.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
-import { DialogComponent } from './dialog/dialog.component';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { SampleDialogComponent } from './components/sample-dialog/sample-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
+import { DialogBaseComponent } from './components/dialog-base/dialog-base.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 @NgModule({
   declarations: [
     CartDropdownDirective,
     ShowHideDirective,
     CurrencyPipe,
-    DialogComponent,
-    SampleDialogComponent,
+    DialogBaseComponent
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,13 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatPseudoCheckboxModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatStepperModule
+    MatStepperModule,
+
+    //testing
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule
   ],
   exports:[
     //Third party modules
@@ -60,6 +69,10 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatCheckboxModule,
     MatFormFieldModule,
     MatStepperModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatProgressSpinnerModule,
     //Directives
     CartDropdownDirective,
     ShowHideDirective,
@@ -68,8 +81,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     CurrencyPipe,
 
     //components
-    DialogComponent,
-    SampleDialogComponent,
+    DialogBaseComponent
 
     //providers
   ],
@@ -90,7 +102,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     },
   ],
   entryComponents: [
-    DialogComponent
+    //DialogComponent
 ]
 })
 export class SharedModule { }

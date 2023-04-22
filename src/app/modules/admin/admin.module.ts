@@ -7,7 +7,7 @@ import { adminRoutes } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { CreateDepartmentComponent } from './department/create-department.component';
+import { DepartmentComponent } from './department/department.component';
 import { CreateDepartmentStep2Component } from './department/create-department-step-2/create-department-step-2.component';
 import { CreateDepartmentStep1Component } from './department/create-department-step-1/create-department-step-1.component';
 
@@ -16,7 +16,7 @@ import { CreateDepartmentStep1Component } from './department/create-department-s
 @NgModule({
   declarations: [
     DashboardComponent,
-    CreateDepartmentComponent,
+    DepartmentComponent,
     CreateDepartmentStep2Component,
     CreateDepartmentStep1Component
   ],

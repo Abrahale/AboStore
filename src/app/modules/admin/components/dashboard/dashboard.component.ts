@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { DialogComponent } from 'src/app/modules/shared/dialog/dialog.component';
+import { DialogBaseComponent } from 'src/app/modules/shared/components/dialog-base/dialog-base.component';
+//import { DialogComponent } from 'src/app/modules/shared/dialog/dialog.component';
 
 @Component({
   selector: 'abo-dashboard',
@@ -27,7 +28,7 @@ export class DashboardComponent implements OnInit {
     }
     dialogConfig.data = {'description':'Hi John'}
 
-    this.dialog.open(DialogComponent)
+    this.dialog.open(DialogBaseComponent)
 
   }
 }
