@@ -23,4 +23,14 @@ export class CategoryEffects {
     ),
   ))
 
+  AddNewCategory$ = createEffect(()=>this.actoins$.pipe(
+    ofType<featureActions.AddNewCategoryRequestAction>(
+      featureActions.ActionTypes.ADD_NEW_CATEGORY_REQUEST
+    ),
+    switchMap(action => this.categoryService.AddNewCategory(action.payload).pipe(
+      map(data => new featureActions.AddNewCategorySuccessAction()),
+      catchError(error => observableOf(new featureActions.LoadFailureAction({error})))
+    ))
+  ))
+
 }

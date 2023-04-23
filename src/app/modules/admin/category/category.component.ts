@@ -39,9 +39,9 @@ export class CategoryComponent implements OnInit{
     console.log(this.category)
   }
   submitCategory(){
-   let query = {name:this.category.name, description:this.category.description, departments:[]}
-   query.departments = this.category.departments.filter(e => e.checked).map(e => {return e.id})
-  // this.store$.dispatch( new CategoryActions.)
+   let query = {name:this.category.name, description:this.category.description, department:[]}
+   query.department = this.category.departments.filter(e => e.checked).map(e => {return e.id})
+   this.store$.dispatch( new CategoryActions.AddNewCategoryRequestAction(query))
     this.clearForm()
   }
 

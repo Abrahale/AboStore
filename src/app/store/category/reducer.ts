@@ -32,6 +32,20 @@ export function CategoryReducer(state = initialState, action: Actions): State{
         }
       }
 
+      case ActionTypes.ADD_NEW_CATEGORY_REQUEST : {
+        return {
+          ...state,
+          isLoading: true,
+        }
+      }
+
+      case ActionTypes.ADD_NEW_CATEGORY_SUCCESS : {
+        return {
+          ...state,
+          isLoading: false,
+        }
+      }
+
       default: return state;
   }
 }
