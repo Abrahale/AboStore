@@ -18,8 +18,6 @@ export class DepartmentComponent implements OnInit{
   departments$;
   constructor(private depService:DepartmentService, private store$:Store<BaseStoreState.State>){
     this.store$.dispatch(new DepartmentActions.LoadRequestAction());
-
-
   }
   ngOnInit(): void {
     this.departments$ = this.store$.select(DepartmentSelectors.selectData)
