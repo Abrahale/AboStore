@@ -20,8 +20,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
-
+import { MatToolbarModule} from '@angular/material/toolbar'
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule} from '@angular/material/divider';
 @NgModule({
   declarations: [
     CartDropdownDirective,
@@ -38,6 +39,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatInputModule,
     MatDialogModule,
     MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
@@ -73,6 +77,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatDividerModule,
     //Directives
     CartDropdownDirective,
     ShowHideDirective,
