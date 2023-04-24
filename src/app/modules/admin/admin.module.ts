@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { adminRoutes } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DepartmentComponent } from './department/department.component';
 import { CreateDepartmentStep2Component } from './department/create-department-step-2/create-department-step-2.component';
 import { CreateDepartmentStep1Component } from './department/create-department-step-1/create-department-step-1.component';
