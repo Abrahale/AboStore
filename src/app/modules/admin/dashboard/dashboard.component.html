@@ -28,7 +28,18 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="content mat-elevation-z8">
-            Main content here!
+            <div class="container">
+                <div class="row">                    
+                    <div class="col-xs-12 mt-20">
+                        <a [routerLink]="['/admin/department']">Department</a>
+                        
+                    </div>
+                    <div class="col-xs-12 mt-20">
+                        <a [routerLink]="['/admin/categories']">Categories</a>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
