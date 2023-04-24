@@ -32,6 +32,20 @@ export function DepartmentReducer(state = initialState, action: Actions): State{
         }
       }
 
+      case ActionTypes.ADD_NEW_DEPARTMENT : {
+        return {
+          ...state,
+          isLoading: true,
+        }
+      }
+
+      case ActionTypes.ADD_NEW_DEPARTMENT_SUCCESS : {
+        return {
+          ...state,
+          isLoading: false,
+        }
+      }
+
       default: return state;
   }
 }

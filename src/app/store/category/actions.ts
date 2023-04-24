@@ -6,6 +6,8 @@ export enum ActionTypes{
   LOAD_FAILURE = '[CATEGORY] Load Failure',
   LOAD_SUCCESS = '[CATEGORY] Load Success',
   UPDATE_FORMINPUT = '[CATEGORY] update form input',
+  ADD_NEW_CATEGORY_REQUEST = '[CATEGORY] Add New Category Load Request',
+  ADD_NEW_CATEGORY_SUCCESS = '[CATEGORY] Add New Category Load Request',
 }
 
 export class LoadRequestAction implements Action{
@@ -28,8 +30,19 @@ export class UpdateFormInput implements Action{
   constructor(public payload:Category){}
 }
 
+export class AddNewCategoryRequestAction implements Action{
+  readonly type = ActionTypes.ADD_NEW_CATEGORY_REQUEST
+  constructor(public payload:{name:string,description:string,department:string[]}){}
+}
+export class AddNewCategorySuccessAction implements Action{
+  readonly type = ActionTypes.ADD_NEW_CATEGORY_SUCCESS
+  constructor(){}
+}
+
 export type Actions = 
 LoadRequestAction 
 | LoadFailureAction 
 | LoadSuccessAction
-| UpdateFormInput;
+| UpdateFormInput
+| AddNewCategoryRequestAction
+| AddNewCategorySuccessAction

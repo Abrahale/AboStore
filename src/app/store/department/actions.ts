@@ -5,6 +5,8 @@ export enum ActionTypes{
   LOAD_REQUEST = '[DEPARTMENT] Load Requeust',
   LOAD_FAILURE = '[DEPARTMENT] Load Failure',
   LOAD_SUCCESS = '[DEPARTMENT] Load Success',
+  ADD_NEW_DEPARTMENT = '[DEPARTMENT] Add New Department Load Request',
+  ADD_NEW_DEPARTMENT_SUCCESS = '[DEPARTMENT] Add New Department Load Success',
   UPDATE_FORMINPUT = '[DEPARTMENT] update form input',
 }
 
@@ -23,6 +25,16 @@ export class LoadSuccessAction implements Action{
   constructor(public payload:{data: BaseResponseModel<any>}){}
 }
 
+export class AddNewDepartmentAction implements Action{
+  readonly type = ActionTypes.ADD_NEW_DEPARTMENT
+  constructor(public payload:{name:string,description:string}){}
+}
+
+export class AddNewDepartmentSuccess implements Action{
+  readonly type = ActionTypes.ADD_NEW_DEPARTMENT_SUCCESS
+  constructor(){}
+}
+
 export class UpdateFormInput implements Action{
   readonly type = ActionTypes.UPDATE_FORMINPUT;
   constructor(public payload:Department){}
@@ -32,4 +44,6 @@ export type Actions =
 LoadRequestAction 
 | LoadFailureAction 
 | LoadSuccessAction
-| UpdateFormInput;
+| UpdateFormInput
+| AddNewDepartmentAction
+| AddNewDepartmentSuccess

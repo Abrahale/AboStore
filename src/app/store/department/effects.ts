@@ -23,4 +23,17 @@ export class DepartmentEffects {
     ),
   ))
 
+  AddNewDepartment$ = createEffect(() => this.actoins$.pipe(
+    ofType<featureActions.AddNewDepartmentAction>(
+      featureActions.ActionTypes.ADD_NEW_DEPARTMENT,
+    ),
+    switchMap(action => this.departmentService.AddNewDepartment(action.payload).pipe(
+      map(data => new featureActions.AddNewDepartmentSuccess(),
+      ),
+      catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
+      ),
+    ),
+    ),
+  ))
+
 }

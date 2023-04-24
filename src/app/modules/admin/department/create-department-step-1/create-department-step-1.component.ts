@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 
 @Component({
@@ -7,31 +7,25 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
   templateUrl:"create-department-step-1.component.html",
   styleUrls: ["create-department-step-1.component.scss"]
 })
-export class CreateDepartmentStep1Component {
+export class CreateDepartmentStep1Component implements OnInit {
+  form: FormGroup;
 
-  form = this.fb.group({
-    title: ['', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(60)
-    ]],
-    releasedAt: [new Date(1990,0,1), Validators.required],
-    category: ['BEGINNER', Validators.required],
-    courseType: ['premium', Validators.required],
-    downloadsAllowed: [false, Validators.requiredTrue],
-    longDescription: ['', [Validators.required, Validators.minLength(3)]]
-  });
 
-  dateClass: MatCalendarCellClassFunction<Date> = (cellDate, view) => {
-
-      const date = cellDate.getDate();
-
-      if (view == 'month') {
-          return (date == 1) ? 'highlight-date' : "";
-      }
-
-      return "";
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      title: ['', [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(60)
+      ]],
+      
+      category: ['BEGINNER', Validators.required],
+      courseType: ['premium', Validators.required],
+      downloadsAllowed: [false, Validators.requiredTrue],
+      longDescription: ['', [Validators.required, Validators.minLength(3)]]
+    });
   }
+
 
   constructor(private fb: FormBuilder) {
 
