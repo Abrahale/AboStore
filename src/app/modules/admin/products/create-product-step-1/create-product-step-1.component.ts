@@ -3,11 +3,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 
 @Component({
-  selector: "abo-create-department-step-1",
-  templateUrl:"create-department-step-1.component.html",
-  styleUrls: ["create-department-step-1.component.scss"]
+  selector: "abo-create-product-step-1",
+  templateUrl:"create-product-step-1.component.html",
+  styleUrls: ["create-product-step-1.component.scss"]
 })
-export class CreateDepartmentStep1Component implements OnInit {
+export class CreateProductStep1Component implements OnInit {
   form: FormGroup;
 
 

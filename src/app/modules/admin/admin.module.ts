@@ -7,9 +7,11 @@ import { adminRoutes } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductsComponent } from './products/products.component';
+import { BrandComponent } from './brand/brand.component';
 import { DepartmentComponent } from './department/department.component';
-import { CreateDepartmentStep2Component } from './department/create-department-step-2/create-department-step-2.component';
-import { CreateDepartmentStep1Component } from './department/create-department-step-1/create-department-step-1.component';
+import { CreateProductStep2Component } from './products/create-product-step-2/create-product-step-2.component';
+import { CreateProductStep1Component } from './products/create-product-step-1/create-product-step-1.component';
 import { CategoryComponent } from './category/category.component';
 
 
@@ -18,9 +20,11 @@ import { CategoryComponent } from './category/category.component';
   declarations: [
     DashboardComponent,
     DepartmentComponent,
-    CreateDepartmentStep2Component,
-    CreateDepartmentStep1Component,
-    CategoryComponent
+    CreateProductStep2Component,
+    CreateProductStep1Component,
+    CategoryComponent,
+    ProductsComponent,
+    BrandComponent
   ],
   imports: [
     CommonModule,
