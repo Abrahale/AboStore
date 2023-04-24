@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 
@@ -8,9 +8,9 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
   styleUrls: ["create-product-step-1.component.scss"]
 })
 export class CreateProductStep1Component implements OnInit {
+  @ViewChild("productForm") productForm: NgForm;
   isEditMode = false;
-  department={name:'',description:''}
-  departmentForm:NgForm;
+  product={title:'',description:''}
   subscription$;
   departments$;
   form: FormGroup;
@@ -49,16 +49,17 @@ export class CreateProductStep1Component implements OnInit {
     }
     this.clearForm()
   }
-  
+
   editDepartment(input:any){
     this.isEditMode = true
-    this.department.name = input.name
-    this.department.description = input.description
+    this.product.title = input.title
+    this.product.description = input.description
   }
 
   clearForm():void{
-    this.department = {name:null, description:null}
+    //this.product = {title:null, description:null}
     this.isEditMode = false
+    this.productForm.reset()
   }
 
 }

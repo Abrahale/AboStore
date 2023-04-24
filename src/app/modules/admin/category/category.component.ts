@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, ViewChild } from '@angular/core';
 import { CategoryActions, CategorySelectors } from 'src/app/store/category';
 import { CategoryService } from '../services/category.service';
 import { BaseStoreState } from 'src/app/store';
@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { DepartmentService } from '../services/department.service';
 import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department';
 import { map } from 'rxjs';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-category',
@@ -13,6 +14,7 @@ import { map } from 'rxjs';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit{
+  @ViewChild("categoryForm") categoryForm:NgForm
   category$;
   category={
     name:null,
@@ -30,7 +32,7 @@ export class CategoryComponent implements OnInit{
     this.category$ = this.store$.select(CategorySelectors.selectData)
     this.store$.select(DepartmentSelectors.selectData).subscribe(data => {
       if(data != null && typeof data === 'object')
-      this.category.departments = data.map(el => { return{name:el.name, id:el.id, checked:false}})
+      this.category.departments = data.map(el => { return{name:el.name, id:el._id, checked:false}})
     })
   }
   
@@ -60,9 +62,7 @@ export class CategoryComponent implements OnInit{
   }
 
   clearForm():void{
-    this.category.name = null
-    this.category.description = null
-    this.category.departments = this.category.departments.map(e => { return { ...e, checked: false}})
+    this.categoryForm.reset()
     this.isEditMode = false;
   }
 }

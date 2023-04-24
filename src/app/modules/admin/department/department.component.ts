@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DepartmentService } from '../services/department.service';
 import { BaseStoreState } from 'src/app/store';
@@ -13,7 +13,7 @@ import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department
 })
 export class DepartmentComponent implements OnInit{
   department={name:'',description:''}
-  departmentForm:NgForm;
+  @ViewChild("departmentForm") departmentForm:NgForm;
   subscription$;
   departments$;
   isEditMode = false;
@@ -39,7 +39,8 @@ export class DepartmentComponent implements OnInit{
   }
 
   clearForm():void{
-    this.department = {name:null, description:null}
+    this.departmentForm.reset()
     this.isEditMode = false
+    console.log(this.department)
   }
 }

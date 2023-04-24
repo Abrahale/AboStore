@@ -1,46 +1,34 @@
-<div [formGroup]="form" class="department-details-form">
-
-    <div class="container">
-        <div>
-            <h1>Add New Product</h1>
-            <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
-                <div class="form-group">
-                    <label for="name">Department Name</label>
-                    <input type="text" class="form-control" id="name" required [(ngModel)]="department.name" name="name"
-                        #name="ngModel">
-                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                        Department name is required
-                    </div>
+<div class="container">
+    <div class="row add-product-container">
+        <h1>Add New Product</h1>
+        <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+            <div class="form-group">
+                <label for="title">Product Title</label>
+                <input type="text" class="form-control" id="title" required [(ngModel)]="product.title" name="title"
+                    #title="ngModel">
+                <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                    Product title is required
                 </div>
+            </div>
 
-                <div class="form-group">
-                    <label for="des">Description</label>
-                    <input type="text" class="form-control" id="des" [(ngModel)]="department.description" name="des"
-                        #des="ngModel">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">{{isEditMode ?
-                        'Update':'Submit'}}</button>
-                    <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
+            <div class="form-group">
+                <label for="des">Description</label>
+                <input type="text" class="form-control" id="des" [(ngModel)]="product.description" name="des"
+                    #des="ngModel">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">{{isEditMode ?
+                    'Update':'Submit'}}</button>
+                <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
 
-                </div>
-            </form>
-        </div>
-
-
+            </div>
+        </form>
     </div>
 
 
-    <style>
-        .no-style .ng-valid {
-            border-left: 1px solid #CCC
-        }
+</div>
 
-        .no-style .ng-invalid {
-            border-left: 1px solid #CCC
-        }
-    </style>
-
+<!-- 
     <mat-form-field>
 
         <mat-select formControlName="category" placeholder="Select category">
@@ -60,5 +48,4 @@
 
         </mat-select>
 
-    </mat-form-field>
-</div>
+    </mat-form-field> -->
