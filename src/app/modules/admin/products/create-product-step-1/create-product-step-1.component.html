@@ -1,13 +1,49 @@
 <div [formGroup]="form" class="department-details-form">
 
-    <!-- <abo-text-input [fControl]="courseTitle"></abo-text-input>
-    <abo-radio-button></abo-radio-button> -->
+    <div class="container">
+        <div>
+            <h1>Add New Product</h1>
+            <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Department Name</label>
+                    <input type="text" class="form-control" id="name" required [(ngModel)]="department.name" name="name"
+                        #name="ngModel">
+                    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+                        Department name is required
+                    </div>
+                </div>
 
+                <div class="form-group">
+                    <label for="des">Description</label>
+                    <input type="text" class="form-control" id="des" [(ngModel)]="department.description" name="des"
+                        #des="ngModel">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">{{isEditMode ?
+                        'Update':'Submit'}}</button>
+                    <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
+
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+
+    <style>
+        .no-style .ng-valid {
+            border-left: 1px solid #CCC
+        }
+
+        .no-style .ng-invalid {
+            border-left: 1px solid #CCC
+        }
+    </style>
 
     <mat-form-field>
 
-        <mat-select formControlName="category"
-                    placeholder="Select category">
+        <mat-select formControlName="category" placeholder="Select category">
 
             <mat-option>None</mat-option>
 
@@ -25,15 +61,4 @@
         </mat-select>
 
     </mat-form-field>
-
-
-
-
-
-
-
-
 </div>
-
-
-

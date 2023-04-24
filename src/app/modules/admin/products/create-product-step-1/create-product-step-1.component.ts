@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
 
 @Component({
@@ -8,6 +8,11 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
   styleUrls: ["create-product-step-1.component.scss"]
 })
 export class CreateProductStep1Component implements OnInit {
+  isEditMode = false;
+  department={name:'',description:''}
+  departmentForm:NgForm;
+  subscription$;
+  departments$;
   form: FormGroup;
 
 
@@ -33,6 +38,27 @@ export class CreateProductStep1Component implements OnInit {
 
   get courseTitle() {
     return this.form.controls['title']
+  }
+
+  onSubmit() {
+    if(!this.isEditMode){
+     // this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.department))
+    }
+    else{
+      console.log('Still to be implemented, dispatch action for edit')
+    }
+    this.clearForm()
+  }
+  
+  editDepartment(input:any){
+    this.isEditMode = true
+    this.department.name = input.name
+    this.department.description = input.description
+  }
+
+  clearForm():void{
+    this.department = {name:null, description:null}
+    this.isEditMode = false
   }
 
 }
