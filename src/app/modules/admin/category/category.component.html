@@ -78,7 +78,8 @@
         </div>
             
           <div class="form-group">
-            <button type="submit" class="btn btn-success" [disabled]="!categoryForm.form.valid" (click)="submitCategory()">Submit</button>
+            <button type="submit" class="btn btn-success" [disabled]="!categoryForm.form.valid" (click)="submitCategory()">{{isEditMode ? 'Update':'Submit'}}</button>
+            <button type="button" class="btn btn-default"  (click)="clearForm()">Reset</button>
     
           </div>
     </form>

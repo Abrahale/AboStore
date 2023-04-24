@@ -19,8 +19,8 @@ export class CategoryComponent implements OnInit{
     description:null,
     departments:[]
   }
-  powers = ['Really Smart', 'Super Flexible',
-  'Super Hot', 'Weather Changer'];
+  isEditMode = false;
+
   constructor(private depService:CategoryService, private store$:Store<BaseStoreState.State>){
     this.store$.dispatch(new DepartmentActions.LoadRequestAction());
     this.store$.dispatch(new CategoryActions.LoadRequestAction());
@@ -35,20 +35,34 @@ export class CategoryComponent implements OnInit{
   }
   
   editCategory(input:any){
+    this.isEditMode = true;
+    this.category.name = input.name
+    this.category.description = input.description
+    this.category.departments = this.category.departments.map(el =>{
+      if(input.department.includes(el.id)){
+        return {...el,checked:true}
+      }
+      else
+      return {...el,checked:false}
+    })
     
-    console.log(this.category)
   }
   submitCategory(){
-   let query = {name:this.category.name, description:this.category.description, department:[]}
-   query.department = this.category.departments.filter(e => e.checked).map(e => {return e.id})
-   this.store$.dispatch( new CategoryActions.AddNewCategoryRequestAction(query))
+    let query = {name:this.category.name, description:this.category.description, department:[]}
+    query.department = this.category.departments.filter(e => e.checked).map(e => {return e.id})
+    if(!this.isEditMode){
+      this.store$.dispatch( new CategoryActions.AddNewCategoryRequestAction(query))
+    }
+    else{
+      console.log('Still to implement the dispatch action for edit')
+    }
     this.clearForm()
   }
 
   clearForm():void{
-    this.category.name = ''
-    this.category.description = ''
+    this.category.name = null
+    this.category.description = null
     this.category.departments = this.category.departments.map(e => { return { ...e, checked: false}})
-    console.log(this.category)
+    this.isEditMode = false;
   }
 }
