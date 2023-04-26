@@ -35,6 +35,18 @@
 
   }
 
+  &.default{
+    border: 2px solid #E1E8EE;
+    padding: 4px 11px;
+    font-size: 12px;
+    color: #000;
+    transition: all .5s;
+    margin-right: 0;
+    margin-left: 20px 0;
+    background: transparent;
+    width:280px;
+  }
+
 
 }
 .btn:hover {

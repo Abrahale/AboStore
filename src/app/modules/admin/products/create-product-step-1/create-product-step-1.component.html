@@ -16,12 +16,15 @@
                 <input type="text" class="form-control" id="des" [(ngModel)]="product.description" name="des"
                     #des="ngModel">
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">{{isEditMode ?
-                    'Update':'Submit'}}</button>
-                <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
-
-            </div>
+            <div class="buttons-container">
+                <div class="">
+                  <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!productForm.form.valid" (abo_click)="onSubmit()"></abo-button>
+                </div>
+                <div class="ml-20">
+                  <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
+          
+                </div>
+              </div>
         </form>
     </div>
 

@@ -12,7 +12,7 @@ import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department
   templateUrl: "department.component.html"
 })
 export class DepartmentComponent implements OnInit{
-  department={name:'',description:''}
+  department={dep_name:'',dep_des:''}
   @ViewChild("departmentForm") departmentForm:NgForm;
   subscription$;
   departments$;
@@ -25,7 +25,7 @@ export class DepartmentComponent implements OnInit{
   }
   onSubmit() {
     if(!this.isEditMode){
-      this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.department))
+      this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.departmentForm.value))
     }
     else{
       console.log('Still to be implemented, dispatch action for edit')
@@ -34,13 +34,12 @@ export class DepartmentComponent implements OnInit{
   }
   editDepartment(input:any){
     this.isEditMode = true
-    this.department.name = input.name
-    this.department.description = input.description
+    this.department.dep_name = input.name
+    this.department.dep_des = input.description
   }
 
   clearForm():void{
     this.departmentForm.reset()
     this.isEditMode = false
-    console.log(this.department)
   }
 }

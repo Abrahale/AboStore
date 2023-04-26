@@ -77,11 +77,15 @@
             </div>
         </div>
             
-          <div class="form-group">
-            <button type="submit" class="btn btn-success" [disabled]="!categoryForm.form.valid" (click)="submitCategory()">{{isEditMode ? 'Update':'Submit'}}</button>
-            <button type="button" class="btn btn-default"  (click)="clearForm()">Reset</button>
+        <div class="buttons-container">
+          <div class="">
+            <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!categoryForm.form.valid" (abo_click)="submitCategory()"></abo-button>
+          </div>
+          <div class="ml-20">
+            <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
     
           </div>
+        </div>
     </form>
   </div>
   </div>

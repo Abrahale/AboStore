@@ -45,30 +45,35 @@
 <div class="container">
   <div>
     <h1>Add new department</h1>
-    <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
+    <form #departmentForm="ngForm">
       <div class="form-group">
-        <label for="name">Department Name</label>
-        <input type="text" class="form-control" id="name"
+        <label for="dep_name">Department Name</label>
+        <input type="text" class="form-control" id="dep_name"
                required
-               [(ngModel)]="department.name" name="name"
-               #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
+               [(ngModel)]="department.dep_name" 
+               name="dep_name"
+               #dep_name="ngModel">
+        <div [hidden]="dep_name.valid || dep_name.pristine"
              class="alert alert-danger">
           Department name is required
         </div>
       </div>
 
       <div class="form-group">
-        <label for="des">Description</label>
-        <input type="text" class="form-control" id="des"
-               [(ngModel)]="department.description" name="des"
+        <label for="dep_des">Description</label>
+        <input type="text" class="form-control" id="dep_des"
+               [(ngModel)]="department.dep_des" name="dep_des"
                #des="ngModel"
                >
       </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">{{isEditMode ? 'Update':'Submit'}}</button>
-        <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
-
+      <div class="buttons-container">
+        <div class="">
+          <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!departmentForm.form.valid" (abo_click)="onSubmit()"></abo-button>
+        </div>
+        <div class="ml-20">
+          <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
+  
+        </div>
       </div>
     </form>
   </div>
