@@ -1,0 +1,152 @@
+<div fxFlex>
+    <mat-toolbar class="app-header">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
+      <div class="bmw-icons">
+        <a routerLink="/"
+          ><img
+            src="../../../assets/images/abo_store2.png"
+            width="220px"
+            height="auto"
+        /></a>
+      </div>
+      <span id="app-name">Admin</span>
+  
+      <div class="app-empty"></div>
+  
+      <div class="app-translate">
+        <span class="lang-label">Lang: </span>
+        <!-- <mat-select
+          #langSelect
+          [value]="translate.currentLang"
+          class="lang-select"
+          (selectionChange)="setLang(langSelect.value)"
+          [disableOptionCentering]="true"
+        >
+          <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+            {{ lang | uppercase }}
+          </mat-option>
+        </mat-select> -->
+      </div>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="app-container">
+      <mat-sidenav
+        #sidenav
+        mode="side"
+        opened
+        class="app-sidenav"
+        [fixedInViewport]="false"
+        [fixedTopGap]="0"
+        [fixedBottomGap]="0"
+      >
+        <mat-nav-list fxLayout="column">
+        <button mat-button class="menu-button" routerLink="/admin/dashboard">
+            <mat-icon>home</mat-icon>
+            <span>Dashboard</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/admin/products">
+            <mat-icon>person</mat-icon>
+            <span>Products</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/admin/departments">
+            <mat-icon>info</mat-icon>
+            <span>Departments</span>
+        </button>
+        <button mat-button class="menu-button" routerLink="/admin/categories">
+            <mat-icon>help</mat-icon>
+            <span>Categories</span>
+        </button>
+        <a [routerLink]="['/admin/departments']">Department</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+
+  
+      <div class="app-content">
+        <mat-progress-bar
+          *ngIf="isLoading | async"
+          mode="indeterminate"
+        ></mat-progress-bar>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-container>
+  
+    <mat-toolbar class="app-footer">
+      <span class="span">AboStore - Admin</span>
+    </mat-toolbar>
+  </div>
+  
+<mat-toolbar>
+    Responsive side navigation
+</mat-toolbar>
+
+<mat-sidenav-container>
+    <mat-sidenav class="mat-elevation-z8">
+        <button mat-button class="menu-button">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>person</mat-icon>
+            <span>Profile</span>
+        </button>
+        <button mat-button class="menu-button">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+        </button>
+
+        <mat-divider></mat-divider>
+
+        <button mat-button class="menu-button">
+            <mat-icon>help</mat-icon>
+            <span>Help</span>
+        </button>
+
+    </mat-sidenav>
+        <mat-sidenav-container class="app-container">
+      <mat-sidenav
+        #sidenav
+        mode="side"
+        opened
+        class="app-sidenav"
+        [fixedInViewport]="false"
+        [fixedTopGap]="0"
+        [fixedBottomGap]="0"
+      >
+        <mat-nav-list fxLayout="column">
+          <a mat-list-item routerLink="/home">
+            <div fxLayout="row center">
+              <mat-icon>home</mat-icon>
+              <span>Home</span>
+            </div>
+          </a>
+  
+          <a mat-list-item routerLink="/boms">
+            <div fxLayout="row center">
+              <mat-icon>list</mat-icon>
+              <span>BOM List</span>
+            </div>
+          </a>
+  
+          <a mat-list-item routerLink="/bom/create">
+            <div fxLayout="row center">
+              <mat-icon>add_box</mat-icon>
+              <span>Create BOM</span>
+            </div>
+          </a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+
+  
+      <div class="app-content">
+        <!-- <mat-progress-bar
+          *ngIf="isLoading | async"
+          mode="indeterminate"
+        ></mat-progress-bar> -->
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-container>

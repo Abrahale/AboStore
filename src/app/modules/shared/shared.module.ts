@@ -9,7 +9,7 @@ import { CartDropdownDirective } from './Directives/cart-dropdown.directive';
 import { ShowHideDirective } from './Directives/show-hide.directive';
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { MatSidenavModule} from '@angular/material/sidenav';
-import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MatDialogModule,MatDialogRef, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -23,6 +23,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule} from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule} from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+
 @NgModule({
   declarations: [
     CartDropdownDirective,
@@ -49,6 +53,9 @@ import { MatDividerModule} from '@angular/material/divider';
     MatCheckboxModule,
     MatFormFieldModule,
     MatStepperModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
 
     //testing
     MatTableModule,
@@ -80,6 +87,9 @@ import { MatDividerModule} from '@angular/material/divider';
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    MatListModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
     //Directives
     CartDropdownDirective,
     ShowHideDirective,
@@ -91,10 +101,11 @@ import { MatDividerModule} from '@angular/material/divider';
     DialogBaseComponent
 
     //providers
+    
   ],
   providers:[
-    {
-      provide: MAT_DIALOG_DEFAULT_OPTIONS,
+    { provide: MAT_DIALOG_DATA, useValue: {} },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {
           closeOnNavigation: true,
           hasBackdrop: false,
@@ -105,11 +116,14 @@ import { MatDividerModule} from '@angular/material/divider';
           maxHeight: '100%',
           minHeight: 'fit-content',
           padding: '15px',
-      },
+      },    
     },
+    {provide:MatDialogRef , useValue:{} }
   ],
   entryComponents: [
     //DialogComponent
 ]
 })
 export class SharedModule { }
+
+

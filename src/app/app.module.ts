@@ -1,5 +1,5 @@
 
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,6 +23,10 @@ import { CartModule } from './modules/cart/cart.module';
 import { CustomerModule } from "./modules/customer/customer.module";
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
 import { MainComponent } from './components/containers/main/main.component';
+import { FormControlPipe } from './pipes/FormControlPipe';
+import { LoadingService } from './services/loading.service';
+import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -33,9 +37,19 @@ import { MainComponent } from './components/containers/main/main.component';
         SidenavMainComponent,
         PageNotFoundComponent,
         MainComponent,
+        
         //Directives
     ],
-    providers: [AuthenticationService, ThemeService],
+    providers: [
+        AuthenticationService, 
+        ThemeService,
+        LoadingService,
+        // {
+        //     provide: HTTP_INTERCEPTORS,
+        //     useClass: HttpLoadingInterceptor,
+        //     multi: true,
+        //   },
+    ],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
@@ -51,7 +65,7 @@ import { MainComponent } from './components/containers/main/main.component';
         ComponentsModule,
         ProductModule,
         CartModule,
-        CustomerModule
+        CustomerModule,
     ]
 })
 export class AppModule { }

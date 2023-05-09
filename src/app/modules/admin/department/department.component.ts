@@ -5,6 +5,9 @@ import { BaseStoreState } from 'src/app/store';
 import { Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs';
 import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department';
+import { Dialog } from '@angular/cdk/dialog';
+import { MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { CreateDepartmentComponent } from './create-department/create-department.component';
 
 @Component({
   selector: "abo-department",
@@ -13,33 +16,46 @@ import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department
 })
 export class DepartmentComponent implements OnInit{
   department={dep_name:'',dep_des:''}
-  @ViewChild("departmentForm") departmentForm:NgForm;
+  creatDepartmentDialog: MatDialogRef<CreateDepartmentComponent>
   subscription$;
   departments$;
   isEditMode = false;
-  constructor(private depService:DepartmentService, private store$:Store<BaseStoreState.State>){
-    this.store$.dispatch(new DepartmentActions.LoadRequestAction());
+  constructor(private dialog:Dialog, private store$:Store<BaseStoreState.State>){
+    //this.store$.dispatch(new DepartmentActions.LoadRequestAction());
+    console.log('Department page')
   }
   ngOnInit(): void {
     this.departments$ = this.store$.select(DepartmentSelectors.selectData)
   }
-  onSubmit() {
-    if(!this.isEditMode){
-      this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.departmentForm.value))
-    }
-    else{
-      console.log('Still to be implemented, dispatch action for edit')
-    }
-    this.clearForm()
-  }
+
   editDepartment(input:any){
     this.isEditMode = true
     this.department.dep_name = input.name
     this.department.dep_des = input.description
   }
 
-  clearForm():void{
-    this.departmentForm.reset()
-    this.isEditMode = false
+
+  addNewDepartment(){
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false
+    dialogConfig.autoFocus = false
+    dialogConfig.position = {
+      'top':'25%',
+      'left':'42%'
+    }
+    dialogConfig.data = {'description':'Hi John'}
+
+    const creatDepartmentDialog = this.dialog.open(CreateDepartmentComponent,{
+      width: '250px',
+      data: { firstName: "Ab", lastName: "Kiros" }
+      })
+
+    // creatDepartmentDialog.afterClosed().subscribe(result => {
+    //   console.log('You have closed the dialog');
+    //   if (result) {
+    //     console.log(result)
+    //   }
+    //   });
   }
 }

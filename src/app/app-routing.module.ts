@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AdminModule } from './modules/admin/admin.module';
+import { AdminComponent } from './modules/admin/admin.component';
 
 const productModule = () => import('./modules/product/product.module').then(m=>m.ProductModule);
 const customerModule = () => import('./modules/customer/customer.module').then(m=>m.CustomerModule);
@@ -13,6 +14,7 @@ const routes: Routes = [
   {
     path:'home',
     component: HomeScreenComponent,
+
     // children:[
     //     {
     //       path:'product',
@@ -48,9 +50,10 @@ const routes: Routes = [
   },
   {
     path:'admin',
+    component:AdminComponent,
     children:[{
       path:'',
-      loadChildren:adminModule
+      loadChildren:adminModule,
     }]
   },
   {

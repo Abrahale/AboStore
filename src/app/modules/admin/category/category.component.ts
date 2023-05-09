@@ -24,8 +24,7 @@ export class CategoryComponent implements OnInit{
   isEditMode = false;
 
   constructor(private depService:CategoryService, private store$:Store<BaseStoreState.State>){
-    this.store$.dispatch(new DepartmentActions.LoadRequestAction());
-    this.store$.dispatch(new CategoryActions.LoadRequestAction());
+    console.log('Categories page')
   }
 
   ngOnInit():void{

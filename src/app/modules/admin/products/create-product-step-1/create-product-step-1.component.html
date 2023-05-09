@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row add-product-container">
         <h1>Add New Product</h1>
-        <form (ngSubmit)="onSubmit()" #productForm="ngForm">
+        <form  #productForm="ngForm">
             <div class="form-group">
                 <label for="title">Product Title</label>
                 <input type="text" class="form-control" id="title" required [(ngModel)]="product.title" name="title"
@@ -27,8 +27,6 @@
               </div>
         </form>
     </div>
-
-
 </div>
 
 <!-- 
