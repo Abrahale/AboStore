@@ -16,15 +16,12 @@ import { DepartmentActions } from 'src/app/store/department';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  isLoading: Observable<boolean>;
   constructor(
-    private dialog:MatDialog, private loadingService:LoadingService, private store$:Store<BaseStoreState.State>){
-      this.isLoading = this.loadingService.isLoading;
-      console.log('Dashboard page')
+    private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
+
     }
 
   ngOnInit(): void {
-    console.log(this.isLoading)
   }
   openDialog = ():void =>{
     const dialogConfig = new MatDialogConfig();

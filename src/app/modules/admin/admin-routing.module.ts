@@ -5,30 +5,40 @@ import { CategoryComponent } from './category/category.component';
 import { DepartmentComponent } from './department/department.component';
 import { BrandComponent } from './brand/brand.component';
 import { NgModule } from '@angular/core';
+import { AdminComponent } from './admin.component';
 
 
 
 export const adminRoutes: Routes = [
     {
         path:'dashboard',
-        component:DashboardComponent
+        component:DashboardComponent,
+        outlet:'abo-admin'
     },
     {
         path:'departments',
-        component: DepartmentComponent
+        component: DepartmentComponent,
+        outlet:'abo-admin'
     },
     {
         path:'categories',
-        component: CategoryComponent
+        component: CategoryComponent,
+        outlet:'abo-admin'
     },
     {
         path:'products',
         component:ProductsComponent,
-        
+        outlet:'abo-admin'
     },
     {
         path:'brands',
-        component: BrandComponent
+        component: BrandComponent,
+        outlet:'abo-admin'
+    },
+    {
+        path:'manufacturer',
+        component: BrandComponent,
+        outlet:'abo-admin'
     }
 ];
 

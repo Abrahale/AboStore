@@ -11,25 +11,26 @@ const cartModule = () => import('./modules/cart/cart.module').then(m=>m.CartModu
 const adminModule = () => import('./modules/admin/admin.module').then(m => AdminModule)
 
 const routes: Routes = [
+  {path:'', redirectTo:'home', pathMatch:'full'},
   {
     path:'home',
     component: HomeScreenComponent,
+  },
+  { 
+    path:'cms',
+    component:AdminComponent,
+    children:[
+      {
+        path:'',
+        loadChildren:adminModule
+      }
+    ],
 
-    // children:[
-    //     {
-    //       path:'product',
-    //       loadChildren:productModule
-    //     },
-
-    //     {
-    //       path:'cart',
-    //       loadChildren: cartModule
-    //     }
-    // ]
   },
   {
     path:'cart',
-    children:[{
+    children:[
+      {
       path:'',
       loadChildren:cartModule
     }]
@@ -46,14 +47,6 @@ const routes: Routes = [
     children:[{
       path:'',
       loadChildren:productModule
-    }]
-  },
-  {
-    path:'admin',
-    component:AdminComponent,
-    children:[{
-      path:'',
-      loadChildren:adminModule,
     }]
   },
   {

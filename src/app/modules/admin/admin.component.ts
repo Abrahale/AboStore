@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
+import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { LoadingService } from "src/app/services/loading.service";
@@ -14,15 +15,13 @@ import { DepartmentActions } from "src/app/store/department";
 })
 export class AdminComponent implements OnInit{
     isLoading: Observable<boolean>;
-    constructor(private loadingService:LoadingService, private store$:Store<BaseStoreState.State>){
-        this.isLoading = this.loadingService.isLoading;
-        this.store$.dispatch(new DepartmentActions.LoadRequestAction());
-        this.store$.dispatch(new ProductsActions.LoadRequestAction());
-        this.store$.dispatch(new CategoryActions.LoadRequestAction());
+    constructor(private loadingService:LoadingService, private store$:Store<BaseStoreState.State>,private router: Router,){
+      this.store$.dispatch(new DepartmentActions.LoadRequestAction());
+      this.store$.dispatch(new ProductsActions.LoadRequestAction());
+      this.store$.dispatch(new CategoryActions.LoadRequestAction());
       }
   
     ngOnInit(): void {
-      console.log(this.isLoading)
+      this.isLoading = this.loadingService.isLoading
     }
-
 }

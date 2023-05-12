@@ -44,11 +44,11 @@ import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor'
         AuthenticationService, 
         ThemeService,
         LoadingService,
-        // {
-        //     provide: HTTP_INTERCEPTORS,
-        //     useClass: HttpLoadingInterceptor,
-        //     multi: true,
-        //   },
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: HttpLoadingInterceptor,
+            multi: true,
+          },
     ],
     bootstrap: [AppComponent],
     imports: [

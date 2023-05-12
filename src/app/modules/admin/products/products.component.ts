@@ -15,7 +15,7 @@ export class ProductsComponent implements OnInit {
   products$;
   isEditMode: boolean;
   constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
-    this.store$.dispatch(new ProductsActions.LoadRequestAction());
+
   }
 
   ngOnInit(): void {

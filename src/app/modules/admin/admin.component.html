@@ -43,23 +43,30 @@
         [fixedBottomGap]="0"
       >
         <mat-nav-list fxLayout="column">
-        <button mat-button class="menu-button" routerLink="/admin/dashboard">
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['dashboard']}}]">
             <mat-icon>home</mat-icon>
             <span>Dashboard</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/admin/products">
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['products']}}]">
             <mat-icon>person</mat-icon>
             <span>Products</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/admin/departments">
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['departments']}}]">
             <mat-icon>info</mat-icon>
             <span>Departments</span>
         </button>
-        <button mat-button class="menu-button" routerLink="/admin/categories">
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['brands']}}]">
+            <mat-icon>info</mat-icon>
+            <span>Brands</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['categories']}}]">
             <mat-icon>help</mat-icon>
             <span>Categories</span>
         </button>
-        <a [routerLink]="['/admin/departments']">Department</a>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['manufacturer']}}]">
+            <mat-icon>help</mat-icon>
+            <span>Manufacturer</span>
+        </button>
         </mat-nav-list>
       </mat-sidenav>
   
@@ -70,7 +77,7 @@
           *ngIf="isLoading | async"
           mode="indeterminate"
         ></mat-progress-bar>
-        <router-outlet></router-outlet>
+        <router-outlet name="abo-admin"></router-outlet>
       </div>
     </mat-sidenav-container>
   
