@@ -51,9 +51,6 @@ import { CreateUserComponent } from './users/create-user/create-user.component';
   providers:[
     DepartmentService,
     CategoryService,
-  ],
-  entryComponents:[
-    CreateDepartmentComponent
   ]
 })
 export class AdminModule { }

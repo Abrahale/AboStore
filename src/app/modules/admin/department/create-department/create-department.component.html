@@ -6,7 +6,7 @@
       <div class="form-group">
         <label for="dep_name">Department Name</label>
         <input type="text" class="form-control" formControlName="name" #dep_name>
-        <div *ngIf="1>0" class="alert alert-danger">
+        <div *ngIf="!formDepartment.controls['name'].valid" class="alert alert-danger">
           Department name is required
         </div>
       </div>
@@ -14,7 +14,7 @@
       <div class="form-group">
         <label for="dep_des">Description</label>
         <input type="text" class="form-control"
-          formControlName="description" #dep_des>
+          formControlName="description" />
       </div>
       <div class="buttons-container">
         <div class="">
