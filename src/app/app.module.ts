@@ -27,6 +27,7 @@ import { FormControlPipe } from './pipes/FormControlPipe';
 import { LoadingService } from './services/loading.service';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
 
+
 @NgModule({
     declarations: [
         AppComponent,

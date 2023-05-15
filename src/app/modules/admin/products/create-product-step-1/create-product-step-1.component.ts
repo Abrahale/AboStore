@@ -1,6 +1,13 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Inject, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, NgForm, Validators} from '@angular/forms';
 import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface MatDialogData{
+    title:string,
+    description:string
+  
+}
 
 @Component({
   selector: "abo-create-product-step-1",
@@ -8,36 +15,33 @@ import {MatCalendarCellClassFunction} from '@angular/material/datepicker';
   styleUrls: ["create-product-step-1.component.scss"]
 })
 export class CreateProductStep1Component implements OnInit {
-  @ViewChild("productForm") productForm: NgForm;
   isEditMode = false;
-  product={title:'',description:''}
   subscription$;
   departments$;
-  form: FormGroup;
+  formProduct: FormGroup;
 
+
+
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: MatDialogData) {
+    if(this.data != null){
+      this.isEditMode = true
+    }
+  }
 
   ngOnInit(): void {
-    this.form = this.fb.group({
+    this.formProduct = this.fb.group({
       title: ['', [
         Validators.required,
         Validators.minLength(5),
         Validators.maxLength(60)
       ]],
-      
-      category: ['BEGINNER', Validators.required],
-      courseType: ['premium', Validators.required],
-      downloadsAllowed: [false, Validators.requiredTrue],
-      longDescription: ['', [Validators.required, Validators.minLength(3)]]
+      description: ['', [Validators.required, Validators.minLength(3)]]
     });
-  }
-
-
-  constructor(private fb: FormBuilder) {
-
-  }
-
-  get courseTitle() {
-    return this.form.controls['title']
+    console.log('the form:',this.formProduct)
+    if(this.isEditMode){
+      this.formProduct.controls['title'].setValue(this.data.title)
+      this.formProduct.controls['description'].setValue(this.data.description)
+    }
   }
 
   onSubmit() {
@@ -50,16 +54,10 @@ export class CreateProductStep1Component implements OnInit {
     this.clearForm()
   }
 
-  editDepartment(input:any){
-    this.isEditMode = true
-    this.product.title = input.title
-    this.product.description = input.description
-  }
 
   clearForm():void{
-    //this.product = {title:null, description:null}
     this.isEditMode = false
-    this.productForm.reset()
+    this.formProduct.reset()
   }
 
 }

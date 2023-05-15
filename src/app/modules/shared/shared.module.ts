@@ -5,8 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
 import {  MatRadioModule } from '@angular/material/radio';
-import { CartDropdownDirective } from './Directives/cart-dropdown.directive';
-import { ShowHideDirective } from './Directives/show-hide.directive';
+
 import { CurrencyPipe } from './pipes/currency.pipe';
 import { MatSidenavModule} from '@angular/material/sidenav';
 import { MatDialogModule,MatDialogRef, MAT_DIALOG_DEFAULT_OPTIONS, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -29,8 +28,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
-    CartDropdownDirective,
-    ShowHideDirective,
     CurrencyPipe,
     DialogBaseComponent
   ],
@@ -91,8 +88,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatSnackBarModule,
     MatProgressBarModule,
     //Directives
-    CartDropdownDirective,
-    ShowHideDirective,
 
     //pipes
     CurrencyPipe,
@@ -102,23 +97,6 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 
     //providers
     
-  ],
-  providers:[
-    { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MAT_DIALOG_DEFAULT_OPTIONS,
-      useValue: {
-          closeOnNavigation: true,
-          hasBackdrop: false,
-          width: '100%',
-          maxWidth: '690px',
-          minWidth: '280px',
-          panelClass: ['p-3', 'mat-modal-height-fix'],
-          maxHeight: '100%',
-          minHeight: 'fit-content',
-          padding: '15px',
-      },    
-    },
-    {provide:MatDialogRef , useValue:{} }
   ],
   entryComponents: [
     //DialogComponent

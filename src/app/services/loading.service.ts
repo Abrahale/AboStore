@@ -28,7 +28,6 @@ export class LoadingService {
   }
 
   get isLoading(): Observable<boolean> {
-    console.log('is this running')
     return this.loading;
   }
 }

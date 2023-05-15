@@ -1,4 +1,4 @@
-<div class="container">
+<div class="content">
     <div>
         <h1>All Products</h1>
         <button type="button" (click)="addNewProduct()" class="btn btn-success">Add New Product</button>
@@ -30,7 +30,7 @@
 
                     <td>{{d.description}}</td>
                     <td>
-                        <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editDepartment(d)">
+                        <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="onEditClick(d)">
                             Edit
                         </button>
                     </td>

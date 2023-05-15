@@ -7,6 +7,8 @@ import { DepartmentService } from '../services/department.service';
 import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department';
 import { map } from 'rxjs';
 import { NgForm } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateCategoryComponent } from './create-category/create-category.component';
 
 @Component({
   selector: 'app-category',
@@ -23,42 +25,23 @@ export class CategoryComponent implements OnInit{
   }
   isEditMode = false;
 
-  constructor(private depService:CategoryService, private store$:Store<BaseStoreState.State>){
+  constructor(private depService:CategoryService, private store$:Store<BaseStoreState.State>, private dialog:MatDialog){
     console.log('Categories page')
   }
 
   ngOnInit():void{
     this.category$ = this.store$.select(CategorySelectors.selectData)
-    this.store$.select(DepartmentSelectors.selectData).subscribe(data => {
-      if(data != null && typeof data === 'object')
-      this.category.departments = data.map(el => { return{name:el.name, id:el._id, checked:false}})
-    })
+
   }
-  
+  createCategory(){
+    this.dialog.open(CreateCategoryComponent)
+  }
   editCategory(input:any){
     this.isEditMode = true;
-    this.category.name = input.name
-    this.category.description = input.description
-    this.category.departments = this.category.departments.map(el =>{
-      if(input.department.includes(el.id)){
-        return {...el,checked:true}
-      }
-      else
-      return {...el,checked:false}
-    })
-    
+    console.log('this is edit mode',input)
+    this.dialog.open(CreateCategoryComponent,{data:{isEditMode: true,preFil:input}})   
   }
-  submitCategory(){
-    let query = {name:this.category.name, description:this.category.description, department:[]}
-    query.department = this.category.departments.filter(e => e.checked).map(e => {return e.id})
-    if(!this.isEditMode){
-      this.store$.dispatch( new CategoryActions.AddNewCategoryRequestAction(query))
-    }
-    else{
-      console.log('Still to implement the dispatch action for edit')
-    }
-    this.clearForm()
-  }
+
 
   clearForm():void{
     this.categoryForm.reset()

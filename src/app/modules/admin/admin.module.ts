@@ -17,6 +17,8 @@ import { CreateDepartmentComponent } from './department/create-department/create
 import { MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
 import { FormControlPipe } from 'src/app/pipes/FormControlPipe';
 import { AdminComponent } from './admin.component';
+import { DialogDataExampleDialog, DialogDataExample } from './dialog-example/dialogDataExample.component';
+import { CreateCategoryComponent } from './category/create-category/create-category.component';
 
 
 
@@ -31,7 +33,10 @@ import { AdminComponent } from './admin.component';
     ProductsComponent,
     BrandComponent,
     CreateDepartmentComponent,
-    FormControlPipe
+    FormControlPipe,
+    DialogDataExampleDialog,
+    DialogDataExample,
+    CreateCategoryComponent
   ],
   imports: [
     CommonModule,

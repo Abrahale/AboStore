@@ -1,52 +1,28 @@
 <div class="container">
     <div class="row add-product-container">
-        <h1>Add New Product</h1>
-        <form  #productForm="ngForm">
+        <h1>{{isEditMode ? 'Update Exisiting Product':'Add New Product'}}</h1>
+        <form  [formGroup]="formProduct">
             <div class="form-group">
                 <label for="title">Product Title</label>
-                <input type="text" class="form-control" id="title" required [(ngModel)]="product.title" name="title"
-                    #title="ngModel">
-                <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
+                <input type="text" class="form-control" id="title"  formControlName="title" name="title">
+                <div  class="alert alert-danger" *ngIf="(formProduct.controls['title'].touched && formProduct.controls['title'].pristine) && !formProduct.controls['title'].valid">
                     Product title is required
                 </div>
             </div>
-
             <div class="form-group">
                 <label for="des">Description</label>
-                <input type="text" class="form-control" id="des" [(ngModel)]="product.description" name="des"
-                    #des="ngModel">
+                <input type="text" class="form-control" id="des" formControlName="description" name="description"
+                >
             </div>
             <div class="buttons-container">
                 <div class="">
-                  <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!productForm.form.valid" (abo_click)="onSubmit()"></abo-button>
+                    <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!formProduct.valid" (abo_click)="onSubmit()"></abo-button>
                 </div>
                 <div class="ml-20">
-                  <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
-          
+                    <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>                    
                 </div>
-              </div>
+            </div>
+            <pre>{{data | json }}</pre>
         </form>
     </div>
 </div>
-
-<!-- 
-    <mat-form-field>
-
-        <mat-select formControlName="category" placeholder="Select category">
-
-            <mat-option>None</mat-option>
-
-            <mat-optgroup label="Beginners">
-
-                <mat-option value="newprogramming">New To Programming</mat-option>
-                <mat-option value="newjavascript">New To Javascript</mat-option>
-                <mat-option value="newangular">New To Angular</mat-option>
-
-            </mat-optgroup>
-
-            <mat-option value="INTERMEDIATE">Intermediate</mat-option>
-            <mat-option value="ADVANCED">Advanced</mat-option>
-
-        </mat-select>
-
-    </mat-form-field> -->

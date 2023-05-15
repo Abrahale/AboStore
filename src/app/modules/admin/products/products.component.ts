@@ -5,7 +5,10 @@ import { Store } from '@ngrx/store';
 import { ProductService } from 'src/app/services/products.service';
 import { BaseStoreState, ProductsActions, ProductsSelectors } from 'src/app/store';
 import { CreateProductStep1Component } from './create-product-step-1/create-product-step-1.component';
-
+export interface MatDialoData{
+  title:string,
+  description:string,
+}
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -14,6 +17,7 @@ import { CreateProductStep1Component } from './create-product-step-1/create-prod
 export class ProductsComponent implements OnInit {
   products$;
   isEditMode: boolean;
+  proToEdit: MatDialoData;
   constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
 
   }
@@ -21,8 +25,9 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.store$.select(ProductsSelectors.selectData);
   }
-  editDepartment(input:any){
+  onEditClick(input:any){
     this.isEditMode = true
+    this.dialog.open(CreateProductStep1Component,{data:input})
   }
 
   addNewProduct():void{
