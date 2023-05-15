@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row add-product-container">
+    <h1>{{isEditMode ? 'Update Existing User':'Add new user'}}</h1>
+    <form class="form-group" [formGroup]="formUser">
+        <div class="form-group">
+            <label for="name">User Name</label>
+            <input type="text" class="form-control" name="name"
+                   formControlName="username">                   
+            <div class="alert alert-danger" *ngIf="formUser.controls['username'].errors != null && formUser.controls['username'].touched && formUser.controls['username'].pristine">
+              User name is required
+            </div>
+        </div>   
+
+        <div class="form-group">
+            <label for="name">First Name</label>
+            <input type="text" class="form-control" name="name"
+                   formControlName="first_name">                   
+            <div class="alert alert-danger" *ngIf="formUser.controls['first_name'].errors != null && formUser.controls['first_name'].touched && formUser.controls['first_name'].pristine">
+              First name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Last Name</label>
+            <input type="text" class="form-control" name="name"
+                   formControlName="last_name">                   
+            <div class="alert alert-danger" *ngIf="formUser.controls['last_name'].errors != null && formUser.controls['last_name'].touched && formUser.controls['last_name'].pristine">
+              First name is required
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Email</label>
+            <input type="text" class="form-control" name="name"
+                   formControlName="email">                   
+            <div class="alert alert-danger" *ngIf="formUser.controls['email'].errors != null && formUser.controls['email'].touched && formUser.controls['email'].pristine">
+              Email is required
+            </div>
+        </div>
+          
+        <div class="buttons-container">
+          <div class="">
+            <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update User':'Add User'}}" [disable]="!formUser.valid" (abo_click)="addUser()"></abo-button>
+          </div>
+          <div class="ml-20">
+            <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>    
+          </div>
+        </div>
+    </form>
+  </div>
+  </div>

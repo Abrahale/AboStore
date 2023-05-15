@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { BaseStoreState } from 'src/app/store';
 import { UsersSelectors } from 'src/app/store/users';
 import { CreateCategoryComponent } from '../category/create-category/create-category.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @Component({
   selector: 'app-users',
@@ -22,10 +23,10 @@ export class UsersComponent {
 
   }
   addNewUser(){
-    this.dialog.open(CreateCategoryComponent)
+    this.dialog.open(CreateUserComponent)
   }
   editCategory(input:any){
     this.isEditMode = true;
-    this.dialog.open(CreateCategoryComponent,{data:{isEditMode: true,preFil:input}})   
+    this.dialog.open(CreateUserComponent,{data:{isEditMode: true,preFil:input}})   
   }
 }

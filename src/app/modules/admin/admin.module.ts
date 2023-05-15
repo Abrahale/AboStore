@@ -20,6 +20,7 @@ import { AdminComponent } from './admin.component';
 import { DialogDataExampleDialog, DialogDataExample } from './dialog-example/dialogDataExample.component';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
 import { UsersComponent } from './users/users.component';
+import { CreateUserComponent } from './users/create-user/create-user.component';
 
 
 
@@ -38,7 +39,8 @@ import { UsersComponent } from './users/users.component';
     DialogDataExampleDialog,
     DialogDataExample,
     CreateCategoryComponent,
-    UsersComponent
+    UsersComponent,
+    CreateUserComponent
   ],
   imports: [
     CommonModule,
