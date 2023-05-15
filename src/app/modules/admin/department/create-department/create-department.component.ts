@@ -1,26 +1,32 @@
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Store } from '@ngrx/store';
-import { BaseStoreState } from 'src/app/store';
-import { DepartmentActions } from 'src/app/store/department';
-
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+export interface MatDialogData {
+  firstName: "Kiros" | 'Abrahale' | 'wow';
+  lastName: string;
+ }
 @Component({
-  selector: 'app-create-department',
+  selector: 'abo-create-department',
   templateUrl: './create-department.component.html',
   styleUrls: ['./create-department.component.scss']
 })
-export class CreateDepartmentComponent implements OnInit {
+export class CreateDepartmentComponent implements OnInit{  
+  isEditMode = false;
+  formDepartment: FormGroup;
   
-  @Input() department={dep_name:'',dep_des:''}
-  @ViewChild("departmentForm") departmentForm:NgForm;
-  @Input() isEditMode = false;
+  constructor(private fb:FormBuilder,@Inject(MAT_DIALOG_DATA) public data: MatDialogData){
+  }
 
-  constructor(private store$:Store<BaseStoreState.State>,public dialogRef: MatDialogRef<CreateDepartmentComponent>,@Inject(MAT_DIALOG_DATA) public data: DialogData){}
+  ngOnInit(): void {
+    this.formDepartment = this.fb.group({
+      name:[''],
+      description:['']
+    })
+  }
 
   onSubmit() {
     if(!this.isEditMode){
-      this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.departmentForm.value))
+      //this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.departmentForm.value))
     }
     else{
       console.log('Still to be implemented, dispatch action for edit')
@@ -28,16 +34,11 @@ export class CreateDepartmentComponent implements OnInit {
     this.clearForm()
   }
 
-  ngOnInit(): void {
-    console.log('Why data is always empty?',this.data)
-  }
+
 
   clearForm():void{
-    this.departmentForm.reset()
+    this.formDepartment.reset()
     this.isEditMode = false
   }
 }
-export interface DialogData {
-  firstName: string;
-  lastName: string;
- }
+

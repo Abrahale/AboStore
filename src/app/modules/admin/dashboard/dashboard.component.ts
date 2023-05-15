@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DialogBaseComponent } from 'src/app/modules/shared/components/dialog-base/dialog-base.component';
 import { LoadingService } from 'src/app/services/loading.service';
-import { BaseStoreState, ProductsActions } from 'src/app/store';
+import { BaseStoreState, ProductsActions, UsersActions } from 'src/app/store';
 import { CategoryActions } from 'src/app/store/category';
 import { DepartmentActions } from 'src/app/store/department';
 //import { DialogComponent } from 'src/app/modules/shared/dialog/dialog.component';
@@ -18,7 +18,7 @@ import { DepartmentActions } from 'src/app/store/department';
 export class DashboardComponent implements OnInit {
   constructor(
     private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
-
+      this.store$.dispatch(new UsersActions.LoadRequestAction())
     }
 
   ngOnInit(): void {

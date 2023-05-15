@@ -16,17 +16,10 @@ import { CreateCategoryComponent } from './create-category/create-category.compo
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit{
-  @ViewChild("categoryForm") categoryForm:NgForm
   category$;
-  category={
-    name:null,
-    description:null,
-    departments:[]
-  }
   isEditMode = false;
 
   constructor(private depService:CategoryService, private store$:Store<BaseStoreState.State>, private dialog:MatDialog){
-    console.log('Categories page')
   }
 
   ngOnInit():void{
@@ -38,13 +31,7 @@ export class CategoryComponent implements OnInit{
   }
   editCategory(input:any){
     this.isEditMode = true;
-    console.log('this is edit mode',input)
     this.dialog.open(CreateCategoryComponent,{data:{isEditMode: true,preFil:input}})   
   }
 
-
-  clearForm():void{
-    this.categoryForm.reset()
-    this.isEditMode = false;
-  }
 }

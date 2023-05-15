@@ -10,4 +10,5 @@ export interface State{
   [storeConstants.CART]: CartsState.State;
   [storeConstants.CATEGORY]: CartsState.State;
   [storeConstants.DEPARTMENT]: DepartmentState.State;
+  [storeConstants.USERS]:DepartmentState.State;
 }

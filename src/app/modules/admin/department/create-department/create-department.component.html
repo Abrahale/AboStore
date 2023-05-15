@@ -1,36 +1,31 @@
-    <div class="row add-department-cont">
-      <h1>Add new department</h1>
-      
-      <form #departmentForm="ngForm">
-        <div class="form-group">
-          <label for="dep_name">Department Name</label>
-          <input type="text" class="form-control" id="dep_name"
-                 required
-                 [(ngModel)]="department.dep_name" 
-                 name="dep_name"
-                 #dep_name="ngModel">
-          <div [hidden]="dep_name.valid || dep_name.pristine"
-               class="alert alert-danger">
-            Department name is required
-          </div>
+<div class="container bg-white">
+  <div class="row add-department-cont">
+    <h1>Add new department</h1>
+
+    <form [formGroup]="formDepartment">
+      <div class="form-group">
+        <label for="dep_name">Department Name</label>
+        <input type="text" class="form-control" formControlName="name" #dep_name>
+        <div *ngIf="1>0" class="alert alert-danger">
+          Department name is required
         </div>
-  
-        <div class="form-group">
-          <label for="dep_des">Description</label>
-          <input type="text" class="form-control" id="dep_des"
-                 [(ngModel)]="department.dep_des" name="dep_des"
-                 #des="ngModel"
-                 >
+      </div>
+      <!-- <pre>{{data |json}}</pre> -->
+      <div class="form-group">
+        <label for="dep_des">Description</label>
+        <input type="text" class="form-control"
+          formControlName="description" #dep_des>
+      </div>
+      <div class="buttons-container">
+        <div class="">
+          <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}"
+            [disable]="!formDepartment.valid" (abo_click)="onSubmit()"></abo-button>
         </div>
-        <div class="buttons-container">
-          <div class="">
-            <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}" [disable]="!departmentForm.form.valid" (abo_click)="onSubmit()"></abo-button>
-          </div>
-          <div class="ml-20">
-            <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
-    
-          </div>
+        <div class="ml-20">
+          <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
+
         </div>
-      </form>
-    </div>
-  
+      </div>
+    </form>
+  </div>
+</div>

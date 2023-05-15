@@ -19,6 +19,7 @@ import { FormControlPipe } from 'src/app/pipes/FormControlPipe';
 import { AdminComponent } from './admin.component';
 import { DialogDataExampleDialog, DialogDataExample } from './dialog-example/dialogDataExample.component';
 import { CreateCategoryComponent } from './category/create-category/create-category.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -36,7 +37,8 @@ import { CreateCategoryComponent } from './category/create-category/create-categ
     FormControlPipe,
     DialogDataExampleDialog,
     DialogDataExample,
-    CreateCategoryComponent
+    CreateCategoryComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,

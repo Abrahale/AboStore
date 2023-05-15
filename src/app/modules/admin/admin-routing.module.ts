@@ -6,6 +6,7 @@ import { DepartmentComponent } from './department/department.component';
 import { BrandComponent } from './brand/brand.component';
 import { NgModule } from '@angular/core';
 import { AdminComponent } from './admin.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -13,6 +14,11 @@ export const adminRoutes: Routes = [
     {
         path:'dashboard',
         component:DashboardComponent,
+        outlet:'abo-admin'
+    },
+    {
+        path:'users',
+        component:UsersComponent,
         outlet:'abo-admin'
     },
     {

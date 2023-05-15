@@ -26,6 +26,7 @@ import { MainComponent } from './components/containers/main/main.component';
 import { FormControlPipe } from './pipes/FormControlPipe';
 import { LoadingService } from './services/loading.service';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
+import { UsersService } from './services/users.service';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor'
     providers: [
         AuthenticationService, 
         ThemeService,
+        UsersService,
         LoadingService,
         {
             provide: HTTP_INTERCEPTORS,
