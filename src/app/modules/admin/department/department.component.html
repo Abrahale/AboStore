@@ -1,20 +1,21 @@
-<div class="container">
+<div class="content">
   <div>
     <h1>Existing Departments</h1>
-<table class="table align-middle mb-0 bg-white">
-  <thead class="bg-light">
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let d of (departments$ | async) let i = index">
-      <td>
-        {{i+1}}
-        <!-- <div class="d-flex align-items-center">
+    <button type="button"  (click)="addNewDepartment()" class="btn btn-success">Add New Department</button>
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let d of (departments$ | async) let i = index">
+          <td>
+            {{i+1}}
+            <!-- <div class="d-flex align-items-center">
           <img
               src="https://mdbootstrap.com/img/new/avatars/8.jpg"
               alt=""
@@ -26,66 +27,19 @@
             <p class="text-muted mb-0">john.doe@gmail.com</p>
           </div>
         </div> -->
-      </td>
-      <td>
-        {{d.name}}
-      </td>
+          </td>
+          <td>
+            {{d.name}}
+          </td>
 
-      <td>{{d.description}}</td>
-      <td>
-        <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editDepartment(d)">
-          Edit
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-<div class="container">
-  <div>
-    <h1>Add new department</h1>
-    <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
-      <div class="form-group">
-        <label for="name">Department Name</label>
-        <input type="text" class="form-control" id="name"
-               required
-               [(ngModel)]="department.name" name="name"
-               #name="ngModel">
-        <div [hidden]="name.valid || name.pristine"
-             class="alert alert-danger">
-          Department name is required
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="des">Description</label>
-        <input type="text" class="form-control" id="des"
-               [(ngModel)]="department.description" name="des"
-               #des="ngModel"
-               >
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">{{isEditMode ? 'Update':'Submit'}}</button>
-        <button type="button" class="btn btn-default" (click)="clearForm()">Reset</button>
-
-      </div>
-    </form>
+          <td>{{d.description}}</td>
+          <td>
+            <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editDepartment(d)">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-
-
 </div>
-
-
-<style>
-  .no-style .ng-valid {
-  border-left: 1px  solid #CCC
-}
-
-  .no-style .ng-invalid {
-  border-left: 1px  solid #CCC
-}
-</style>
-
-
-

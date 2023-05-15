@@ -1,45 +1,36 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DepartmentService } from '../services/department.service';
 import { BaseStoreState } from 'src/app/store';
 import { Store } from '@ngrx/store';
-import { takeUntil } from 'rxjs';
+import { Observable, Subscription, takeUntil } from 'rxjs';
 import { DepartmentActions, DepartmentSelectors } from 'src/app/store/department';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
+import { CreateDepartmentComponent } from './create-department/create-department.component';
 
 @Component({
   selector: "abo-department",
-  styleUrls: ["department.component.scss"],
-  templateUrl: "department.component.html"
+  templateUrl: "./department.component.html",
+  styleUrls: ["./department.component.scss"],
 })
 export class DepartmentComponent implements OnInit{
-  department={name:'',description:''}
-  departmentForm:NgForm;
-  subscription$;
-  departments$;
+  subscription$! : Subscription;
+  departments$! : Observable<any>;
   isEditMode = false;
-  constructor(private depService:DepartmentService, private store$:Store<BaseStoreState.State>){
-    this.store$.dispatch(new DepartmentActions.LoadRequestAction());
+  constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
+    //this.store$.dispatch(new DepartmentActions.LoadRequestAction());
   }
   ngOnInit(): void {
-    this.departments$ = this.store$.select(DepartmentSelectors.selectData)
-  }
-  onSubmit() {
-    if(!this.isEditMode){
-      this.store$.dispatch(new DepartmentActions.AddNewDepartmentAction(this.department))
-    }
-    else{
-      console.log('Still to be implemented, dispatch action for edit')
-    }
-    this.clearForm()
-  }
-  editDepartment(input:any){
-    this.isEditMode = true
-    this.department.name = input.name
-    this.department.description = input.description
+    this.departments$ = this.store$.select(DepartmentSelectors.selectData);
   }
 
-  clearForm():void{
-    this.department = {name:null, description:null}
-    this.isEditMode = false
+  editDepartment(input:any){
+    this.isEditMode = true
+    this.dialog.open(CreateDepartmentComponent,{data:{isEdit:true, preFil:input}})
+  }
+
+
+  addNewDepartment(){
+     this.dialog.open(CreateDepartmentComponent)
   }
 }

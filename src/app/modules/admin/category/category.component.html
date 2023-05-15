@@ -1,20 +1,21 @@
 <div class="container">
-    <div>
-      <h1>Existing Categories</h1>
-  <table class="table align-middle mb-0 bg-white">
-    <thead class="bg-light">
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let c of (category$ | async) let i = index">
-        <td>
-          {{i+1}}
-          <!-- <div class="d-flex align-items-center">
+  <div>
+    <h1>Existing Categories</h1>
+    <button (click)="createCategory()" class="btn btn-success">Create New Category</button>
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of (category$ | async) let i = index">
+          <td>
+            {{i+1}}
+            <!-- <div class="d-flex align-items-center">
             <img
                 src="https://mdbootstrap.com/img/new/avatars/8.jpg"
                 alt=""
@@ -26,62 +27,19 @@
               <p class="text-muted mb-0">john.doe@gmail.com</p>
             </div>
           </div> -->
-        </td>
-        <td>
-          {{c.name}}
-        </td>
-  
-        <td>{{c.description}}</td>
-        <td>
-          <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editCategory(c)">
-            Edit
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+          </td>
+          <td>
+            {{c.name}}
+          </td>
 
-  <div class="">
-    <h1>Add new Category</h1>
-    <form class="form-group" #categoryForm="ngForm">
-        <div class="form-group">
-            <label for="name">Category Name</label>
-            <input type="text" class="form-control" id="name"
-                   required
-                   [(ngModel)]="category.name" name="name"
-                   #name="ngModel">
-            <div [hidden]="name.valid || name.pristine"
-                 class="alert alert-danger">
-              Department name is required
-            </div>
-          </div>
-    
-          <div class="form-group">
-            <label for="des">Description</label>
-            <input type="text" class="form-control" id="des"
-                   [(ngModel)]="category.description" name="des"
-                   #des="ngModel"
-                   >
-          </div>
-          <div class="form-group">
-              <label for="power">Department</label>
-            <div class="form-group">
-                <mat-checkbox *ngFor="let dep of category.departments"
-                [(ngModel)]="dep.checked"
-                #{{dep.id}}="ngModel"
-                [name]="dep.id"
-                >
-                  {{dep.name}}
-                </mat-checkbox>
-            </div>
-        </div>
-            
-          <div class="form-group">
-            <button type="submit" class="btn btn-success" [disabled]="!categoryForm.form.valid" (click)="submitCategory()">{{isEditMode ? 'Update':'Submit'}}</button>
-            <button type="button" class="btn btn-default"  (click)="clearForm()">Reset</button>
-    
-          </div>
-    </form>
+          <td>{{c.description}}</td>
+          <td>
+            <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editCategory(c)">
+              Edit
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  </div>
+</div>

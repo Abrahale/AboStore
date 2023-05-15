@@ -4,5 +4,6 @@ export enum storeConstants {
   CART = "cart",
   PRODUCT = "products",
   CATEGORY = 'category',
-  DEPARTMENT ='department'
+  DEPARTMENT ='department',
+  USERS = "users"
 }

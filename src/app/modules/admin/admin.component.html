@@ -1,0 +1,93 @@
+<div fxFlex>
+    <mat-toolbar class="app-header">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+  
+      <div class="bmw-icons">
+        <a routerLink="/"
+          ><img
+            src="../../../assets/images/abo_store2.png"
+            width="220px"
+            height="auto"
+        /></a>
+      </div>
+      <span id="app-name">Admin</span>
+  
+      <div class="app-empty"></div>
+  
+      <div class="app-translate">
+        <dialog-data-example></dialog-data-example>
+        <span class="lang-label">Lang: </span>
+        <!-- <mat-select
+          #langSelect
+          [value]="translate.currentLang"
+          class="lang-select"
+          (selectionChange)="setLang(langSelect.value)"
+          [disableOptionCentering]="true"
+        >
+          <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+            {{ lang | uppercase }}
+          </mat-option>
+        </mat-select> -->
+      </div>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="app-container">
+      <mat-sidenav
+        #sidenav
+        mode="side"
+        opened
+        class="app-sidenav"
+        [fixedInViewport]="false"
+        [fixedTopGap]="0"
+        [fixedBottomGap]="0"
+      >
+        <mat-nav-list fxLayout="column">
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['dashboard']}}]">
+            <mat-icon>home</mat-icon>
+            <span>Dashboard</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['users']}}]">
+            <mat-icon>home</mat-icon>
+            <span>Users</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['products']}}]">
+            <mat-icon>person</mat-icon>
+            <span>Products</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['departments']}}]">
+            <mat-icon>info</mat-icon>
+            <span>Departments</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['brands']}}]">
+            <mat-icon>info</mat-icon>
+            <span>Brands</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['categories']}}]">
+            <mat-icon>help</mat-icon>
+            <span>Categories</span>
+        </button>
+        <button mat-button class="menu-button" [routerLink]="[{outlets:{'abo-admin':['manufacturer']}}]">
+            <mat-icon>help</mat-icon>
+            <span>Manufacturer</span>
+        </button>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+
+  
+      <div class="app-content">
+        <mat-progress-bar
+          *ngIf="isLoading | async"
+          mode="indeterminate"
+        ></mat-progress-bar>
+
+        <router-outlet name="abo-admin"></router-outlet>
+      </div>
+    </mat-sidenav-container>
+  
+    <mat-toolbar class="app-footer">
+      <span class="span">AboStore - Admin</span>
+    </mat-toolbar>
+  </div>

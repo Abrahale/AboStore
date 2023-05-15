@@ -10,6 +10,8 @@ export class ButtonComponent implements OnInit {
   constructor() { }
   @Input() buttonText = "Add To Cart"
   @Input() theme:string = '';
+  @Input() disable = false;
+  @Input() showIcon = false;
   @Output() abo_click =new  EventEmitter();
 
   ngOnInit(): void {

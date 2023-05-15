@@ -1,0 +1,31 @@
+<div class="container bg-white">
+  <div class="row add-department-cont">
+    <h1>Add new department</h1>
+
+    <form [formGroup]="formDepartment">
+      <div class="form-group">
+        <label for="dep_name">Department Name</label>
+        <input type="text" class="form-control" formControlName="name" #dep_name>
+        <div *ngIf="!formDepartment.controls['name'].valid" class="alert alert-danger">
+          Department name is required
+        </div>
+      </div>
+      <!-- <pre>{{data |json}}</pre> -->
+      <div class="form-group">
+        <label for="dep_des">Description</label>
+        <input type="text" class="form-control"
+          formControlName="description" />
+      </div>
+      <div class="buttons-container">
+        <div class="">
+          <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}"
+            [disable]="!formDepartment.valid" (abo_click)="onSubmit()"></abo-button>
+        </div>
+        <div class="ml-20">
+          <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
