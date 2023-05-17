@@ -14,4 +14,8 @@ export class ManfaturerService{
     getManufacturers(){
       return  this.http.get<any>(this.baseUrl+'manufacturer')
     }
+
+    addNewManufacture(input){
+      return this.http.post<any>(this.baseUrl+'manufacturer',input)
+    }
 }

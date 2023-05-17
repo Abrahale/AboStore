@@ -21,21 +21,14 @@ export class ManufacturerEffects{
         ),
         ),    
     ))
+
+    addNewManufacturer$ = createEffect(()=>this.actoins$.pipe(
+      ofType<featureActions.AddNewManufacturerLoadRequest>(
+        featureActions.ActionTypes.ADD_NEW_MANUFACTURER_REQUEST
+      ),
+      switchMap(action=> this.manfacture.addNewManufacture(action.payload).pipe(
+        map(data => new featureActions.LoadSuccessAction(data),
+        catchError(error => observableOf(new featureActions.LoadFailAction(error))))
+      ),)
+    ))
 }
-
-
-/*
-  loadData$ = createEffect(() =>this.actoins$.pipe(
-    ofType<featureActions.LoadRequestAction>(
-      featureActions.ActionTypes.LOAD_REQUEST,
-    ),
-    switchMap(action => this.departmentService.getAllDepartments().pipe(
-      map(data => new featureActions.LoadSuccessAction({data}),
-        ),
-        catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
-        ),
-    ),
-    ),
-  ))
-
-*/

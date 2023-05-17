@@ -31,7 +31,7 @@ export class CreateManufacturerComponent implements OnInit {
 
   onSubmit() {
     if(!this.isEditMode){
-     // this.store$.dispatch(new ManufacturerActions.(this.formManufacturer.value))
+      this.store$.dispatch(new ManufacturerActions.AddNewManufacturerLoadRequest(this.formManufacturer.value))
     }
     else{
       console.log('Still to be implemented, dispatch action for edit')

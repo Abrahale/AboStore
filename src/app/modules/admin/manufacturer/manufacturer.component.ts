@@ -2,7 +2,6 @@ import { Component,OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { BaseStoreState, ManufacturerActions, ManufacturerSelectors } from 'src/app/store';
-import { ManfaturerService } from '../services/manufaturer.service';
 import { CreateManufacturerComponent } from './create-manufacturer/create-manufacturer.component';
 
 @Component({
@@ -13,7 +12,7 @@ import { CreateManufacturerComponent } from './create-manufacturer/create-manufa
 export class ManufacturerComponent implements OnInit {
   manufacturers$;
   isEditMode = false;
-  constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>, private manService:ManfaturerService){}
+  constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>){}
   ngOnInit(): void {
     this.store$.dispatch(new ManufacturerActions.LoadRequestAction())
     this.manufacturers$ = this.store$.select(ManufacturerSelectors.selectData)

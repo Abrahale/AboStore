@@ -25,6 +25,21 @@ export function ManufacturerReducer(state = initialState, action:Actions):State{
             }
         }
 
+        case ActionTypes.ADD_NEW_MANUFACTURER_REQUEST:{
+            return{
+                ...state,
+                isLoading:true
+            }
+        }
+
+        case ActionTypes.ADD_NEW_MANUFACTURER_SUCCESS_REQUEST:{
+            return {
+                ...state,
+                isLoading:false,
+                data:action.payload
+            }
+        }
+
         default:
             return state
     }
