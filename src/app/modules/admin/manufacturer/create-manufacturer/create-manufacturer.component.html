@@ -1,0 +1,34 @@
+<div class="container bg-white">
+    <div class="row add-department-cont">
+        <h1>{{isEditMode ? 'Update Existing Manufacturer':'Add new manufacturer'}}</h1>
+  
+      <form [formGroup]="formManufacturer">
+        <div class="form-group">
+          <label for="dep_name">Manufacturer name</label>
+          <input type="text" class="form-control" formControlName="name" #dep_name>
+          <div *ngIf="!formManufacturer.controls['name'].valid" class="alert alert-danger">
+            Manufacturer name is required
+          </div>
+        </div>
+        <!-- <pre>{{data |json}}</pre> -->
+        <div class="form-group">
+          <label for="dep_des">Manufacturer tel</label>
+          <input type="text" class="form-control"
+            formControlName="tel" />
+            <div *ngIf="!formManufacturer.controls['tel'].valid" class="alert alert-danger">
+                Manufacturer tel is required
+              </div>
+        </div>
+        <div class="buttons-container">
+          <div class="">
+            <abo-button [theme]=" 'btn default' " buttonText="{{isEditMode ? 'Update':'Submit'}}"
+              [disable]="!formManufacturer.valid" (abo_click)="onSubmit()"></abo-button>
+          </div>
+          <div class="ml-20">
+            <abo-button [theme]=" 'btn default' " (abo_click)="clearForm()" buttonText="Reset"></abo-button>
+  
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>

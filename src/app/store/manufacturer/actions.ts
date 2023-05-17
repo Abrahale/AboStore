@@ -13,12 +13,12 @@ export class LoadRequestAction implements Action{
 
 export class LoadSuccessAction implements Action{
     readonly type = ActionTypes.SUCCESS_REQUEST
-    constructor(public payload:any){}
+    constructor(public payload:{data:any}){}
 }
 
 export class LoadFailAction implements Action{
     readonly type = ActionTypes.FAIL_REQUEST
-    constructor(public payload:any){}
+    constructor(public payload:{error:any}){}
 }
 
 export type Actions = 

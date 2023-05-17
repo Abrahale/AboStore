@@ -1,0 +1,33 @@
+<div class="content">
+    <div>
+      <h1>Existing manufacturers</h1>
+      <button type="button"  (click)="addNewManufacturer()" class="btn btn-success">Add New manufacturer</button>
+      <table class="table align-middle mb-0 bg-white">
+        <thead class="bg-light">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Tel</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let d of (manufacturers$ | async) let i = index">
+            <td>
+              {{i+1}}
+            </td>
+            <td>
+              {{d.name}}
+            </td>
+  
+            <td>{{d.tel}}</td>
+            <td>
+              <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="editManufacturer(d)">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
