@@ -4,6 +4,7 @@ import { CartsState } from "./cart";
 import { CategoryState } from "./category";
 import { DepartmentState } from "./department";
 import { storeConstants }  from '../constants/store-constants'
+import { ManufacturerState } from "./manufacturer";
 export interface State{
   [storeConstants.SIGN_IN] : SignInState.State;
   [storeConstants.PRODUCT] : ProductsState.State;
@@ -11,4 +12,5 @@ export interface State{
   [storeConstants.CATEGORY]: CartsState.State;
   [storeConstants.DEPARTMENT]: DepartmentState.State;
   [storeConstants.USERS]:DepartmentState.State;
+  [storeConstants.MANUFACTURER]: ManufacturerState.State;
 }
