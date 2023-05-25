@@ -22,4 +22,5 @@ export class UserService {
       console.log(id)
       return this.http.get<any>(`${this.baseUrl}users/delete/:?id=${id}`)
     }
+    
 }

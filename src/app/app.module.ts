@@ -24,7 +24,6 @@ import { CustomerModule } from "./modules/customer/customer.module";
 import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
 import { MainComponent } from './components/containers/main/main.component';
 import { FormControlPipe } from './pipes/FormControlPipe';
-import { LoadingService } from './services/loading.service';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
 import { UsersService } from './services/users.service';
 
@@ -46,7 +45,6 @@ import { UsersService } from './services/users.service';
         AuthenticationService, 
         ThemeService,
         UsersService,
-        LoadingService,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpLoadingInterceptor,

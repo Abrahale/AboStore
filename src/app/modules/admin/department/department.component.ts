@@ -33,4 +33,9 @@ export class DepartmentComponent implements OnInit{
   addNewDepartment(){
      this.dialog.open(CreateDepartmentComponent)
   }
+
+  removeDepartment(id:string):void{
+
+  }
+
 }

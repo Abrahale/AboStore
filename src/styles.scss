@@ -117,3 +117,23 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-mdc-snack-bar-container {
+  &.info-snackbar {
+    //--mdc-snackbar-container-color: #00396f;
+    --mdc-snackbar-container-color: #cbdfff;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+  &.success-snackbar {
+    //--mdc-snackbar-container-color: #084114;
+    --mdc-snackbar-container-color: #9ff7b7;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+  &.error-snackbar {
+    --mdc-snackbar-container-color: #ffd4d4;
+    --mat-mdc-snack-bar-button-color: #353a41;
+    --mdc-snackbar-supporting-text-color: #353a41;
+  }
+}
