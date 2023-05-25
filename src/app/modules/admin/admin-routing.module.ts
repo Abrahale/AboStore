@@ -7,6 +7,7 @@ import { BrandComponent } from './brand/brand.component';
 import { NgModule } from '@angular/core';
 import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
+import { ManufacturerComponent } from './manufacturer/manufacturer.component';
 
 
 
@@ -43,7 +44,7 @@ export const adminRoutes: Routes = [
     },
     {
         path:'manufacturer',
-        component: BrandComponent,
+        component: ManufacturerComponent,
         outlet:'abo-admin'
     }
 ];

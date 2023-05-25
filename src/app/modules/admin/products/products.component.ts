@@ -4,7 +4,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { ProductService } from 'src/app/services/products.service';
 import { BaseStoreState, ProductsActions, ProductsSelectors } from 'src/app/store';
-import { CreateProductStep1Component } from './create-product-step-1/create-product-step-1.component';
+import { AddproductComponent } from './add-product/add-product.component';
 export interface MatDialoData{
   title:string,
   description:string,
@@ -27,21 +27,14 @@ export class ProductsComponent implements OnInit {
   }
   onEditClick(input:any){
     this.isEditMode = true
-    this.dialog.open(CreateProductStep1Component,{data:input})
+    //this.dialog.open(CreateProductStep1Component,{data:input})
   }
-
+  
   addNewProduct():void{
-    const dialogConfig = new MatDialogConfig();
+    this.dialog.open(AddproductComponent)
 
-    dialogConfig.disableClose = false
-    dialogConfig.autoFocus = false
-    dialogConfig.position = {
-      'top':'25%',
-      'left':'42%'
-    }
-    dialogConfig.data = {'description':'Hi John'}
-
-    this.dialog.open(CreateProductStep1Component)
   }
+
+
 
 }

@@ -4,4 +4,5 @@ export * from './products'
 export * from './sign-in'
 export * from './cart'
 export * from './users'
+export * from './manufacturer'
 export {BaseStoreModule, BaseStoreState};

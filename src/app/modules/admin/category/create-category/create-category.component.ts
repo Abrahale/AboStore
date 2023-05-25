@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
+import { selectionModel } from 'src/app/modules/models/selectionModel.model';
 import { BaseStoreState } from 'src/app/store';
 import { CategoryActions } from 'src/app/store/category';
 import { DepartmentSelectors } from 'src/app/store/department';
@@ -15,7 +16,7 @@ import { atLeastOneCheckboxCheckedValidator } from 'src/app/validators/atLeasetO
 export class CreateCategoryComponent implements OnInit{
   isEditMode = false
   formCategory: FormGroup
-  departments: {name:string,id:string,checked:boolean}[];
+  departments: selectionModel[];
   constructor(private fb:FormBuilder,private store$:Store<BaseStoreState.State>, public dialogRef: MatDialogRef<CreateCategoryComponent>,@Inject(MAT_DIALOG_DATA) public data:any){}
 
   ngOnInit(): void {
@@ -58,8 +59,7 @@ export class CreateCategoryComponent implements OnInit{
     return this.formCategory && this.formCategory.value
   }
 
-  buildCategoryFormArr(dep: any[], selectedDepIds: string[] = []): FormArray | void {
-    console.log('Do selected Id exist ', selectedDepIds)
+  buildCategoryFormArr(dep: selectionModel[], selectedDepIds: string[] = []): FormArray | void {
     if(dep != null){
       const controlArr = dep.map(d => {
         let isSelected = selectedDepIds.some(id => id === d.id);

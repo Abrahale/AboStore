@@ -25,6 +25,9 @@ import { MatDividerModule} from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { LoadingService } from './services/loading.service';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatListModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatSlideToggleModule,
 
     //testing
     MatTableModule,
@@ -87,6 +91,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
     MatListModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    MatSlideToggleModule,
     //Directives
 
     //pipes
@@ -97,6 +102,10 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 
     //providers
     
+  ],
+  providers:[
+    LoadingService,
+    MessageService
   ],
   entryComponents: [
     //DialogComponent

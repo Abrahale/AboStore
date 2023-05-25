@@ -22,7 +22,6 @@ export class CreateDepartmentComponent implements OnInit{
       description:['']
     })
     if(this.data != null && this.data.isEdit){
-      console.log(this.data)
       this.isEditMode = true
       this.formDepartment.controls['name'].setValue(this.data.preFil.name)
       this.formDepartment.controls['description'].setValue(this.data.preFil.description)

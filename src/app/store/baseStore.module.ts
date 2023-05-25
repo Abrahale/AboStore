@@ -7,6 +7,7 @@ import { CartsStoreModule } from "./cart/cartsStore.module";
 import { CategoryStoreModule } from "./category";
 import { DepartmentStoreModule } from "./department";
 import { UsersStoreModule } from "./users";
+import { ManufacturerStoreModule } from "./manufacturer";
 
 @NgModule({
   declarations:[],
@@ -17,6 +18,7 @@ import { UsersStoreModule } from "./users";
     CategoryStoreModule,
     DepartmentStoreModule,
     UsersStoreModule,
+    ManufacturerStoreModule,
     EffectsModule.forRoot([]),
     StoreModule.forRoot({}),
   ],

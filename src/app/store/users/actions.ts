@@ -4,6 +4,8 @@ export enum ActionTypes{
   LOAD_FAILURE = '[USERS] Load Failure',
   LOAD_SUCCESS = '[USERS] Load Success',
   UPDATE_FORMINPUT = '[USERS] update form input',
+  ADD_NEW_USER_LOAD_REQUEST = '[USERS] Add new user load request',
+  DELET_USER = "[USER] Delete a user"
 }
 
 export class LoadRequestAction implements Action{
@@ -26,8 +28,20 @@ export class UpdateFormInput implements Action{
   constructor(public payload:any){}
 }
 
+export class AddNewUserLoadRequest implements Action{
+  readonly type=ActionTypes.ADD_NEW_USER_LOAD_REQUEST
+  constructor(public payload:any){}
+}
+
+export class DeleteUser implements Action{
+  readonly type=ActionTypes.DELET_USER
+  constructor(public payload:any){}
+}
+
 export type Actions = 
 LoadRequestAction 
 | LoadFailureAction 
 | LoadSuccessAction
-| UpdateFormInput;
+| UpdateFormInput
+| AddNewUserLoadRequest
+| DeleteUser
