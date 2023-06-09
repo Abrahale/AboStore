@@ -4,10 +4,13 @@ import { of as observableOf } from 'rxjs';
 import * as featureActions from './actions';
 import { catchError, map, switchMap } from "rxjs";
 import { DepartmentService } from "src/app/modules/admin/services/department.service";
+import { MessageService } from "src/app/modules/shared/services/message.service";
+import { baseEffects } from "../baseEffects";
 
 @Injectable()
-export class DepartmentEffects {
-  constructor(private departmentService: DepartmentService, private actoins$: Actions ){
+export class DepartmentEffects extends baseEffects {
+  constructor(private departmentService: DepartmentService, private actoins$: Actions, private ms:MessageService ){
+    super(ms)
   }
 
   loadData$ = createEffect(() =>this.actoins$.pipe(
@@ -34,6 +37,23 @@ export class DepartmentEffects {
       ),
     ),
     ),
+  ))
+
+  DeleteDepartment$ = createEffect(() => this.actoins$.pipe(
+    ofType<featureActions.DeletePartmentAction>(
+      featureActions.ActionTypes.DELETE_DEPARTMENT,
+    ),
+    switchMap(action => this.departmentService.deleteDepartment(action.payload).pipe(
+      map(data => {
+        this.showMessage(data.message)
+        return new featureActions.LoadSuccessAction({data:data['departments']})
+      }
+      ),
+      catchError(error => {
+        this.showErrorMessage(error,'Failed to delete user')
+        return observableOf(new featureActions.LoadFailureAction(error));}
+      )
+    ))
   ))
 
 }
