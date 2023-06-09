@@ -26,12 +26,18 @@ export class CategoryComponent implements OnInit{
     this.category$ = this.store$.select(CategorySelectors.selectData)
 
   }
+  
   createCategory(){
     this.dialog.open(CreateCategoryComponent)
   }
+
   editCategory(input:any){
     this.isEditMode = true;
     this.dialog.open(CreateCategoryComponent,{data:{isEditMode: true,preFil:input}})   
+  }
+
+  removeCategory(id:string):void{
+    this.store$.dispatch(new CategoryActions.DeleteCategoryAction(id))
   }
 
 }

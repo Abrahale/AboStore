@@ -8,6 +8,7 @@ export enum ActionTypes{
   UPDATE_FORMINPUT = '[CATEGORY] update form input',
   ADD_NEW_CATEGORY_REQUEST = '[CATEGORY] Add New Category Load Request',
   ADD_NEW_CATEGORY_SUCCESS = '[CATEGORY] Add New Category Load Request',
+  DELETE_CATEGORY = '[CATEGORY] Remove Category Load Request',
 }
 
 export class LoadRequestAction implements Action{
@@ -39,6 +40,11 @@ export class AddNewCategorySuccessAction implements Action{
   constructor(){}
 }
 
+export class DeleteCategoryAction implements Action{
+  readonly type = ActionTypes.DELETE_CATEGORY
+  constructor(public payload:string){}
+}
+
 export type Actions = 
 LoadRequestAction 
 | LoadFailureAction 
@@ -46,3 +52,4 @@ LoadRequestAction
 | UpdateFormInput
 | AddNewCategoryRequestAction
 | AddNewCategorySuccessAction
+| DeleteCategoryAction
