@@ -11,7 +11,13 @@ export class DepartmentService {
   getAllDepartments(){
     return this.http.get<any>(`${this.baseUrl}departments`);
   }
+
   AddNewDepartment(input:any){
     return this.http.post<any>(`${this.baseUrl}departments`,input);
   }
+
+  deleteDepartment(id:any){
+    return this.http.get<any>(`${this.baseUrl}departments/delete/:?id=${id}`)
+  }
+
 }

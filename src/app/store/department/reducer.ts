@@ -2,7 +2,9 @@ import { initialState, State } from "./state";
 import { Actions, ActionTypes} from "./actions";
 export function DepartmentReducer(state = initialState, action: Actions): State{
   switch(action.type){
-      case ActionTypes.LOAD_REQUEST : {
+      case ActionTypes.LOAD_REQUEST :
+      case ActionTypes.DELETE_DEPARTMENT :   
+      {
         return {
           ...state,
           isLoading: true,

@@ -8,6 +8,7 @@ export enum ActionTypes{
   ADD_NEW_DEPARTMENT = '[DEPARTMENT] Add New Department Load Request',
   ADD_NEW_DEPARTMENT_SUCCESS = '[DEPARTMENT] Add New Department Load Success',
   UPDATE_FORMINPUT = '[DEPARTMENT] update form input',
+  DELETE_DEPARTMENT = '[DEPARTMENT] delete department',
 }
 
 export class LoadRequestAction implements Action{
@@ -40,10 +41,16 @@ export class UpdateFormInput implements Action{
   constructor(public payload:Department){}
 }
 
+export class DeletePartmentAction implements Action{
+  readonly type = ActionTypes.DELETE_DEPARTMENT;
+  constructor(public payload:string){}
+}
+
 export type Actions = 
-LoadRequestAction 
+  LoadRequestAction 
 | LoadFailureAction 
 | LoadSuccessAction
 | UpdateFormInput
 | AddNewDepartmentAction
 | AddNewDepartmentSuccess
+| DeletePartmentAction

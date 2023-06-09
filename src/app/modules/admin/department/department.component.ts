@@ -35,7 +35,7 @@ export class DepartmentComponent implements OnInit{
   }
 
   removeDepartment(id:string):void{
-
+    this.store$.dispatch(new DepartmentActions.DeletePartmentAction(id))
   }
 
 }
