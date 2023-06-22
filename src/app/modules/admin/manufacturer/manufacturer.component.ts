@@ -23,4 +23,9 @@ export class ManufacturerComponent implements OnInit {
     this.isEditMode = true
     this.dialog.open(CreateManufacturerComponent,{data:{isEdit:true, preFil:input}})
   }
+
+  removeManufacturer(id:string):void{
+    console.log(id)
+    this.store$.dispatch(new ManufacturerActions.DeleteManufacturerAction(id))
+  }
 }

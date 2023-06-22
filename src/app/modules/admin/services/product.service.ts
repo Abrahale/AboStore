@@ -17,4 +17,12 @@ export class AdminProductService {
     addNewProduct(input:any){
         return this.http.post<any>(`${this.baseUrl}products`,{...input})
     }
+
+    updateProduct(input:any){
+        return this.http.post<any>(`${this.baseUrl}products/update`,{...input})
+    }
+
+    removeProduct(id:string){
+        return this.http.get<any>(`${this.baseUrl}products/delete/:?id=${id}`)
+      }
 }

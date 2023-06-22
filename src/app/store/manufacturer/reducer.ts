@@ -2,7 +2,9 @@ import { State, initialState } from "./state";
 import { ActionTypes, Actions } from "./actions";
 export function ManufacturerReducer(state = initialState, action:Actions):State{
     switch(action.type){
-        case ActionTypes.LOAD_REQUEST : {
+        case ActionTypes.LOAD_REQUEST :
+        case ActionTypes.DELETE_MANUFACTURER:    
+        {
             return {
                 ...state,
                 isLoading:true

@@ -18,4 +18,8 @@ export class ManfaturerService{
     addNewManufacture(input){
       return this.http.post<any>(this.baseUrl+'manufacturer',input)
     }
+
+    deleteManufacturer(id:string){
+      return this.http.get<any>(`${this.baseUrl}manufacturer/delete/:?id=${id}`)
+    }
 }

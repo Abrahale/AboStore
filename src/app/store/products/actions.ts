@@ -7,6 +7,8 @@ export enum ActionTypes{
   LOAD_SUCCESS_NO_SIDE_EFFECT = '[PRODUCTS] Load Success No Side Effect',
   UPDATE_PRODUCT_VIEW = '[PRODUCTS] Load Product View',
   ADD_NEW_PRODUCT = '[PRODUCTS] Load Add New Product',
+  ADD_NEW_PRODUCT_SUCCESS = '[PRODUCTS] Load Add New Product Success',
+  REMOVE_PRODUCT_ACTION = '[PRODUCTS] Remove Product Action'
 }
 
 export class LoadRequestAction implements Action{
@@ -29,14 +31,24 @@ export class LoadSuccessNoSideEffectAction implements Action{
   constructor(){}
 }
 
+export class LoadAddNewProductSuccess implements Action{
+  readonly type = ActionTypes.ADD_NEW_PRODUCT_SUCCESS;
+  constructor(public payload:any){}
+}
+
 export class UpadateProductView implements Action{
   readonly type = ActionTypes.UPDATE_PRODUCT_VIEW;
-  constructor(public payload:product){}
+  constructor(public payload:product | any){}
 }
 
 export class AddNewProductLoadRequest implements Action{
   readonly type = ActionTypes.ADD_NEW_PRODUCT;
   constructor(public payload:any){}
+}
+
+export class RemoveProductActionRequest implements Action{
+  readonly type = ActionTypes.REMOVE_PRODUCT_ACTION
+  constructor(public payload:string){}
 }
 
 export type Actions = 
@@ -46,3 +58,5 @@ LoadRequestAction
 | UpadateProductView
 | AddNewProductLoadRequest
 | LoadSuccessNoSideEffectAction
+| LoadAddNewProductSuccess
+| RemoveProductActionRequest
