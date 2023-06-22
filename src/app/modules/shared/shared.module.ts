@@ -28,11 +28,14 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { LoadingService } from './services/loading.service';
 import { MessageService } from './services/message.service';
+import { FileUploadComponent } from './components/file-uploads/file-upload.component';
+import { FileUploadService } from './services/file-upload.service';
 
 @NgModule({
   declarations: [
     CurrencyPipe,
-    DialogBaseComponent
+    DialogBaseComponent,
+    FileUploadComponent,
   ],
   imports: [
     CommonModule,
@@ -62,7 +65,10 @@ import { MessageService } from './services/message.service';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+
+    //Shared Custome Components
+ 
   ],
   exports:[
     //Third party modules
@@ -98,14 +104,15 @@ import { MessageService } from './services/message.service';
     CurrencyPipe,
 
     //components
-    DialogBaseComponent
-
+    DialogBaseComponent,
+    FileUploadComponent,
     //providers
     
   ],
   providers:[
     LoadingService,
-    MessageService
+    MessageService,
+    FileUploadService
   ],
   entryComponents: [
     //DialogComponent

@@ -6,6 +6,7 @@ export enum ActionTypes{
     FAIL_REQUEST = "[MANUFACTURER] Fail Request",
     ADD_NEW_MANUFACTURER_REQUEST = "[MANUFACTURER] Add New Manufacturer Load Request",
     ADD_NEW_MANUFACTURER_SUCCESS_REQUEST = "[MANUFACTURER] Add New Manufacturer Success Request",
+    DELETE_MANUFACTURER = "[MANUFACTURER] Remove Manufacturer Request",
 }
 
 export class LoadRequestAction implements Action{
@@ -18,7 +19,7 @@ export class LoadSuccessAction implements Action{
     constructor(public payload:{data:any}){}
 }
 
-export class LoadFailAction implements Action{
+export class LoadFailureAction implements Action{
     readonly type = ActionTypes.FAIL_REQUEST
     constructor(public payload:{error:any}){}
 }
@@ -33,9 +34,15 @@ export class AddNewManufacturerSuccessRequest implements Action{
     constructor(public payload:any){}
 }
 
+export class DeleteManufacturerAction implements Action{
+    readonly type=ActionTypes.DELETE_MANUFACTURER
+    constructor(public payload:string){}
+}
+
 export type Actions = 
 LoadRequestAction
 | LoadSuccessAction
-| LoadFailAction
+| LoadFailureAction
 | AddNewManufacturerLoadRequest
 | AddNewManufacturerSuccessRequest
+| DeleteManufacturerAction

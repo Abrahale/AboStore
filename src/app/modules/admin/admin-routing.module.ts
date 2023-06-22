@@ -8,6 +8,7 @@ import { NgModule } from '@angular/core';
 import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
 import { ManufacturerComponent } from './manufacturer/manufacturer.component';
+import { AddproductComponent } from './products/add-product/add-product.component';
 
 
 
@@ -35,7 +36,12 @@ export const adminRoutes: Routes = [
     {
         path:'products',
         component:ProductsComponent,
-        outlet:'abo-admin'
+        outlet:'abo-admin',
+    },
+    {
+        path:'edit-product',
+        component:AddproductComponent,
+        outlet:'abo-admin',
     },
     {
         path:'brands',

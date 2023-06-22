@@ -25,5 +25,6 @@ export class AdminComponent implements OnInit{
   
     ngOnInit(): void {
       this.isLoading = this.loadingService.isLoading
+      this.router.navigate(['/cms', { outlets: { 'abo-admin': ['dashboard'] } }]);
     }
 }

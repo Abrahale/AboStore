@@ -34,7 +34,7 @@ export class ProductsEffects extends baseEffects {
     switchMap(action => this.productService.addNewProduct(action.payload).pipe(
       map(data => {
         this.showMessage(data.message)
-        return new featureActions.LoadSuccessNoSideEffectAction()
+        return new featureActions.LoadAddNewProductSuccess(data.product)
       }
       ),
       catchError(error => {
@@ -43,5 +43,34 @@ export class ProductsEffects extends baseEffects {
     })
     ),)
   ),)
+
+  updateProductDetails = createEffect(() => this.actoins$.pipe(
+    ofType<featureActions.UpadateProductView>(
+      featureActions.ActionTypes.UPDATE_PRODUCT_VIEW
+    ),
+    switchMap(action => this.productService.updateProduct(action.payload).pipe(
+      map(data => {return new featureActions.LoadSuccessNoSideEffectAction}),
+      catchError(error => {
+        return observableOf(new featureActions.LoadFailureAction({error}))
+      })
+    ))
+  ))
+
+  removeProduct$ = createEffect(() => this.actoins$.pipe(
+    ofType<featureActions.RemoveProductActionRequest>(
+      featureActions.ActionTypes.REMOVE_PRODUCT_ACTION
+    ),
+    switchMap(action => this.productService.removeProduct(action.payload).pipe(
+      map(data => {
+        this.showMessage(data.message)
+        return new featureActions.LoadSuccessAction({data:data['products']})
+      }
+      ),
+      catchError(error => {
+        this.showErrorMessage(error,'Failed to delete user')
+        return observableOf(new featureActions.LoadFailureAction(error));}
+      )
+    ))
+  ))
 
 }

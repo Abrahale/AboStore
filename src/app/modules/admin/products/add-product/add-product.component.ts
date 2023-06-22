@@ -2,11 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import { Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectionModel } from 'src/app/modules/models/selectionModel.model';
-import { BaseStoreState, ManufacturerSelectors, ProductsActions } from 'src/app/store';
+import { BaseStoreState, ManufacturerSelectors, ProductsActions, ProductsSelectors } from 'src/app/store';
 import { CategorySelectors } from 'src/app/store/category';
 import { DepartmentSelectors } from 'src/app/store/department';
 import { atLeastOneCheckboxCheckedValidator } from 'src/app/validators/atLeasetOneCheckboxSelectedValidators';
 import { CategoryService } from '../../services/category.service';
+import { Observable } from 'rxjs';
+import { product } from 'src/app/modules/product/models/products';
 
 
 @Component({
@@ -18,7 +20,7 @@ export class AddproductComponent implements OnInit {
   departments: selectionModel[];
   categories: selectionModel[];
   manufacturers: selectionModel[];
-
+  addedProduct$: Observable<product>;
   departmentForm; 
   categoryForm;
   manufacturerForm;
@@ -118,10 +120,8 @@ export class AddproductComponent implements OnInit {
   }
 
   step1OnClick():void{
-    console.log('the step1 button is clicked!')
   }
   step2OnClick():void{
-    console.log('the step2 button is clicked!')
     const deps = this.getSelectedIds(this.departments)
     this.categoryForm.removeControl("categories")
     this.catService.getCategoriesByDepartment(deps).subscribe(data =>{
@@ -132,7 +132,6 @@ export class AddproductComponent implements OnInit {
     })
   }
   step3OnClick():void{
-    console.log('the step3 button is clicked!')
   }
   step4OnClick():void{
     const step1 = this.formProduct.value;
@@ -146,11 +145,21 @@ export class AddproductComponent implements OnInit {
       category: cat,
       manufacturer:manu
     }
-    console.log('Final form request object to add: ', query)
     this.store$.dispatch(new ProductsActions.AddNewProductLoadRequest(query))
-    console.log('the step4 button is clicked!')
   }
   step5OnClick():void{
-    console.log('the step5 button is clicked!')
+  }
+  
+  updateproductInDb(event){
+    let query = {};
+    if(event != null){
+       this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
+        d => query = {id:d._id, image:[...d.image, event]} 
+      )
+      this.store$.dispatch(new ProductsActions.UpadateProductView(query))
+    }
+  }
+  addExistingImage(event){
+    console.log(event)
   }
 }

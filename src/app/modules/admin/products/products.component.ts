@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { ProductService } from 'src/app/services/products.service';
 import { BaseStoreState, ProductsActions, ProductsSelectors } from 'src/app/store';
 import { AddproductComponent } from './add-product/add-product.component';
+import { ActivatedRoute, Router } from '@angular/router';
 export interface MatDialoData{
   title:string,
   description:string,
@@ -18,7 +19,7 @@ export class ProductsComponent implements OnInit {
   products$;
   isEditMode: boolean;
   proToEdit: MatDialoData;
-  constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
+  constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>, private router:Router, public route:ActivatedRoute){
 
   }
 
@@ -27,14 +28,15 @@ export class ProductsComponent implements OnInit {
   }
   onEditClick(input:any){
     this.isEditMode = true
-    //this.dialog.open(CreateProductStep1Component,{data:input})
   }
   
   addNewProduct():void{
-    this.dialog.open(AddproductComponent)
-
+    this.router.navigate(['/cms', { outlets: { 'abo-admin': ['edit-product'] } }]);
   }
 
+  removeProduct(id:string){
+    this.store$.dispatch(new ProductsActions.RemoveProductActionRequest(id))
+  }
 
 
 }

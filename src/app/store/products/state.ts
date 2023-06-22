@@ -4,6 +4,7 @@ export interface State{
     data: product[],
     productView:product,
     isLoading: boolean,
+    latestProductAdded?:product,
     error: string
 }
 export const initialState: State = {

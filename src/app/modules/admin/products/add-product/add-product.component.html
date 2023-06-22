@@ -86,6 +86,8 @@
       <ng-template matStepLabel>Done</ng-template>
       <p> The product has been added! </p>
       <div>
+        <h1>Upload Images for the product</h1>
+        <abo-file-upload (doneUploading)="updateproductInDb($event)" (imageSelect)="addExistingImage($event)"></abo-file-upload>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>

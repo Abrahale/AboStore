@@ -3,7 +3,7 @@
     <abo-heart-tag class="pull-right"></abo-heart-tag>
     <div (click)="onClick(product)">
         <div class="img-container">
-            <img alt="" class="attachment-shop_catalog " [src]="product.image[0]" />
+            <img alt="" class="attachment-shop_catalog " [src]="BUCKET_URI+product.image[0]" />
         </div>
         <div class="pro-details">
             <h3 class="product-title m-20-v-xs">{{product.title}}</h3>

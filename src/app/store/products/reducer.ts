@@ -4,6 +4,7 @@ export function ProductsReducer(state = initialState, action: Actions): State{
   switch(action.type){
       case ActionTypes.LOAD_REQUEST :
       case ActionTypes.ADD_NEW_PRODUCT:  
+      case ActionTypes.REMOVE_PRODUCT_ACTION:
       {
         return {
           ...state,
@@ -23,6 +24,13 @@ export function ProductsReducer(state = initialState, action: Actions): State{
         return{
           ...state,
           isLoading:false
+        }
+      }
+      case ActionTypes.ADD_NEW_PRODUCT_SUCCESS: {
+        return{
+          ...state,
+          isLoading:false,
+          latestProductAdded:action.payload
         }
       }
       case ActionTypes.LOAD_FAILURE : {

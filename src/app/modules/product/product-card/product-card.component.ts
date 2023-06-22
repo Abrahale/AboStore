@@ -13,7 +13,7 @@ import { CartItem } from '../../cart/models/cartModel';
   styleUrls: ['./product-card.component.scss']
 })
 export class ProductCardComponent implements OnInit {
-
+  BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   @Input()
   product: product = new product;
   constructor(private _store:Store<BaseStoreState.State>, private router: Router) { }
