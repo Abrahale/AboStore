@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { IProductForm } from "src/app/modules/models/_product_form";
 import { product } from "src/app/modules/product/models/products";
 export enum ActionTypes{
   LOAD_REQUEST = '[PRODUCTS] Load Requeust',
@@ -8,7 +9,9 @@ export enum ActionTypes{
   UPDATE_PRODUCT_VIEW = '[PRODUCTS] Load Product View',
   ADD_NEW_PRODUCT = '[PRODUCTS] Load Add New Product',
   ADD_NEW_PRODUCT_SUCCESS = '[PRODUCTS] Load Add New Product Success',
-  REMOVE_PRODUCT_ACTION = '[PRODUCTS] Remove Product Action'
+  REMOVE_PRODUCT_ACTION = '[PRODUCTS] Remove Product Action',
+  UPDATE_FORM_ACTION = '[PRODUCTS] Update Product Form Action',
+  RESET_PRODUCT_FORM = '[PRODUCTS] Reset Product Form Action',
 }
 
 export class LoadRequestAction implements Action{
@@ -51,6 +54,16 @@ export class RemoveProductActionRequest implements Action{
   constructor(public payload:string){}
 }
 
+export class UpdateProductFormRequest implements Action{
+  readonly type = ActionTypes.UPDATE_FORM_ACTION
+  constructor(public payload:{ data: Partial<IProductForm>, editMode :boolean }){}
+}
+
+export class ResetProductFormRequest implements Action{
+    readonly type=ActionTypes.RESET_PRODUCT_FORM
+    constructor(){}
+}
+
 export type Actions = 
 LoadRequestAction 
 | LoadFailureAction 
@@ -60,3 +73,5 @@ LoadRequestAction
 | LoadSuccessNoSideEffectAction
 | LoadAddNewProductSuccess
 | RemoveProductActionRequest
+| UpdateProductFormRequest
+| ResetProductFormRequest

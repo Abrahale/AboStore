@@ -17,6 +17,7 @@ import { product } from 'src/app/modules/product/models/products';
   styleUrls: ["add-product.component.scss"]
 })
 export class AddproductComponent implements OnInit {
+  editMode:boolean = false;
   departments: selectionModel[];
   categories: selectionModel[];
   manufacturers: selectionModel[];
@@ -24,6 +25,8 @@ export class AddproductComponent implements OnInit {
   departmentForm; 
   categoryForm;
   manufacturerForm;
+
+  productToEdit;
 
   productForm = {
   "available": true,
@@ -40,27 +43,53 @@ export class AddproductComponent implements OnInit {
     secondCtrl: ['', Validators.required],
   });
   
-  formProduct = this.fb.group({
-    title: ['', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(60)
-    ]],
-    description: ['', [Validators.required, Validators.minLength(3)]],
-    productCode:['',Validators.required],
-    price:[null, Validators.required],
-    available:[true],
-    quantity:[1,Validators.required]
-  });
+  formProduct;
   isLinear = false;
 
   ngOnInit(): void {
+    this.store$.select(ProductsSelectors.selectIsEditMode).subscribe(_ => this.editMode = _)
+    this.store$.select(ProductsSelectors.selectFormProduct).subscribe(data =>{
+      this.productToEdit = data
+    })
     this.departmentForm = this.fb.group([]);
     this.categoryForm = this.fb.group([]);
     this.manufacturerForm = this.fb.group([]);
+    if(this.editMode){
+      this.formProduct = this.fb.group({
+        title: [this.productToEdit.title, [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(60)
+        ]],
+        description: [this.productToEdit.description, [Validators.required, Validators.minLength(3)]],
+        productCode:[this.productToEdit.productCode,Validators.required],
+        price:[this.productToEdit.price, Validators.required],
+        available:[this.productToEdit.available],
+        quantity:[this.productToEdit.quantity,Validators.required]
+      });
+      this.departmentForm.addControl("departments",this.buildFormArray(this.departments,this.productToEdit.department))
+      this.manufacturerForm.addControl("manufacturer",this.buildFormArray(this.manufacturers,this.productToEdit.manufacturer))
+    }
+    else{
+      this.formProduct = this.fb.group({
+        title: ['', [
+          Validators.required,
+          Validators.minLength(5),
+          Validators.maxLength(60)
+        ]],
+        description: ['', [Validators.required, Validators.minLength(3)]],
+        productCode:['',Validators.required],
+        price:[null, Validators.required],
+        available:[true],
+        quantity:[1,Validators.required]
+      });
+      this.departmentForm.addControl("departments",this.buildFormArray(this.departments))
+      this.manufacturerForm.addControl("manufacturer",this.buildFormArray(this.manufacturers))
+    }
 
-    this.departmentForm.addControl("departments",this.buildFormArray(this.departments))
-    this.manufacturerForm.addControl("manufacturer",this.buildFormArray(this.manufacturers))
+
+
+
 
   }
 
@@ -127,7 +156,11 @@ export class AddproductComponent implements OnInit {
     this.catService.getCategoriesByDepartment(deps).subscribe(data =>{
       if(data != null && typeof data === 'object'){
         this.categories = data.map(el => { return{name:el.name, id:el._id}})
-        this.categoryForm.addControl("categories",this.buildFormArray(this.categories))
+        if(this.editMode){
+          this.categoryForm.addControl("categories",this.buildFormArray(this.categories,this.productToEdit.category))
+        }else{
+          this.categoryForm.addControl("categories",this.buildFormArray(this.categories))
+        }
       }
     })
   }
@@ -145,7 +178,7 @@ export class AddproductComponent implements OnInit {
       category: cat,
       manufacturer:manu
     }
-    this.store$.dispatch(new ProductsActions.AddNewProductLoadRequest(query))
+    this.submit(query)
   }
   step5OnClick():void{
   }
@@ -156,10 +189,19 @@ export class AddproductComponent implements OnInit {
        this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
         d => query = {id:d._id, image:[...d.image, event]} 
       )
-      this.store$.dispatch(new ProductsActions.UpadateProductView(query))
+     this.submit(query)
     }
   }
   addExistingImage(event){
     console.log(event)
+  }
+
+ submit = (query:any) => {
+    if(this.editMode){
+      this.store$.dispatch(new ProductsActions.UpadateProductView({...query,id:this.productToEdit._id}))
+    }
+    else{
+      this.store$.dispatch(new ProductsActions.AddNewProductLoadRequest(query))
+    }
   }
 }
