@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { ProductService } from 'src/app/services/products.service';
-import { BaseStoreState, ProductsActions, ProductsSelectors } from 'src/app/store';
+import { BaseStoreState, FileActions, ProductsActions, ProductsSelectors } from 'src/app/store';
 import { AddproductComponent } from './add-product/add-product.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IProductForm, ProductForm } from '../../models/_product_form';
@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
   isEditMode: boolean;
   proToEdit: MatDialoData;
   constructor(private dialog:MatDialog, private store$:Store<BaseStoreState.State>, private router:Router, public route:ActivatedRoute){
-
+    this.store$.dispatch( new FileActions.LoadRequestAction)
   }
 
   ngOnInit(): void {

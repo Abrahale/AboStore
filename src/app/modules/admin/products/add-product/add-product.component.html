@@ -1,7 +1,4 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-stepper [linear]="isLinear" #stepper>
+  <mat-stepper [linear]="'Enable linear mode'" #stepper>
     <mat-step [stepControl]="formProduct">
       <form [formGroup]="formProduct">
         <ng-template matStepLabel>Fill out product properties</ng-template>
@@ -83,13 +80,20 @@
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p> The product has been added! </p>
+      <ng-template matStepLabel>Images</ng-template>
+      <form [formGroup]="filesForm">
+        <h3>Select Images for the product</h3>
+        <mat-divider></mat-divider>
+        <div class="form-group">
+            <mat-checkbox *ngFor="let fileControl of fileControls?.controls; let i = index" [formControl]="fileControl | formControl"> 
+             <img src="https://abostorebucket.s3.af-south-1.amazonaws.com/{{ files[i]?.name  }}" alt="{{ files[i]?.name  }}" height="80px" />
+            </mat-checkbox>
+          </div>
+      </form>
       <div>
-        <h1>Upload Images for the product</h1>
-        <abo-file-upload (doneUploading)="updateproductInDb($event)" (imageSelect)="addExistingImage($event)"></abo-file-upload>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="submit()">{{editMode ? 'Update Product': 'Add Product'}}</button>
       </div>
     </mat-step>
   </mat-stepper>
