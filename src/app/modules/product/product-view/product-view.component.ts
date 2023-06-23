@@ -12,6 +12,7 @@ import { CartItem } from '../../cart/models/cartModel';
   styleUrls: ['./product-view.component.scss']
 })
 export class ProductViewComponent implements OnInit {
+  BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   @Input()
   product: product = new product;
   colorForm!: UntypedFormGroup;
@@ -24,7 +25,7 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this._store.select(ProductsSelectors.selectproductView).subscribe((_) => {
       this.product = _;
-      this.imagePath = _.image[0];
+      this.imagePath = this.BUCKET_URI+_.image[0];
     })
     this.colorForm = this.formBuilder.group({
       color:['red']
@@ -34,7 +35,7 @@ export class ProductViewComponent implements OnInit {
   }
   activeImage(imgsrc:string):void{
     console.log('the imge src',imgsrc);
-    this.imagePath = imgsrc;
+    this.imagePath = this.BUCKET_URI+imgsrc;
   }
 
   addToCart():void{

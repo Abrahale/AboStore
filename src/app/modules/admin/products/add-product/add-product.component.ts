@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Validators, FormBuilder, FormArray } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { selectionModel } from 'src/app/modules/models/selectionModel.model';
-import { BaseStoreState, ManufacturerSelectors, ProductsActions, ProductsSelectors } from 'src/app/store';
+import { BaseStoreState, FileActions, FileSelectors, ManufacturerSelectors, ProductsActions, ProductsSelectors } from 'src/app/store';
 import { CategorySelectors } from 'src/app/store/category';
 import { DepartmentSelectors } from 'src/app/store/department';
 import { atLeastOneCheckboxCheckedValidator } from 'src/app/validators/atLeasetOneCheckboxSelectedValidators';
@@ -21,11 +21,12 @@ export class AddproductComponent implements OnInit {
   departments: selectionModel[];
   categories: selectionModel[];
   manufacturers: selectionModel[];
+  files: selectionModel[];
   addedProduct$: Observable<product>;
   departmentForm; 
   categoryForm;
   manufacturerForm;
-
+  filesForm;
   productToEdit;
 
   productForm = {
@@ -54,6 +55,8 @@ export class AddproductComponent implements OnInit {
     this.departmentForm = this.fb.group([]);
     this.categoryForm = this.fb.group([]);
     this.manufacturerForm = this.fb.group([]);
+    this.filesForm = this.fb.group([]);
+
     if(this.editMode){
       this.formProduct = this.fb.group({
         title: [this.productToEdit.title, [
@@ -69,6 +72,7 @@ export class AddproductComponent implements OnInit {
       });
       this.departmentForm.addControl("departments",this.buildFormArray(this.departments,this.productToEdit.department))
       this.manufacturerForm.addControl("manufacturer",this.buildFormArray(this.manufacturers,this.productToEdit.manufacturer))
+      this.filesForm.addControl("files",this.buildFormArray(this.files,this.productToEdit.image))
     }
     else{
       this.formProduct = this.fb.group({
@@ -85,6 +89,7 @@ export class AddproductComponent implements OnInit {
       });
       this.departmentForm.addControl("departments",this.buildFormArray(this.departments))
       this.manufacturerForm.addControl("manufacturer",this.buildFormArray(this.manufacturers))
+      this.filesForm.addControl("files",this.buildFormArray(this.files))
     }
 
 
@@ -102,6 +107,13 @@ export class AddproductComponent implements OnInit {
     this.store$.select(ManufacturerSelectors.selectData).subscribe(data =>{
       if(data != null && typeof data === 'object'){
         this.manufacturers = data.map(el => { return{name:el.name, id:el._id}})
+      }
+    })
+
+    this.store$.select(FileSelectors.selectFiles).subscribe(data => {
+      console.log(data)
+      if(data != null){
+        this.files = (data.map(el => { return{name:el, id:el, selected:false}})) as selectionModel[];
       }
     })
 
@@ -130,6 +142,14 @@ export class AddproductComponent implements OnInit {
     return this.manu_form && <FormArray>this.manu_form['manufacturer']
   }
 
+  get file_form(){
+    return this.filesForm && this.filesForm.controls;
+  }
+
+  get fileControls(): FormArray{
+    return this.file_form && <FormArray>this.file_form['files']
+  }
+
   buildFormArray(dep: selectionModel[], selectedDepIds: string[] = []): FormArray {
     if(dep != null){
       const controlArr = dep.map(d => {
@@ -143,6 +163,7 @@ export class AddproductComponent implements OnInit {
   }
 
   getSelectedIds(input:selectionModel[]): string[] {
+    //there is a serious logical issue here!
     return input
       .filter((cat, catIdx) => this.departmentsContorls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
       .map(cat => cat.id);
@@ -167,8 +188,10 @@ export class AddproductComponent implements OnInit {
   step3OnClick():void{
   }
   step4OnClick():void{
+    console.log(this.files)
   }
   step5OnClick():void{
+    
   }
   
   updateproductInDb(event){
@@ -187,14 +210,20 @@ export class AddproductComponent implements OnInit {
  submit = () => {
   const step1 = this.formProduct.value;
   const dep = this.getSelectedIds(this.departments)
+  console.log('dep',dep)
   const cat = this.getSelectedIds(this.categories)
+  console.log('cat',cat)
   const manu = this.getSelectedIds(this.manufacturers)
+  console.log('manu',manu)
+  const img = this.getSelectedIds(this.files)
+  console.log('img',img)
 
   const query = {
     ...step1,
     department:dep,
     category: cat,
-    manufacturer:manu
+    manufacturer:manu,
+    image:img
   }
     if(this.editMode){
 
