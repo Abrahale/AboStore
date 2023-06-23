@@ -9,7 +9,6 @@ export interface State{
     error: string,
     _functions: {
       editMode:boolean,
-      selectedImages:string[],
       _form: IProductForm
       
     }
@@ -21,7 +20,6 @@ export const initialState: State = {
   productView:new product,
   _functions:{
      editMode:false,
-     selectedImages:[],
     _form: new ProductForm()
 
   }

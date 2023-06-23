@@ -9,13 +9,19 @@ import { atLeastOneCheckboxCheckedValidator } from 'src/app/validators/atLeasetO
 import { CategoryService } from '../../services/category.service';
 import { Observable } from 'rxjs';
 import { product } from 'src/app/modules/product/models/products';
-
+enum formArrayTypes{
+  DEPARTMENT = 'DEPARTMENT',
+  CATEGORY = 'CATEGORY',
+  MANUFACTURER = 'MANUFACTURER',
+  FILE = 'FILE'
+}
 
 @Component({
   selector: "abo-add-product",
   templateUrl:"add-product.component.html",
   styleUrls: ["add-product.component.scss"]
 })
+
 export class AddproductComponent implements OnInit {
   editMode:boolean = false;
   departments: selectionModel[];
@@ -111,9 +117,8 @@ export class AddproductComponent implements OnInit {
     })
 
     this.store$.select(FileSelectors.selectFiles).subscribe(data => {
-      console.log(data)
       if(data != null){
-        this.files = (data.map(el => { return{name:el, id:el, selected:false}})) as selectionModel[];
+        this.files = (data.map(el => { return{name:el, id:el}})) as selectionModel[];
       }
     })
 
@@ -162,17 +167,38 @@ export class AddproductComponent implements OnInit {
 
   }
 
-  getSelectedIds(input:selectionModel[]): string[] {
-    //there is a serious logical issue here!
-    return input
-      .filter((cat, catIdx) => this.departmentsContorls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
-      .map(cat => cat.id);
+  getSelectedIds(input:formArrayTypes): string[] {
+    switch(input){
+        case formArrayTypes.DEPARTMENT:
+          return this.departments
+            .filter((cat, catIdx) => this.departmentsContorls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
+            .map(cat => cat.id);
+
+        case formArrayTypes.CATEGORY:
+          return this.categories
+            .filter((cat, catIdx) => this.categoryContorls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
+            .map(cat => cat.id);
+
+        case formArrayTypes.MANUFACTURER:
+          return this.manufacturers
+            .filter((cat, catIdx) => this.manuControls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
+            .map(cat => cat.id);
+
+        case formArrayTypes.FILE:
+          return this.files
+            .filter((cat, catIdx) => this.fileControls?.controls?.some((control, controlIdx) => catIdx === controlIdx && control.value))
+            .map(cat => cat.id);
+
+          default:
+            return []
+    }
+
   }
 
   step1OnClick():void{
   }
   step2OnClick():void{
-    const deps = this.getSelectedIds(this.departments)
+    const deps = this.getSelectedIds(formArrayTypes.DEPARTMENT)
     this.categoryForm.removeControl("categories")
     this.catService.getCategoriesByDepartment(deps).subscribe(data =>{
       if(data != null && typeof data === 'object'){
@@ -188,35 +214,18 @@ export class AddproductComponent implements OnInit {
   step3OnClick():void{
   }
   step4OnClick():void{
-    console.log(this.files)
   }
   step5OnClick():void{
     
   }
   
-  updateproductInDb(event){
-    let query = {};
-    if(event != null){
-       this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
-        d => query = {id:d._id, image:[...d.image, event]} 
-      )
-    }
-  }
-
-  addExistingImage(event){
-    console.log(event)
-  }
 
  submit = () => {
   const step1 = this.formProduct.value;
-  const dep = this.getSelectedIds(this.departments)
-  console.log('dep',dep)
-  const cat = this.getSelectedIds(this.categories)
-  console.log('cat',cat)
-  const manu = this.getSelectedIds(this.manufacturers)
-  console.log('manu',manu)
-  const img = this.getSelectedIds(this.files)
-  console.log('img',img)
+  const dep = this.getSelectedIds(formArrayTypes.DEPARTMENT)
+  const cat = this.getSelectedIds(formArrayTypes.CATEGORY)
+  const manu = this.getSelectedIds(formArrayTypes.MANUFACTURER)
+  const img = this.getSelectedIds(formArrayTypes.FILE)
 
   const query = {
     ...step1,
@@ -230,12 +239,6 @@ export class AddproductComponent implements OnInit {
       this.store$.dispatch(new ProductsActions.UpadateProductView({...query,id:this.productToEdit._id}))
     }
     else{
-      // let query = {};
-      // if(event != null){
-      //    this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
-      //     d => query = {id:d._id, image:[...d.image, event]} 
-      //   )
-      // }
       this.store$.dispatch(new ProductsActions.AddNewProductLoadRequest(query))
     }
   }
