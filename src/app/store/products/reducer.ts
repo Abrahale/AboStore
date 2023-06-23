@@ -1,5 +1,6 @@
 import { initialState, State } from "./state";
 import { Actions, ActionTypes} from "./actions";
+import { ProductForm } from "src/app/modules/models/_product_form";
 export function ProductsReducer(state = initialState, action: Actions): State{
   switch(action.type){
       case ActionTypes.LOAD_REQUEST :
@@ -49,6 +50,25 @@ export function ProductsReducer(state = initialState, action: Actions): State{
           }
       }
 
+      case ActionTypes.UPDATE_FORM_ACTION:{
+        return {
+          ...state,
+          isLoading:false,
+          error:'',
+          _functions:{
+            ...state._functions,
+            editMode:action.payload.editMode,
+            _form: {...state._functions._form, ...Object.assign(new ProductForm(),action.payload.data)}
+          }
+        }
+      }
+
+      case ActionTypes.RESET_PRODUCT_FORM:{
+        return {
+            ...state,
+            _functions:initialState._functions
+        }
+      }
       default: return state;
   }
 }
