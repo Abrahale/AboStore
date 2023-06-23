@@ -1,7 +1,4 @@
-<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-stepper [linear]="isLinear" #stepper>
+  <mat-stepper [linear]="'Enable linear mode'" #stepper>
     <mat-step [stepControl]="formProduct">
       <form [formGroup]="formProduct">
         <ng-template matStepLabel>Fill out product properties</ng-template>
@@ -83,13 +80,13 @@
       </form>
     </mat-step>
     <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p> The product has been added! </p>
+      <ng-template matStepLabel>Images</ng-template>
       <div>
         <h1>Upload Images for the product</h1>
         <abo-file-upload (doneUploading)="updateproductInDb($event)" (imageSelect)="addExistingImage($event)"></abo-file-upload>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button (click)="submit()">{{editMode ? 'Update Product': 'Add Product'}}</button>
       </div>
     </mat-step>
   </mat-stepper>

@@ -6,5 +6,6 @@ export enum storeConstants {
   CATEGORY = 'category',
   DEPARTMENT ='department',
   USERS = "users",
-  MANUFACTURER = "manufacturers"
+  MANUFACTURER = "manufacturers",
+  FILES = 'files'
 }

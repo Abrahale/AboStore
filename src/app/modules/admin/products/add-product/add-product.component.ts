@@ -167,18 +167,6 @@ export class AddproductComponent implements OnInit {
   step3OnClick():void{
   }
   step4OnClick():void{
-    const step1 = this.formProduct.value;
-    const dep = this.getSelectedIds(this.departments)
-    const cat = this.getSelectedIds(this.categories)
-    const manu = this.getSelectedIds(this.manufacturers)
-
-    const query = {
-      ...step1,
-      department:dep,
-      category: cat,
-      manufacturer:manu
-    }
-    this.submit(query)
   }
   step5OnClick():void{
   }
@@ -189,19 +177,38 @@ export class AddproductComponent implements OnInit {
        this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
         d => query = {id:d._id, image:[...d.image, event]} 
       )
-     this.submit(query)
     }
   }
+
   addExistingImage(event){
     console.log(event)
   }
 
- submit = (query:any) => {
+ submit = () => {
+  const step1 = this.formProduct.value;
+  const dep = this.getSelectedIds(this.departments)
+  const cat = this.getSelectedIds(this.categories)
+  const manu = this.getSelectedIds(this.manufacturers)
+
+  const query = {
+    ...step1,
+    department:dep,
+    category: cat,
+    manufacturer:manu
+  }
     if(this.editMode){
+
       this.store$.dispatch(new ProductsActions.UpadateProductView({...query,id:this.productToEdit._id}))
     }
     else{
+      // let query = {};
+      // if(event != null){
+      //    this.store$.select(ProductsSelectors.selectNewlyAddedProduct).subscribe(
+      //     d => query = {id:d._id, image:[...d.image, event]} 
+      //   )
+      // }
       this.store$.dispatch(new ProductsActions.AddNewProductLoadRequest(query))
     }
   }
+
 }
