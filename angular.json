@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/abo-store",
+            "outputPath": "server/abo-store",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
