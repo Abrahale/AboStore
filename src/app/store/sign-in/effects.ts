@@ -4,6 +4,7 @@ import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of as observableOf } from 'rxjs';
 import * as featureActions from './actions';
 import { catchError, map, switchMap } from "rxjs";
+import { SignInRequestModel } from "src/app/modules/customer/models/sign-in-request.model";
 
 @Injectable()
 export class SignInEffects {
@@ -21,6 +22,23 @@ export class SignInEffects {
         ),
     ),
     ),
+  ))
+
+  loadRegister$ = createEffect(() => this.actoins$.pipe(
+    ofType<featureActions.RegisterUserLoadRequest>(
+      featureActions.ActionTypes.REGISTER_LOAD_REQUEST,
+    ),
+    switchMap(action => this.authService.register(action.payload).pipe(
+      map((data) =>{ 
+          const query:SignInRequestModel = {
+            email:action.payload.email,
+            password:action.payload.password
+          }
+          let cak = new featureActions.LoadSuccessAction(data)
+          return new featureActions.LoadRequestAction({signInRequestModel:query})}
+      ),
+      catchError(error => observableOf(new featureActions.LoadFailureAction({error})))
+    ))
   ))
 
 }

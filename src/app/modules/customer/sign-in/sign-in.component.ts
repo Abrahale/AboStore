@@ -6,6 +6,8 @@ import { AboErrorStateMatcher } from 'src/app/modules/customer/helpers/abo-error
 import { BaseStoreState } from 'src/app/store';
 import { SignInActions, SignInSelectors } from 'src/app/store/sign-in';
 import { SignInRequestModel } from '../models/sign-in-request.model';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 @Component({
   selector: 'app-sign-in',
@@ -15,7 +17,7 @@ import { SignInRequestModel } from '../models/sign-in-request.model';
 export class SignInComponent implements OnInit {
   singInForm : any;
   session:any;
-  constructor(private store:Store<BaseStoreState.State>, private router:Router ) { }
+  constructor(private store:Store<BaseStoreState.State>, private router:Router, private dialog:MatDialog, private dialogRef:MatDialogRef<SignInComponent> ) { }
 
   ngOnInit(): void {
     this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
@@ -38,5 +40,10 @@ export class SignInComponent implements OnInit {
   }
   redirect(){
     this.router.navigate(['home'])
+  }
+
+  register(){
+    this.dialogRef.close()
+    this.dialog.open(SignUpComponent)
   }
 }

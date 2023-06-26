@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { AuthenticationService } from 'src/app/services/authenticationService';
+import { BaseStoreState, SignInActions } from 'src/app/store';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,26 +14,28 @@ import { AuthenticationService } from 'src/app/services/authenticationService';
 })
 export class SignUpComponent implements OnInit {
   singUpForm:any;
-  constructor(private auth:AuthenticationService, private formBuilder:UntypedFormBuilder, private router:Router ) { }
+  constructor(private store$:Store<BaseStoreState.State>, auth:AuthenticationService, private fb:FormBuilder, private router:Router, private dialog:MatDialog, private dialogRef:MatDialogRef<SignUpComponent>) { }
 
   ngOnInit(): void {
-    this.singUpForm = new UntypedFormGroup({
-      name: new UntypedFormControl('',[Validators.required]),
-      email: new UntypedFormControl('',[Validators.required]),
-      password: new UntypedFormControl('',[Validators.required]),
+    this.singUpForm = new FormGroup({
+      username: new FormControl('',[Validators.required]),
+      first_name: new FormControl('',[Validators.required]),
+      last_name: new FormControl('',[Validators.required]),
+      email: new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required]),
     })
   }
+
   signUp(){
-    this.auth.signUp(this.singUpForm.get('name').value,this.singUpForm.get('email').value, this.singUpForm.get('password').value).subscribe((res:any) =>{
-      console.log(res)
-      this.redirect();
-    },
-    (err)=>{
-      console.error(err)
-    })
+    this.store$.dispatch(new SignInActions.RegisterUserLoadRequest(this.singUpForm.value))
   }
   redirect(){
-    this.router.navigate(['sign-in'])
+    this.router.navigate(['/customers','login'])
+  }
+
+  signIn(){
+    this.dialogRef.close() 
+    this.dialog.open(SignInComponent)
   }
 
 }
