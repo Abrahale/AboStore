@@ -40,7 +40,7 @@
   <div class="card mt-3">
     <div class="card-header">List of Images</div>
     <ul class="list-group list-group-flush">
-      <li *ngFor="let image of (imageInfos | async)?.images" class="list-group-item" (click)="selectImage(image)">
+      <li *ngFor="let image of (files$ | async)" class="list-group-item" (click)="selectImage(image)">
         <p>
             <button type="button" class="btn btn btn-sm btn-rounded" (click)="deleteFile(image)"><mat-icon>delete </mat-icon>( {{ image }} )</button>
         </p>

@@ -14,7 +14,7 @@ export function ManufacturerReducer(state = initialState, action:Actions):State{
         case ActionTypes.SUCCESS_REQUEST : {
             return {
                 ...state,
-                data:action.payload,
+                data:action.payload.result,
                 isLoading:false
             }
         }

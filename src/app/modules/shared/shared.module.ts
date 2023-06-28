@@ -68,7 +68,6 @@ import { FileUploadService } from './services/file-upload.service';
     MatProgressSpinnerModule,
 
     //Shared Custome Components
- 
   ],
   exports:[
     //Third party modules

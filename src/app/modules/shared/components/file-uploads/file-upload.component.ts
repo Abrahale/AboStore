@@ -2,6 +2,8 @@ import { Component, OnInit,Input, Output, EventEmitter } from "@angular/core";
 import { FileUploadService } from "../../services/file-upload.service";
 import { Observable } from "rxjs";
 import { HttpEventType, HttpResponse } from "@angular/common/http";
+import { BaseStoreState, FileActions, FileSelectors } from "src/app/store";
+import { Store } from "@ngrx/store";
 
 @Component({
     selector:'abo-file-upload',
@@ -19,17 +21,18 @@ export class FileUploadComponent implements OnInit{
     progress = 0;
     message = '';
     preview = '';
+    files$ = this.store$.select(FileSelectors.selectFiles)
   
     imageInfos?: Observable<any>;
  
-    constructor(private fileUploadService: FileUploadService) {} 
+    constructor(private fileUploadService: FileUploadService, private store$:Store<BaseStoreState.State>) {} 
 
     ngOnInit():void{
         this.getAwsFiles()
     }
     
     getAwsFiles(){
-        this.imageInfos = this.fileUploadService.getFiles()
+        this.store$.dispatch(new FileActions.LoadRequestAction)
     }
 
     selectFile(event: any): void {

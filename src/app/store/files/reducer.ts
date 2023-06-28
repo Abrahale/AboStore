@@ -14,7 +14,7 @@ export function FilesReducer(state = initialState, action: Actions): State{
         case ActionTypes.LOAD_SUCCESS : {
             return {
               ...state,
-              files:action.payload,
+              files:action.payload.result,
               isLoading: false,
               error: ""
             }

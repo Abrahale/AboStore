@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {BaseStoreState, ProductsSelectors} from "../../../store";
 import {Store} from "@ngrx/store";
 import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
-import { LoadAddToCartAction } from 'src/app/store/cart/actions';
-import { product } from '../models/products';
-import { CartItem } from '../../cart/models/cartModel';
+import { CartItem } from 'src/app/modules/cart/models/cartModel';
+import { product } from 'src/app/modules/product/models/products';
+import { BaseStoreState, ProductsSelectors } from 'src/app/store';
+
 @Component({
   selector: 'abo-product-view',
   templateUrl: './product-view.component.html',
