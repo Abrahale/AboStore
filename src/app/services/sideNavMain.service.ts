@@ -37,6 +37,6 @@ export class SideNavMainService {
     }
 
     getDepartmentsDb(): void {
-        this.getDepart().subscribe(_ => this._departments = _)
+        this.getDepart().subscribe(data=> this._departments = data.result)
     }
 }

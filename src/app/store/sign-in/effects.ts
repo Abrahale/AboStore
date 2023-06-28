@@ -5,10 +5,13 @@ import { of as observableOf } from 'rxjs';
 import * as featureActions from './actions';
 import { catchError, map, switchMap } from "rxjs";
 import { SignInRequestModel } from "src/app/modules/customer/models/sign-in-request.model";
+import { baseEffects } from "../baseEffects";
+import { MessageService } from "src/app/modules/shared/services/message.service";
 
 @Injectable()
-export class SignInEffects {
-  constructor(private authService: AuthenticationService, private actoins$: Actions ){
+export class SignInEffects extends baseEffects {
+  constructor(private authService: AuthenticationService, private actoins$: Actions, private ms:MessageService ){
+    super(ms)
   }
 
   loadData$ = createEffect(() =>this.actoins$.pipe(
@@ -16,10 +19,15 @@ export class SignInEffects {
       featureActions.ActionTypes.LOAD_REQUEST,
     ),
     switchMap(action => this.authService.signIn(action.payload.signInRequestModel).pipe(
-      map(data => new featureActions.LoadSuccessAction(data),
-        ),
-        catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
-        ),
+      map(data => {
+        this.showMessage(data.message)
+        return new featureActions.LoadSuccessAction(data.result)
+      }),
+        catchError(error => 
+          {
+            this.showErrorMessage(error, "Failed to Sign you in")
+           return observableOf(new featureActions.LoadFailureAction({error}))
+          }),
     ),
     ),
   ))

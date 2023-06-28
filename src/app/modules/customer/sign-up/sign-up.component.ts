@@ -28,6 +28,7 @@ export class SignUpComponent implements OnInit {
 
   signUp(){
     this.store$.dispatch(new SignInActions.RegisterUserLoadRequest(this.singUpForm.value))
+    this.dialogRef.close() 
   }
   redirect(){
     this.router.navigate(['/customers','login'])

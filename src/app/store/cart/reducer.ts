@@ -13,7 +13,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          cart:action.payload,
+          cart:action.payload.result,
           isLoading: false,
           error: ""
         }

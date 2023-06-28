@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup,Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AboErrorStateMatcher } from 'src/app/modules/customer/helpers/abo-error-state-matcher';
 import { BaseStoreState } from 'src/app/store';
@@ -17,7 +17,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 export class SignInComponent implements OnInit {
   singInForm : any;
   session:any;
-  constructor(private store:Store<BaseStoreState.State>, private router:Router, private dialog:MatDialog, private dialogRef:MatDialogRef<SignInComponent> ) { }
+  constructor(private store:Store<BaseStoreState.State>, private router:Router, private route:ActivatedRoute, private dialog:MatDialog, private dialogRef:MatDialogRef<SignInComponent> ) { }
 
   ngOnInit(): void {
     this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
@@ -37,6 +37,7 @@ export class SignInComponent implements OnInit {
       password: this.singInForm.get('password').value
     };
     this.store.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
+    this.dialogRef.close() 
   }
   redirect(){
     this.router.navigate(['home'])
