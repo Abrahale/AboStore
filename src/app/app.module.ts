@@ -23,6 +23,7 @@ import { UsersService } from './services/users.service';
 import { ContainersModule } from './containers/containers.module';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { AuthGuard } from './Guards/authGuard.guard';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ProductViewComponent } from './pages/product-view/product-view.componen
         AuthenticationService, 
         ThemeService,
         UsersService,
+        AuthGuard,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpLoadingInterceptor,

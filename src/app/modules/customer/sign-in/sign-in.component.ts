@@ -17,14 +17,10 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 export class SignInComponent implements OnInit {
   singInForm : any;
   session:any;
-  constructor(private store:Store<BaseStoreState.State>, private router:Router, private route:ActivatedRoute, private dialog:MatDialog, private dialogRef:MatDialogRef<SignInComponent> ) { }
+  loading$ = this.store$.select(SignInSelectors.selectIsLoading)
+  constructor(private store$:Store<BaseStoreState.State>, private router:Router, private route:ActivatedRoute, private dialog:MatDialog, private dialogRef:MatDialogRef<SignInComponent> ) { }
 
   ngOnInit(): void {
-    this.session = this.store.select(SignInSelectors.selectSignInData).subscribe(a =>{
-      if(a.id){
-        this.redirect();
-      }
-    })
     this.singInForm = new FormGroup({
       email: new FormControl('ab@abostore.com',[Validators.required, Validators.email]),
       password: new FormControl('P@ssword123',[Validators.required]),
@@ -36,10 +32,19 @@ export class SignInComponent implements OnInit {
       email: this.singInForm.get('email').value,
       password: this.singInForm.get('password').value
     };
-    this.store.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
-    this.dialogRef.close() 
+    this.store$.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
+    this.session = this.store$.select(SignInSelectors.selectSignInData).subscribe(a =>{
+      if(a.id){
+        this.dialogRef.close('success') 
+      }
+    })
   }
   redirect(){
+    this.session = this.store$.select(SignInSelectors.selectSignInData).subscribe(a =>{
+      if(a.id){
+        this.redirect();
+      }
+    })
     this.router.navigate(['home'])
   }
 

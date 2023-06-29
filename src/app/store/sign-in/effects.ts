@@ -21,6 +21,7 @@ export class SignInEffects extends baseEffects {
     switchMap(action => this.authService.signIn(action.payload.signInRequestModel).pipe(
       map(data => {
         this.showMessage(data.message)
+        localStorage.setItem('authToken', data.result.token);
         return new featureActions.LoadSuccessAction(data.result)
       }),
         catchError(error => 

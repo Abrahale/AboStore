@@ -1,3 +1,6 @@
 <button class="btn {{theme}}" (click)="buttonClick()" [disabled]="disable">
-    {{buttonText}} <span class="icon icon-arrow-right1" *ngIf="showIcon"></span>
+    <div *ngIf="!loading">
+        {{buttonText}} <span class="icon icon-arrow-right1" *ngIf="showIcon"></span>
+    </div>
+    <img *ngIf="loading" src="assets/icons/loading.gif">
 </button>
