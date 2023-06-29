@@ -16,7 +16,7 @@ export class ProductCardComponent implements OnInit {
   BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   @Input() product: product = new product;
   isLoading$ = this._store.select(CartsSelectors.selectIsLoading)
-  loadingButtons = new Set<string>();
+  loadingButtons: Map<string, boolean> = new Map<string, boolean>();
   constructor(private _store:Store<BaseStoreState.State>, private router: Router) { }
 
   ngOnInit(): void {
@@ -25,20 +25,16 @@ export class ProductCardComponent implements OnInit {
     this._store.dispatch(new UpadateProductView(input))
     this.router.navigate(['/product/'+input._id+'/'+input.productCode])
   }
-  isLoading(buttonId: string): boolean {
-    return this.loadingButtons.has(buttonId);
-  }
+
   addToCart(input:product):void{
-    console.log(this.loadingButtons)
-    if (this.loadingButtons.has(input._id)) {
-      return;
-    }
     this._store.select(CartsSelectors.selectIsLoading).subscribe(data => {
       if(data){
-        this.loadingButtons.add(input._id);
+        this.loadingButtons.set(input._id, true);
+        console.log(this.loadingButtons)
       }
       else{
-        this.loadingButtons.clear()
+        this.loadingButtons.set(input._id, false);
+        console.log(this.loadingButtons)
       }
     })
     const cartItem = new CartItem();

@@ -35,17 +35,6 @@ export class AddproductComponent implements OnInit {
   filesForm;
   productToEdit;
 
-  productForm = {
-  "available": true,
-  "category": "627041757d45c817161e3e64",
-  "department": "627074903ee1e964799777c2",
-  "description": "Just a description",
-  "manufacturer": "Ab Kiros",
-  "price": "120",
-  "productCode": "123123123",
-  "sku": "1",
-  "title": "AboStore Testing Add Product"}
-
   secondFormGroup = this.fb.group({
     secondCtrl: ['', Validators.required],
   });
