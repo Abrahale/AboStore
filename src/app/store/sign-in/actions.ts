@@ -7,6 +7,8 @@ export enum ActionTypes{
   LOAD_FAILURE = '[SIGN-IN] Load Failure',
   LOAD_SUCCESS = '[SIGN-IN] Load Success',
   SELECT_CART_ID = '[SIGN_IN] Load Cart ID',
+  REGISTER_LOAD_REQUEST = '[REGISTER] Load Register Request',
+  REGISTER_LOAD_SUCCESS = '[REGISTER] Load Register Success'
 }
 
 export class LoadRequestAction implements Action{
@@ -29,8 +31,14 @@ export class LoadSelectCartId implements Action{
   constructor(){}
 }
 
+export class RegisterUserLoadRequest implements Action{
+  readonly type = ActionTypes.REGISTER_LOAD_REQUEST
+  constructor(public payload:any){}
+}
+
 export type Actions = 
 LoadRequestAction 
 | LoadFailureAction 
 | LoadSuccessAction
-| LoadSelectCartId;
+| LoadSelectCartId
+| RegisterUserLoadRequest

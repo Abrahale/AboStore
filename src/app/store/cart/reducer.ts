@@ -3,7 +3,9 @@ import { Actions, ActionTypes} from "./actions";
 import { ContentChild } from "@angular/core";
 export function CartsReducer(state = initialState, action: Actions): State{
   switch(action.type){
-      case ActionTypes.LOAD_REQUEST : {
+      case ActionTypes.LOAD_REQUEST : 
+      case ActionTypes.ADD_TO_CART:
+      {
         return {
           ...state,
           isLoading: true,
@@ -13,7 +15,7 @@ export function CartsReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          cart:action.payload,
+          cart:action.payload.result,
           isLoading: false,
           error: ""
         }

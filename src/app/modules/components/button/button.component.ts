@@ -9,6 +9,7 @@ export class ButtonComponent implements OnInit {
 
   constructor() { }
   @Input() buttonText = "Add To Cart"
+  @Input() loading = false
   @Input() theme:string = '';
   @Input() disable = false;
   @Input() showIcon = false;

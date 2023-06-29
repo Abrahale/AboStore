@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Subscription, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { BaseStoreState, CartsActions, CartsSelectors, SignInSelectors } from 'src/app/store';
-import { CartModel,CartItem } from '../models/cartModel';
+import { CartModel,CartItem } from 'src/app/modules/cart/models/cartModel';
 
 @Component({
   selector: 'app-cart',

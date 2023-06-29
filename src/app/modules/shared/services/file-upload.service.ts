@@ -1,6 +1,7 @@
 import { HttpClient, HttpRequest, HttpEvent } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
+import { BaseResponseModel } from "src/app/models/response-base.model";
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -24,11 +25,11 @@ import { environment } from 'src/environments/environment';
     return this.http.request(req);
     }
     
-    getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}file-uploads/get-files`);
+    getFiles(){
+    return this.http.get<BaseResponseModel<any>>(`${this.baseUrl}file-uploads/get-files`);
     }
 
-    deleteFile(key:string):Observable<any>{
-        return this.http.post<any>(`${this.baseUrl}file-uploads/delete-file`,{key})
+    deleteFile(key:string){
+        return this.http.post<BaseResponseModel<any>>(`${this.baseUrl}file-uploads/delete-file`,{key})
     }
   }

@@ -14,7 +14,7 @@ export function CategoryReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          data:action.payload.data,
+          data:action.payload.data.result,
           isLoading: false,
           error: null
         }

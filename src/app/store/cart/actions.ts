@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { BaseResponseModel } from "src/app/models/response-base.model";
 import { CartItem, CartModel } from "src/app/modules/cart/models/cartModel";
 export enum ActionTypes{
   LOAD_REQUEST = '[CARTS] Load Requeust',
@@ -22,7 +23,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:CartModel){}
+  constructor(public payload:BaseResponseModel<CartModel>){}
 }
 //add to cart
 export class LoadAddToCartAction implements Action{

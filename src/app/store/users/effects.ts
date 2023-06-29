@@ -19,7 +19,7 @@ export class UsersEffects extends baseEffects{
     ),
     switchMap(action => this.usersService.getUsers().pipe(
       map(data =>{
-        return new featureActions.LoadSuccessAction({data})
+        return new featureActions.LoadSuccessAction(data)
       } 
         ),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
@@ -35,7 +35,7 @@ export class UsersEffects extends baseEffects{
     switchMap(action => this.usersService.AddNewUser(action.payload).pipe(
       map(data => {
         this.showMessage(data.message)
-        return new featureActions.LoadSuccessAction({data:data['users']})}
+        return new featureActions.LoadSuccessAction(data)}
       ),
       catchError(error => {
         this.showErrorMessage(error,"Failed to add new user")
@@ -52,7 +52,7 @@ export class UsersEffects extends baseEffects{
     switchMap(action => this.usersService.deletUser(action.payload).pipe(
       map(data => { 
         this.showMessage(data.message)
-        return new featureActions.LoadSuccessAction({data:data['users']})},
+        return new featureActions.LoadSuccessAction(data)},
       ),
       catchError(error => {
         this.showErrorMessage(error,'Failed to delete user')

@@ -14,7 +14,7 @@ export function UsersReducer(state = initialState, action: Actions): State{
       case ActionTypes.LOAD_SUCCESS : {
         return {
           ...state,
-          data:action.payload.data,
+          data:action.payload.result,
           isLoading: false,
           error: null
         }

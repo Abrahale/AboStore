@@ -14,6 +14,7 @@ import { CartItem, CartModel } from '../models/cartModel';
   styleUrls: ['./cart-dropdown.component.scss']
 })
 export class CartDropdownComponent implements OnInit {
+  BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   totalItems$: Observable<any>;
   cartModel: CartModel = new CartModel;
   cartItem: CartItem[] = [];

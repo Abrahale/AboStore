@@ -55,6 +55,6 @@ export class NavMenuService {
                 link: `/wish`,
                 icon: 'icon icon-heart'
             },
-];
+        ];
     }
 }

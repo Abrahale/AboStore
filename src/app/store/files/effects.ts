@@ -17,7 +17,7 @@ export class FilesEffects {
         featureActions.ActionTypes.LOAD_REQUEST
     ),
     switchMap(() => this.fileService.getFiles().pipe(
-        map(data => new featureActions.LoadSuccessAction(data.images),),
+        map(data => new featureActions.LoadSuccessAction(data),),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})))
     ))
   ))

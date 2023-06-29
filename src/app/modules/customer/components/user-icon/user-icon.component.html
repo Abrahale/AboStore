@@ -1,5 +1,5 @@
-<div class="d-flex flex-column m-15-h-xs p-5-v-xs user-icon-container"  >
-    <div class="d-flex" [routerLink]="['/customers/login']">
+<div class="d-flex flex-column m-15-h-xs p-5-v-xs user-icon-container" (click)="signIn()">
+    <div class="d-flex" >
       <div class="d-flex flex-column">
         <i [class]="'icon icon-user user-icon'" class="m-5-h-xs p-5-h-xs p-5-v-xs"></i>
       </div>
@@ -9,3 +9,4 @@
       </div>
     </div>
   </div>
+  <!-- [routerLink]="['/customers/login']" -->

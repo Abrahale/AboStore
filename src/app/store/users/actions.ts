@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store";
+import { BaseResponseModel } from "src/app/models/response-base.model";
 export enum ActionTypes{
   LOAD_REQUEST = '[USERS] Load Requeust',
   LOAD_FAILURE = '[USERS] Load Failure',
@@ -20,7 +21,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:any){}
+  constructor(public payload:BaseResponseModel<any>){}
 }
 
 export class UpdateFormInput implements Action{

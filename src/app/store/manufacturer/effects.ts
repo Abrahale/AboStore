@@ -43,7 +43,7 @@ export class ManufacturerEffects extends baseEffects{
       switchMap(action => this.manfacture.deleteManufacturer(action.payload).pipe(
         map(data => {
           this.showMessage(data.message)
-          return new featureActions.LoadSuccessAction({data:data.manufacturers})
+          return new featureActions.LoadSuccessAction(data)
         }
         ),
         catchError(error => {

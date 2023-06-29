@@ -1,0 +1,22 @@
+<abo-main>   
+   <div class="card">
+        <div class="row">
+            <div class="col-xs-12 col-md-8 cart">
+                <div class="title">
+                    <div class="row">
+                        <div class="col"><h4><b>Shopping Cart</b></h4></div>
+                        <div class="col align-self-center text-right text-muted"><strong>{{totalItems$ | async }}</strong> items</div>
+                    </div>
+                </div>    
+                <div *ngIf="(totalItems$ | async) == 0" class="col"><h4><strong>Your shopping cart is empty</strong></h4></div>
+                <section id="cart" *ngFor="let c of cartModel?.cartItem as CartItem"> 
+                    <abo-cart-item [cartItem]="c.product" [qty]="c.qty" (decrement)="qty_update($event,c._id,false)" (increment)="qty_update($event,c._id,true)" (remove)="removeCartItem($event,c._id,true)"></abo-cart-item>        
+                </section>
+                <div class="back-to-shop" routerLink="/home"><span class="text-muted"><span class="icon icon-arrow-thin-left"></span> Back to shop</span></div>
+            </div>
+            <div class="col-xs-6 col-md-4 summary">
+                <abo-cart-footer [subTotal]="cartModel.total" [totalItems]="totalItems$ | async"></abo-cart-footer>
+            </div>
+        </div>    
+    </div>
+</abo-main>

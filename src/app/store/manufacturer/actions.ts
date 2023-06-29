@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store"
+import { BaseResponseModel } from "src/app/models/response-base.model"
 
 export enum ActionTypes{
     LOAD_REQUEST = "[MANUFACTURER] Load Request",
@@ -16,7 +17,7 @@ export class LoadRequestAction implements Action{
 
 export class LoadSuccessAction implements Action{
     readonly type = ActionTypes.SUCCESS_REQUEST
-    constructor(public payload:{data:any}){}
+    constructor(public payload:BaseResponseModel<any>){}
 }
 
 export class LoadFailureAction implements Action{

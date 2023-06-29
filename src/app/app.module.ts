@@ -4,12 +4,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationMenuMobiComponent } from './components/headers/navigation-menu-mobi/navigation-menu-mobi.component';
-import { NavigationMenuComponent } from './components/headers/navigation-menu/navigation-menu.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { AuthenticationService } from './services/authenticationService';
 import { BaseStoreModule } from './store';
-import { CardComponent } from './components/containers/card/card.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ThemeService } from './services/theme.service';
@@ -21,30 +18,29 @@ import { SharedModule } from './modules/shared/shared.module';
 import { ProductModule } from './modules/product/product.module';
 import { CartModule } from './modules/cart/cart.module';
 import { CustomerModule } from "./modules/customer/customer.module";
-import { MAT_DIALOG_DEFAULT_OPTIONS, MatDialogRef } from '@angular/material/dialog';
-import { MainComponent } from './components/containers/main/main.component';
-import { FormControlPipe } from './pipes/FormControlPipe';
 import { HttpLoadingInterceptor } from './interceptors/http-loading.interceptor';
 import { UsersService } from './services/users.service';
+import { ContainersModule } from './containers/containers.module';
+import { CartComponent } from './pages/cart/cart.component';
+import { ProductViewComponent } from './pages/product-view/product-view.component';
+import { AuthGuard } from './Guards/authGuard.guard';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeScreenComponent,
-        NavigationMenuComponent,
-        NavigationMenuMobiComponent,
-        CardComponent,
         SidenavMainComponent,
         PageNotFoundComponent,
-        MainComponent,
-        
+        CartComponent,
+        ProductViewComponent
         //Directives
     ],
     providers: [
         AuthenticationService, 
         ThemeService,
         UsersService,
+        AuthGuard,
         {
             provide: HTTP_INTERCEPTORS,
             useClass: HttpLoadingInterceptor,
@@ -67,6 +63,7 @@ import { UsersService } from './services/users.service';
         ProductModule,
         CartModule,
         CustomerModule,
+        ContainersModule
     ]
 })
 export class AppModule { }

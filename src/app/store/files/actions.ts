@@ -1,4 +1,5 @@
 import { Action } from "@ngrx/store"
+import { BaseResponseModel } from "src/app/models/response-base.model"
 
 export enum ActionTypes{
     LOAD_REQUEST = '[FILES] Load Request',
@@ -18,7 +19,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
     readonly type= ActionTypes.LOAD_SUCCESS
-    constructor(public payload:string[]){}
+    constructor(public payload:BaseResponseModel<any>){}
 }
 
 export type Actions = 

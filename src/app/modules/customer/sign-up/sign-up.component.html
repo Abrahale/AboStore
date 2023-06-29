@@ -1,41 +1,72 @@
 <div class="container">
   <div class="row">
 
-    <div class="sign-up p-40-v-xs p-30-h-xs">
+    <div class="example-form p-40-v-xs p-30-h-xs">
       <div class="logo logo m-15-h-xs m-30-v-xs no-m-t">
         <a [routerLink]="['/home']">
             <img loading="lazy" src="assets/images/abo_store2.png">
         </a>
       </div>
 
-      <h2 class="p-20-v-xs">Sign Up</h2>
+      <h2 class="p-20-v-xs">Register</h2>
 
       <form [formGroup]="singUpForm" class="form">
+        <mat-form-field class="example-full-width">
+          <mat-label for="username">User Name</mat-label>
+          <input matInput type="text" name="username" formControlName="username">
+          <mat-error *ngIf="singUpForm.hasError('username') && !singUpForm.hasError('required')">
+            Please enter a valid user name
+          </mat-error>
+          <mat-error *ngIf="singUpForm.hasError('required')">
+           User Name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="first_name">First Name</mat-label>
+          <input matInput type="text" name="first_name" formControlName="first_name">
+          <mat-error *ngIf="singUpForm.hasError('first_name') && !singUpForm.hasError('required')">
+            Please enter a valid first names
+          </mat-error>
+          <mat-error *ngIf="singUpForm.hasError('required')">
+            First Name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="last_name">Last Name</mat-label>
+          <input matInput type="text" name="last_name" formControlName="last_name">
+          <mat-error *ngIf="singUpForm.hasError('last_name') && !singUpForm.hasError('required')">
+            Please enter a valid last name
+          </mat-error>
+          <mat-error *ngIf="singUpForm.hasError('required')">
+            Last Name <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="email">Email</mat-label>
+          <input matInput type="email" name="email" formControlName="email" >
+          <mat-error *ngIf="singUpForm.hasError('email') && !singUpForm.hasError('required')">
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="singUpForm.hasError('required')">
+            Email <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label for="password">Password</mat-label>
+          <input matInput type="password" name="password" formControlName="password" >
+          <mat-error *ngIf="singUpForm.hasError('required')">
+            Password <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
 
-        <div class="form__field">
-          <label class="input-label p-10-h-xs no-m-b">Name</label>
-          <input formControlName = "name" type="text">
+        <div class="m-20-v-xs">
+          <abo-button (abo_click)="signUp()" theme="" buttonText="Sign In"></abo-button>
         </div>
-
-        <div class="form__field">
-          <label class="input-label p-10-h-xs no-m-b">Email</label>
-          <input formControlName = "email" type="email">
-        </div>
-
-        <div class="form__field">
-          <label class="input-label p-10-h-xs no-m-b">Password</label>
-          <input formControlName="password" type="password">
-        </div>
-
-        <div class="form__field">
-        <button class="signIn-button" (click)="signUp()">Sign Up</button>
-      </div>
 
     </form>
 
-    <p>Already have an accout? <a [routerLink]="['/customers','login']">Sign In</a></p>
+    <p>Already have an accout? <span (click)="signIn()">Sign In</span></p>
 
   </div>
-
 </div>
 </div>
