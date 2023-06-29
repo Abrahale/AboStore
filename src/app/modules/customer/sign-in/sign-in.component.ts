@@ -34,18 +34,11 @@ export class SignInComponent implements OnInit {
     };
     this.store$.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
     this.session = this.store$.select(SignInSelectors.selectSignInData).subscribe(a =>{
+      console.log(a)
       if(a.id){
         this.dialogRef.close('success') 
       }
     })
-  }
-  redirect(){
-    this.session = this.store$.select(SignInSelectors.selectSignInData).subscribe(a =>{
-      if(a.id){
-        this.redirect();
-      }
-    })
-    this.router.navigate(['home'])
   }
 
   register(){
