@@ -191,7 +191,7 @@ export class AddproductComponent implements OnInit {
     this.categoryForm.removeControl("categories")
     this.catService.getCategoriesByDepartment(deps).subscribe(data =>{
       if(data != null && typeof data === 'object'){
-        this.categories = data.map(el => { return{name:el.name, id:el._id}})
+        this.categories = data.result.map(el => { return{name:el.name, id:el._id}})
         if(this.editMode){
           this.categoryForm.addControl("categories",this.buildFormArray(this.categories,this.productToEdit.category))
         }else{

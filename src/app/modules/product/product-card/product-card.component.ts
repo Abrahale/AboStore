@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BaseStoreState, CartsSelectors, ProductsSelectors } from 'src/app/store';
 import { LoadAddToCartAction } from 'src/app/store/cart/actions';
@@ -15,10 +15,10 @@ import { CartItem } from '../../cart/models/cartModel';
 export class ProductCardComponent implements OnInit {
   BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   @Input() product: product = new product;
+  @Output() AddToCartClicked: EventEmitter<string> = new EventEmitter()
   isLoading$ = this._store.select(CartsSelectors.selectIsLoading)
-  loadingButtons: Map<string, boolean> = new Map<string, boolean>();
+  @Input() loadingButtons: Map<string,boolean>
   constructor(private _store:Store<BaseStoreState.State>, private router: Router) { }
-
   ngOnInit(): void {
   }
   onClick(input:product):void{
@@ -27,16 +27,6 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(input:product):void{
-    this._store.select(CartsSelectors.selectIsLoading).subscribe(data => {
-      if(data){
-        this.loadingButtons.set(input._id, true);
-        console.log(this.loadingButtons)
-      }
-      else{
-        this.loadingButtons.set(input._id, false);
-        console.log(this.loadingButtons)
-      }
-    })
     const cartItem = new CartItem();
     cartItem.product = input._id;
     cartItem.qty = 1;

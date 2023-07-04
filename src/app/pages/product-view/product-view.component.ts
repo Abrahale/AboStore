@@ -33,7 +33,7 @@ export class ProductViewComponent implements OnInit {
     console.log(this.activatedRoute.snapshot.params['productCode']);
     console.log(this.product)
   }
-  activeImage(imgsrc:string):void{
+  activeImage(imgsrc:string = ""):void{
     console.log('the imge src',imgsrc);
     this.imagePath = this.BUCKET_URI+imgsrc;
   }
@@ -46,5 +46,6 @@ export class ProductViewComponent implements OnInit {
     cartItem.active = true
    // this._store.dispatch(new LoadAddToCartAction({cartItem}));
   }
+
 
 }

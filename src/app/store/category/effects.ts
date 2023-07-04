@@ -18,7 +18,7 @@ export class CategoryEffects extends baseEffects {
       featureActions.ActionTypes.LOAD_REQUEST,
     ),
     switchMap(action => this.categoryService.getAllCategories().pipe(
-      map(data => new featureActions.LoadSuccessAction({data}),
+      map(data => new featureActions.LoadSuccessAction(data),
         ),
         catchError(error => observableOf(new featureActions.LoadFailureAction({error})),
         ),
@@ -31,7 +31,10 @@ export class CategoryEffects extends baseEffects {
       featureActions.ActionTypes.ADD_NEW_CATEGORY_REQUEST
     ),
     switchMap(action => this.categoryService.addNewCategory(action.payload).pipe(
-      map(data => new featureActions.AddNewCategorySuccessAction()),
+      map(data =>  {
+        this.showMessage(data.message)
+        return new featureActions.LoadSuccessAction(data)
+      }),
       catchError(error => observableOf(new featureActions.LoadFailureAction({error})))
     ))
   ))
@@ -43,7 +46,7 @@ export class CategoryEffects extends baseEffects {
     switchMap(action => this.categoryService.deleteCategory(action.payload).pipe(
       map(data => {
         this.showMessage(data.message)
-        return new featureActions.LoadSuccessAction({data:data['categories']})
+        return new featureActions.LoadSuccessAction(data)
       }
       ),
       catchError(error => {

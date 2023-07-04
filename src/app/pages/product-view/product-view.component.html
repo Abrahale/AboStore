@@ -27,7 +27,7 @@
                 <!-- Product Configuration -->
                 <div class="product-configuration">
 
-                    <!-- Product Color 
+                    <!-- Product Color  -->
             <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
                 <span>Color</span>
                 <div class="color-choose">
@@ -46,7 +46,7 @@
                 </div>
 
             </form>
-        -->
+       
                     <!-- Cable Configuration -->
                     <div class="cable-config">
                         <span>Cable configuration</span>
@@ -66,7 +66,7 @@
                     <span>{{product.price | currency}}</span>
                 </div>
                 <div class="m-20-v-xs">
-                    <!-- <abo-button (abo_click)="addToCart()" theme=""></abo-button> -->
+                    <abo-button (abo_click)="addToCart()" theme=""></abo-button> 
                 </div>
             </div>
         </div>

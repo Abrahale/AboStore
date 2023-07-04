@@ -23,7 +23,7 @@ export class LoadFailureAction implements Action{
 
 export class LoadSuccessAction implements Action{
   readonly type = ActionTypes.LOAD_SUCCESS;
-  constructor(public payload:{data: BaseResponseModel<any>}){}
+  constructor(public payload: BaseResponseModel<any>){}
 }
 
 export class UpdateFormInput implements Action{
@@ -34,10 +34,6 @@ export class UpdateFormInput implements Action{
 export class AddNewCategoryRequestAction implements Action{
   readonly type = ActionTypes.ADD_NEW_CATEGORY_REQUEST
   constructor(public payload:{name:string,description:string,department:string[]}){}
-}
-export class AddNewCategorySuccessAction implements Action{
-  readonly type = ActionTypes.ADD_NEW_CATEGORY_SUCCESS
-  constructor(){}
 }
 
 export class DeleteCategoryAction implements Action{
@@ -51,5 +47,4 @@ LoadRequestAction
 | LoadSuccessAction
 | UpdateFormInput
 | AddNewCategoryRequestAction
-| AddNewCategorySuccessAction
 | DeleteCategoryAction
