@@ -20,6 +20,7 @@ const routes: Routes = [
   { 
     path:'cms',
     component:AdminComponent,
+    canActivate: [AuthGuard],
     children:[
       {
         path:'',
@@ -45,7 +46,6 @@ const routes: Routes = [
   },
   {
     path:'product',
-    canActivate: [AuthGuard],
     children:[{
       path:'',
       loadChildren:productModule
