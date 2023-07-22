@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
- // BASE_BE_URL:"http://localhost:3000/"
-  BASE_BE_URL:"https://abostore-api.onrender.com/"
+  BASE_BE_URL:"http://localhost:3000/"
+
 };
 
 /*
