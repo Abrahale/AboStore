@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -16,13 +16,49 @@ import { DepartmentActions } from 'src/app/store/department';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  form: FormGroup;
+
   constructor(
-    private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
+    private dialog:MatDialog, private store$:Store<BaseStoreState.State>,private fb:FormBuilder){
       
     }
+    ngOnInit(): void {
+      this.form = this.fb.group({
+        lessons: this.fb.array([])
+      });
+    }
+  
+ 
+    get lessons(): FormArray {
+      return this.form.get('lessons') as FormArray;
+    }
 
-  ngOnInit(): void {
-  }
+    get formValues(){
+      return this.form.value['lessons'].map(el => {
+          return [el['title'], el['level']]
+        
+      })
+    }
+
+    makeFormGroup(input:any){
+      return input as FormGroup
+    }
+  
+    addLesson(): void {
+      const lessonForm = this.fb.group({
+        title: ['', Validators.required],
+        level: ['', Validators.required]
+      });
+      this.lessons.push(lessonForm);
+    }
+  
+    deleteLesson(lessonIndex: number): void {
+      this.lessons.removeAt(lessonIndex);
+    }
+    trackByLessonIndex(index: number, lessonForm: FormGroup): number {
+      return index;
+    }
+
   openDialog = ():void =>{
     const dialogConfig = new MatDialogConfig();
 
