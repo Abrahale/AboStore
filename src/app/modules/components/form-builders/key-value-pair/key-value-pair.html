@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Additional Properties (key:value):</h3>
+    {{formValues | json}}
+    <div class="add-lessons-form" [formGroup]="form">
+      <ng-container formArrayName="lessons">
+        <ng-container *ngFor="let lessonForm of lessons.controls; let i = index">
+          <div class="lesson-form-row" [formGroup]="makeFormGroup(lessonForm)">
+            <mat-form-field appearance="fill">
+              <input matInput formControlName="key" placeholder="e.g Note">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <input matInput formControlName="value" placeholder="e.g Note details here">
+              <!-- <mat-select formControlName="value" placeholder="e.g Note details here">
+                <mat-option value="beginner">Beginner</mat-option>
+                <mat-option value="intermediate">Intermediate</mat-option>
+                <mat-option value="advanced">Advanced</mat-option>
+              </mat-select> -->
+            </mat-form-field>
+            <mat-icon class="delete-btn" (click)="deleteItem(i)">delete_forever</mat-icon>
+          </div>
+        </ng-container>
+      </ng-container>
+  
+      <button mat-mini-fab (click)="addItem()">
+        <mat-icon class="add-course-btn">add</mat-icon>
+      </button>
+    </div>
+    <button mat-mini-fab (click)="submit()">Submit
+    </button>
+    <section *ngIf="showPreview">
+        {{preview | json}}
+    </section>
+  </div>

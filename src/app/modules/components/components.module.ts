@@ -10,6 +10,7 @@ import { TableComponent } from './table/table.component';
 import { CoursesService } from '../admin/services/course.service';
 import { InputDateComponent } from './input-date/input-date.component';
 import { LongTextInputComponent } from './long-text-input/long-text-input.component';
+import { KeyValuePairComponent } from './form-builders/key-value-pair/key-value-pair';
 
 
 
@@ -22,7 +23,10 @@ import { LongTextInputComponent } from './long-text-input/long-text-input.compon
     TextInputComponent,
     TableComponent,
     InputDateComponent,
-    LongTextInputComponent
+    LongTextInputComponent,
+
+    //form-builder-helpers
+    KeyValuePairComponent,
   ],
   imports: [
     CommonModule,
@@ -36,7 +40,9 @@ import { LongTextInputComponent } from './long-text-input/long-text-input.compon
     TextInputComponent,
     TableComponent,
     InputDateComponent,
-    LongTextInputComponent
+    LongTextInputComponent,
+        //form-builder-helpers
+        KeyValuePairComponent,
   ],
   providers:[
     CoursesService
