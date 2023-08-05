@@ -19,44 +19,11 @@ export class DashboardComponent implements OnInit {
   form: FormGroup;
 
   constructor(
-    private dialog:MatDialog, private store$:Store<BaseStoreState.State>,private fb:FormBuilder){
+    private dialog:MatDialog, private store$:Store<BaseStoreState.State>){
       
     }
     ngOnInit(): void {
-      this.form = this.fb.group({
-        lessons: this.fb.array([])
-      });
-    }
-  
- 
-    get lessons(): FormArray {
-      return this.form.get('lessons') as FormArray;
-    }
 
-    get formValues(){
-      return this.form.value['lessons'].map(el => {
-          return [el['title'], el['level']]
-        
-      })
-    }
-
-    makeFormGroup(input:any){
-      return input as FormGroup
-    }
-  
-    addLesson(): void {
-      const lessonForm = this.fb.group({
-        title: ['', Validators.required],
-        level: ['', Validators.required]
-      });
-      this.lessons.push(lessonForm);
-    }
-  
-    deleteLesson(lessonIndex: number): void {
-      this.lessons.removeAt(lessonIndex);
-    }
-    trackByLessonIndex(index: number, lessonForm: FormGroup): number {
-      return index;
     }
 
   openDialog = ():void =>{
@@ -72,5 +39,9 @@ export class DashboardComponent implements OnInit {
 
     this.dialog.open(DialogBaseComponent)
 
+  }
+
+  showFeatureList(event){
+    console.log(event)
   }
 }

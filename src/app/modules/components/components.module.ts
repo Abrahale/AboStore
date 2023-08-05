@@ -11,6 +11,7 @@ import { CoursesService } from '../admin/services/course.service';
 import { InputDateComponent } from './input-date/input-date.component';
 import { LongTextInputComponent } from './long-text-input/long-text-input.component';
 import { KeyValuePairComponent } from './form-builders/key-value-pair/key-value-pair';
+import { KeyValuesComponent } from './form-builders/key-values/key-values';
 
 
 
@@ -27,6 +28,7 @@ import { KeyValuePairComponent } from './form-builders/key-value-pair/key-value-
 
     //form-builder-helpers
     KeyValuePairComponent,
+    KeyValuesComponent
   ],
   imports: [
     CommonModule,
@@ -43,6 +45,7 @@ import { KeyValuePairComponent } from './form-builders/key-value-pair/key-value-
     LongTextInputComponent,
         //form-builder-helpers
         KeyValuePairComponent,
+        KeyValuesComponent
   ],
   providers:[
     CoursesService

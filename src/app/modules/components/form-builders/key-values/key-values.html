@@ -1,0 +1,34 @@
+ <div class="container">
+    <div class="add-lessons-form" [formGroup]="_form">
+      <ng-container formArrayName="_from_array">
+        <ng-container *ngFor="let single_fa of _formArray.controls; let i = index">
+          <div class="lesson-form-row">
+            <mat-form-field appearance="fill">
+              <input matInput [value]="single_fa.value" [formControlName]="i">
+            </mat-form-field>
+            <mat-icon class="delete-btn" (click)="deleteItem(i)">delete_forever</mat-icon>
+          </div>
+        </ng-container>
+      </ng-container>
+  
+      <button mat-mini-fab (click)="addItem()">
+        <mat-icon class="add-course-btn">add</mat-icon>
+      </button>
+    </div>
+    <button class="btn btn-default" (click)="submit()">Submit
+    </button>
+    <section *ngIf="showPreview">
+        {{preview | json}}
+    </section>
+  </div> 
+
+  <!-- <form [formGroup]="form">
+    <div formArrayName="stringArray">
+      <div *ngFor="let stringControl of stringArray.controls; let i = index">
+        <input [formControlName]="i" placeholder="Enter a string">
+        <button type="button" (click)="removeString(i)">Remove</button>
+      </div>
+    </div>
+    <button type="button" (click)="addString()">Add String</button>
+  </form> -->
+  
