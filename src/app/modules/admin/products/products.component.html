@@ -14,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let d of (products$ | async) let i = index">
+                <tr *ngFor="let d of (products$ | async) let i = index"  (click)="editProduct(d)">
                     <td>{{i+1}}</td>
                     <td>
                         <div class="d-flex align-items-center">

@@ -10,6 +10,7 @@ import { UsersComponent } from './users/users.component';
 import { ManufacturerComponent } from './manufacturer/manufacturer.component';
 import { AddproductComponent } from './products/add-product/add-product.component';
 import { FileUploadComponent } from '../shared/components/file-uploads/file-upload.component';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 
 
 
@@ -44,6 +45,12 @@ export const adminRoutes: Routes = [
         component:AddproductComponent,
         outlet:'abo-admin',
     },
+    {
+        path:'edit-product/:id/:productCode',
+        component:EditProductComponent,
+        outlet:'abo-admin',
+    },
+
     {
         path:'brands',
         component: BrandComponent,

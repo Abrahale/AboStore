@@ -27,6 +27,14 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.store$.select(ProductsSelectors.selectData);
   }
+  editProduct(input:any){
+    this.isEditMode = true
+    this.updateProductFormNgrx(input,true)
+    this.router.navigate([
+      '/cms',
+      { outlets: { 'abo-admin': ['edit-product',input._id,input.productCode] } }
+    ]);
+  }
   onEditClick(input:any){
     this.isEditMode = true
     this.updateProductFormNgrx(input,true)

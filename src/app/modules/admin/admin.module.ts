@@ -22,6 +22,7 @@ import { CreateDepartmentComponent } from './department/create-department/create
 import { CreateManufacturerComponent } from './manufacturer/create-manufacturer/create-manufacturer.component';
 import { AddproductComponent } from './products/add-product/add-product.component';
 import { AdminProductService } from './services/product.service';
+import { EditProductComponent } from './products/edit-product/edit-product.component';
 
 
 
@@ -31,8 +32,9 @@ import { AdminProductService } from './services/product.service';
     DashboardComponent,
     DepartmentComponent,
     AddproductComponent,
-    CategoryComponent,
+    EditProductComponent,
     ProductsComponent,
+    CategoryComponent,
     BrandComponent,
     CreateDepartmentComponent,
     FormControlPipe,
