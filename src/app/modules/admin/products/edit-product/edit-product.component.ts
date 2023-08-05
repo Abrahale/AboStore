@@ -6,7 +6,10 @@ import { CartItem } from 'src/app/modules/cart/models/cartModel';
 import { product } from 'src/app/modules/product/models/products';
 import { BaseStoreState, ProductsSelectors } from 'src/app/store';
 import { IProductForm } from 'src/app/modules/models/_product_form';
-
+export enum editConstants {
+  title = "TITLE",
+  description="DESCRIPTION"
+}
 @Component({
   selector: 'abo-edit-product',
   templateUrl: './edit-product.html',
@@ -18,7 +21,8 @@ export class EditProductComponent implements OnInit {
   product;
   colorForm!: UntypedFormGroup;
   imagePath = "";
-
+  editTitle = false;
+  editDescription = false;
   productToEdit;
   constructor(
     private store$:Store<BaseStoreState.State>,
@@ -34,6 +38,9 @@ export class EditProductComponent implements OnInit {
       color:['red']
     })
   }
+  get getConstats(){
+    return editConstants
+  }
 
   activeImage(imgsrc:string = ""):void{
     this.imagePath = this.BUCKET_URI+imgsrc;
@@ -46,6 +53,17 @@ export class EditProductComponent implements OnInit {
     cartItem.qty = 1,
     cartItem.active = true
    // this._store.dispatch(new LoadAddToCartAction({cartItem}));
+  }
+  edit(input:string):void{
+    switch(input){
+      case editConstants.title:
+        this.editTitle = true
+        return
+      case editConstants.description:
+        this.editDescription = true
+        return
+      default:    return
+    }
   }
 
 

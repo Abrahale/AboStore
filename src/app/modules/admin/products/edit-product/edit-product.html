@@ -20,8 +20,28 @@
                 <!-- Product Description -->
                 <div class="product-description">
                     <!-- <span>Headphones</span> -->
-                    <h1>{{product.title}}</h1>
-                    <p>{{product.description}}</p>
+                    <span (click)="edit(getConstats.title)">
+                        <h1 *ngIf="!editTitle">{{product.title}}</h1>
+                        <mat-form-field class="col-sm-6"  *ngIf="editTitle">
+                            <input type="text" [value]="product.title">
+                       </mat-form-field>
+                        <div *ngIf="editTitle">
+                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                Update
+                            </button>
+                        </div>
+                    </span >
+                    <span (click)="edit(getConstats.description)">
+                        <p *ngIf="!editDescription">{{product.description}}</p>
+                        <p *ngIf="editDescription"><input type="text" [value]="product.description"></p>
+                        <div *ngIf="editDescription">
+                            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                                Update
+                            </button>
+                        </div>
+                    </span >
+                    
+                        
                 </div>
 
                 <!-- Product Configuration -->
