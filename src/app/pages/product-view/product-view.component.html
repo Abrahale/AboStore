@@ -6,7 +6,7 @@
                     <div class="thumb-container d-none d-sm-block">
                         <div class="thumb" *ngFor="let img of product.image" (click)="activeImage(img)"
                             (mouseenter)="activeImage(img)">
-                            <img src="{{BUCKET_URI}}{{img}}" alt="">
+                            <img src="{{img}}" alt="">
                         </div>
                     </div>
                     <div class="main-img-container">

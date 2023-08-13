@@ -25,7 +25,7 @@ export class ProductViewComponent implements OnInit {
   ngOnInit(): void {
     this._store.select(ProductsSelectors.selectproductView).subscribe((_) => {
       this.product = _;
-      this.imagePath = this.BUCKET_URI+_.image[0];
+      this.imagePath = _.image[0];
     })
     this.colorForm = this.formBuilder.group({
       color:['red']
@@ -35,7 +35,7 @@ export class ProductViewComponent implements OnInit {
   }
   activeImage(imgsrc:string = ""):void{
     console.log('the imge src',imgsrc);
-    this.imagePath = this.BUCKET_URI+imgsrc;
+    this.imagePath = imgsrc;
   }
 
   addToCart():void{
