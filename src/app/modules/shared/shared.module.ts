@@ -113,9 +113,7 @@ import { FileUploadService } from './services/file-upload.service';
     MessageService,
     FileUploadService
   ],
-  entryComponents: [
-    //DialogComponent
-]
+
 })
 export class SharedModule { }
 
