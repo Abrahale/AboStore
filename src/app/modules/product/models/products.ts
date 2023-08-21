@@ -16,6 +16,8 @@ export class product {
   createdDate!: Date;
   modifiedDate!: Date;
   deletedDate!: Date;
+  featureList!:string[];
+  specifications!:string[];
 }
 
 export const mapToProducts=(input:any) => {
