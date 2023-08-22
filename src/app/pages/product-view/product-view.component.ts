@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CartItem } from 'src/app/modules/cart/models/cartModel';
 import { product } from 'src/app/modules/product/models/products';
 import { BaseStoreState, ProductsSelectors } from 'src/app/store';
+import { ITab } from 'src/app/modules/models/ITab.model';
 
 @Component({
   selector: 'abo-product-view',
@@ -37,19 +38,22 @@ export class ProductViewComponent implements OnInit {
     this.imagePath = imgsrc;
   }
 
-  get moreProductDetails():{name:string,value:string|string[]}[]{
+  get moreProductDetails():{}[]{
     return [
       {
-        name:"Description",
-        value:this.product.description,
+        title:"Description",
+        content:this.product.description,
+        type:Array
       },
       {
-        name : "Feature List",
-        value: this.product.featureList,
+        title : "Feature List",
+        content: this.product.featureList.length > 0 ? this.product.featureList : null,
+        type:Array
       },
       {
-        name:"Specifications",
-        value:this.product.specifications
+        title:"Specifications",
+        content:this.product.specifications.length > 0 ? this.product.specifications : null,
+        type:Array
       }
     ]
 

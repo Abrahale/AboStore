@@ -1,6 +1,7 @@
 <abo-main>
     <div class="container">
         <div class="row">
+         
             <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
                 <div class="gallery-display-container">
                     <div class="thumb-container d-none d-sm-block">
@@ -21,14 +22,13 @@
                 <div class="product-description">
                     <!-- <span>Headphones</span> -->
                     <h1>{{product.title}}</h1>
-                    <p>{{product.description}}</p>
                 </div>
 
                 <!-- Product Configuration -->
                 <div class="product-configuration">
 
                     <!-- Product Color  -->
-            <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
+            <!-- <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
                 <span>Color</span>
                 <div class="color-choose">
                     <div>
@@ -45,10 +45,10 @@
                     </div>
                 </div>
 
-            </form>
+            </form> -->
        
                     <!-- Cable Configuration -->
-                    <div class="cable-config">
+                    <!-- <div class="cable-config">
                         <span>Cable configuration</span>
 
                         <div class="cable-choose">
@@ -58,7 +58,7 @@
                         </div>
 
                         <a href="#">How to configurate your headphones</a>
-                    </div>
+                    </div>-->
                 </div>
 
                 <!-- Product Pricing -->
@@ -68,7 +68,12 @@
                 <div class="m-20-v-xs">
                     <abo-button (abo_click)="addToCart()" theme=""></abo-button> 
                 </div>
+                <button type="button" class="btn btn-primary"
+                    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                    Simple demo
+                </button>
             </div>
         </div>
+        <abo-dynamic-tabs-view [input]="moreProductDetails"></abo-dynamic-tabs-view>
     </div>
 </abo-main>
