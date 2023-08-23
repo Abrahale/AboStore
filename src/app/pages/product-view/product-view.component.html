@@ -1,34 +1,66 @@
 <abo-main>
     <div class="container">
         <div class="row">
-         
-            <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
-                <div class="gallery-display-container">
-                    <div class="thumb-container d-none d-sm-block">
-                        <div class="thumb" *ngFor="let img of product.image" (click)="activeImage(img)"
-                            (mouseenter)="activeImage(img)">
-                            <img src="{{img}}" alt="">
+            <div class="container">
+                <div class="row cardish">
+                    <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 clo-xl-7">
+                        <div class="gallery-display-container mb-2">
+                            <div class="thumb-container d-none d-sm-block">
+                                <div class="thumb" *ngFor="let img of product.image" (click)="activeImage(img)"
+                                    (mouseenter)="activeImage(img)">
+                                    <img src="{{img}}" alt="">
+                                </div>
+                            </div>
+                            <div class="main-img-container">
+                                <img class="active" [src]="imagePath" alt="">
+                            </div>
                         </div>
                     </div>
-                    <div class="main-img-container">
-                        <img class="active" [src]="imagePath" alt="">
+                    <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+
+                        <!-- Product Description -->
+                        <div class="product-title m-25-v-lg">
+                            <!-- <span>Headphones</span> -->
+                            <h1>{{product.title}}</h1>
+                        </div>
+
+                        <!-- Product Configuration -->
+                        <div class="product-configuration">
+                            <div class="product-price">
+                                <span class="price">{{product.price | currency}}</span>
+                            </div>
+                            <div class="m-20-v-xs">
+                                <abo-button (abo_click)="addToCart()" theme=""></abo-button>
+                            </div>
+                            <button type="button" class="btn btn-primary"
+                                tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                                Simple demo
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Right Column -->
-            <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+        </div>
 
-                <!-- Product Description -->
-                <div class="product-description">
-                    <!-- <span>Headphones</span> -->
-                    <h1>{{product.title}}</h1>
+        <div class="row">
+            <div class="container m-t-20-xs">
+                <div class="row cardish">
+                    <abo-dynamic-tabs-view [input]="moreProductDetails" class="m-t-24-xs"></abo-dynamic-tabs-view>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container m-t-20-xs">
+                <div class="row cardish">
+                </div>
+            </div>
+        </div>
 
-                <!-- Product Configuration -->
-                <div class="product-configuration">
+        <!-- Right Column -->
 
-                    <!-- Product Color  -->
-            <!-- <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
+
+        <!-- Product Color  -->
+        <!-- <form [formGroup]="colorForm" class="product-color" (change)="activeImage()">
                 <span>Color</span>
                 <div class="color-choose">
                     <div>
@@ -46,9 +78,9 @@
                 </div>
 
             </form> -->
-       
-                    <!-- Cable Configuration -->
-                    <!-- <div class="cable-config">
+
+        <!-- Cable Configuration -->
+        <!-- <div class="cable-config">
                         <span>Cable configuration</span>
 
                         <div class="cable-choose">
@@ -59,21 +91,11 @@
 
                         <a href="#">How to configurate your headphones</a>
                     </div>-->
-                </div>
 
-                <!-- Product Pricing -->
-                <div class="product-price">
-                    <span>{{product.price | currency}}</span>
-                </div>
-                <div class="m-20-v-xs">
-                    <abo-button (abo_click)="addToCart()" theme=""></abo-button> 
-                </div>
-                <button type="button" class="btn btn-primary"
-                    tooltip="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Simple demo
-                </button>
-            </div>
-        </div>
-        <abo-dynamic-tabs-view [input]="moreProductDetails"></abo-dynamic-tabs-view>
+
+        <!-- Product Pricing -->
+
+
+
     </div>
 </abo-main>

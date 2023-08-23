@@ -12,13 +12,13 @@
          <ng-container *ngIf="isStringContent(tabz)">
           <div>
             <!-- Display string content -->
-           <p>
+           <p class="description font-16 m-v-12-xs m-h-12-xs">
             {{ tabz.content }}
            </p>
           </div>
         </ng-container>
         <ng-container *ngIf="isArrayContent(tabz)">
-          <div>
+          <div class="description">
             <!-- Display array content -->
             <ul>
               <li *ngFor="let item of tabz.content">{{ item }}</li>

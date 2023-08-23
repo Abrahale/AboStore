@@ -1,3 +1,7 @@
+.cardish{
+  background: #FFFFFF;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
 .gallery-display-container{
   position: relative;
   display: flex;
@@ -40,7 +44,6 @@
     align-self: center;
     background-position: 50% 50%;
     background-repeat: no-repeat;
-    border: 3px solid #f3f3f3;
     img{
       display: block;
       object-fit:contain;
@@ -53,25 +56,23 @@
   }
 }
 
-.product-description {
+.product-title {
   border-bottom: 1px solid #E1E8EE;
-  margin-bottom: 20px;
 }
-.product-description span {
+.product-title span {
   font-size: 12px;
   color: #358ED7;
   letter-spacing: 1px;
   text-transform: uppercase;
   text-decoration: none;
 }
-.product-description h1 {
-  font-weight: 300;
-  font-size: 52px;
-  color: #43484D;
-  letter-spacing: -2px;
-  line-height: 50px;
+.product-title h1 {
+  font-weight: 400;
+  font-size: 1.53846rem;
+  line-height: 28px;
+  color: #5c5c7f;
 }
-.product-description p {
+.product-title p {
   font-size: 16px;
   font-weight: 300;
   color: #86939E;
@@ -185,6 +186,13 @@
 .product-price {
   display: flex;
   align-items: center;
+
+  .price{
+    font-size: 30px;
+    font-weight: 500;
+    color: #43474D;
+    line-height: 30px;
+  }
 }
 
 .product-price span {
