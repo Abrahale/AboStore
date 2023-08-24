@@ -1,14 +1,14 @@
-<div class="m-20-v-xs m-10-h-xs">
+<div class="m-10-v-xs m-10-h-xs">
   <div class="logo m-15-h-xs no-margin-left-xs">
     <a [routerLink]="['/home']">
         <img loading="lazy" src="assets/images/abo_store2.png">
     </a>
   </div>
   <div class="">
-    We should add smothing nice here
+    Father of stores
   </div>
 </div>
-<div class="navigation-links m-20-v-xs m-10-h-xs">
+<div class="navigation-links m-10-h-xs">
   <a [routerLink]="[item.link]"
      *ngFor="let item of navMenuService.navigationLinks"
      routerLinkActive="active"

@@ -1,3 +1,4 @@
+//import { NgModule } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from './button/button.component';
@@ -12,8 +13,9 @@ import { InputDateComponent } from './input-date/input-date.component';
 import { LongTextInputComponent } from './long-text-input/long-text-input.component';
 import { KeyValuePairComponent } from './form-builders/key-value-pair/key-value-pair';
 import { KeyValuesComponent } from './form-builders/key-values/key-values';
+import { DynamicTabsViewComponent } from './dynamic-tabs-view/dynamic-tabs-view.component';
 
-
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -28,10 +30,13 @@ import { KeyValuesComponent } from './form-builders/key-values/key-values';
 
     //form-builder-helpers
     KeyValuePairComponent,
-    KeyValuesComponent
+    KeyValuesComponent,
+    DynamicTabsViewComponent,
+    
   ],
   imports: [
     CommonModule,
+    TabsModule.forRoot(),
     SharedModule
   ],
   exports:[
@@ -44,8 +49,9 @@ import { KeyValuesComponent } from './form-builders/key-values/key-values';
     InputDateComponent,
     LongTextInputComponent,
         //form-builder-helpers
-        KeyValuePairComponent,
-        KeyValuesComponent
+    KeyValuePairComponent,
+    KeyValuesComponent,
+    DynamicTabsViewComponent
   ],
   providers:[
     CoursesService

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { SignInComponent } from '../modules/customer/sign-in/sign-in.component';
 import { isTokenValid } from '../helpers/helper.functions';
@@ -7,7 +7,7 @@ import { isTokenValid } from '../helpers/helper.functions';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard  {
 
   constructor(private router: Router, private dialog: MatDialog) {}
 

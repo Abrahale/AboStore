@@ -1,0 +1,30 @@
+<div (click)="$event.preventDefault()">
+  <tabset>
+    <tab *ngFor="let tabz of tabs"
+         [heading]="tabz.title"
+         [active]="tabz.active"
+         (selectTab)="tabz.active = true"
+         (deselect)="tabz.active = false"
+         [disabled]="tabz.disabled"
+         [removable]="tabz.removable"
+         (removed)="removeTabHandler(tabz)"
+         [customClass]="tabz.customClass">
+         <ng-container *ngIf="isStringContent(tabz)">
+          <div>
+            <!-- Display string content -->
+           <p class="description font-16 m-v-12-xs m-h-12-xs">
+            {{ tabz.content }}
+           </p>
+          </div>
+        </ng-container>
+        <ng-container *ngIf="isArrayContent(tabz)">
+          <div class="description">
+            <!-- Display array content -->
+            <ul>
+              <li *ngFor="let item of tabz.content">{{ item }}</li>
+            </ul>
+          </div>
+        </ng-container>
+    </tab>
+  </tabset>
+</div>

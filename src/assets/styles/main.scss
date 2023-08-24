@@ -329,3 +329,31 @@
   .font-30{
     font-size: 30px;
   }
+
+
+  //custom margins - generate .m-b-{Digit}-xs
+  $margin-values: ();
+
+  @for $i from 6 through 58 {
+    $value: $i + 2px;
+    $margin-values: map-merge($margin-values, ( #{$i+2}: $value ));
+  }
+  
+  @each $value, $property in $margin-values {
+    .m-b-#{$value}-xs {
+      margin-bottom: $property;
+    }
+    .m-t-#{$value}-xs {
+      margin-top: $property;
+    }
+    .m-h-#{$value}-xs {
+      margin-left: $property;
+      margin-right: $property;
+    }
+    .m-v-#{$value}-xs {
+      margin-top: $property;
+      margin-bottom: $property;
+    }
+  }
+  
+

@@ -1,6 +1,6 @@
 
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,7 +24,8 @@ import { ContainersModule } from './containers/containers.module';
 import { CartComponent } from './pages/cart/cart.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 import { AuthGuard } from './Guards/authGuard.guard';
-
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,8 @@ import { AuthGuard } from './Guards/authGuard.guard';
         }),
         BaseStoreModule,
         EffectsModule.forRoot([]),
+        TooltipModule.forRoot(),
+        TabsModule.forRoot(),
         ComponentsModule,
         ProductModule,
         CartModule,
