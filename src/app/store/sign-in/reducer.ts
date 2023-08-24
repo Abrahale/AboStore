@@ -4,6 +4,7 @@ export function SignInReducer(state = initialState, action: Actions): State{
   switch(action.type){
       case ActionTypes.LOAD_REQUEST :
       case  ActionTypes.REGISTER_LOAD_REQUEST:  
+      case ActionTypes.LOAD_SESSION_REFRESH:
       {
         return {
           ...state,
@@ -25,7 +26,7 @@ export function SignInReducer(state = initialState, action: Actions): State{
           isLoading: false,
           error: action.payload.error,
         }
-      }
+      }    
 
       default: return state;
   }

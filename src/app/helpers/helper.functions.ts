@@ -4,14 +4,7 @@ export const isTokenValid = (token:string) =>{
 
     try {
         let decodedT = jwtDecode(token);
-        if (currentTimestamp <= decodedT['exp']) {
-            console.log('Token is still valid.');
-            return true
-        } 
-        else {
-            console.log('Token has expired.');
-            return false
-          }
+        return currentTimestamp <= decodedT['exp']
       }
     catch(Error) {
         return false;

@@ -20,15 +20,11 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     
     this.store$.select(SignInSelectors.selectCartId).subscribe(id => {
-      console.log(id)
       this.store$.dispatch(new CartsActions.LoadRequestAction({id}))
     })
     this.store$.select(CartsSelectors.selectData).subscribe(_ => {
       this.cartModel = _
     })
-    // this.store$.select(CartsSelectors.selectTotal).subscribe(_ => {
-    //   this.total=_;
-    // })
   }
   qty_update = (pro_id:string,cartItem_id:string,inc:boolean) =>{
     const cartItem = this.cartModel.cartItem?.find(el =>el._id == cartItem_id) ?? new CartItem;

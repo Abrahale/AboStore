@@ -35,6 +35,23 @@ export class SignInEffects extends baseEffects {
     ),
   ))
 
+  loadOnRFSession$ = createEffect(() =>this.actoins$.pipe(
+    ofType<featureActions.SessionRefresh>(
+      featureActions.ActionTypes.LOAD_SESSION_REFRESH,
+    ),
+    switchMap(action => this.authService.refreshSession(action.payload).pipe(
+      map(data => {
+        this.cookieService.set('_jtwot',data.result.token)
+        return new featureActions.LoadSuccessAction(data.result)
+      }),
+        catchError(error => 
+          {
+           return observableOf(new featureActions.LoadFailureAction({error}))
+          }),
+    ),
+    ),
+  ))
+
   loadRegister$ = createEffect(() => this.actoins$.pipe(
     ofType<featureActions.RegisterUserLoadRequest>(
       featureActions.ActionTypes.REGISTER_LOAD_REQUEST,

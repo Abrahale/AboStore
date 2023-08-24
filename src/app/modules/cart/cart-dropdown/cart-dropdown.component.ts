@@ -24,9 +24,9 @@ export class CartDropdownComponent implements OnInit {
   }
 
   ngOnInit() {
-    //THIS KEEPS firing, needs to only fire once!
+    //THIS KEEPS firing, needs to only fire once! NB:It's not twice, the other one is from the component itself
+    //TODO: Update thought, instead of hitting the BE, once we get the cart items, we should just select it once, and not query again, until the cart is directly modified!
     this.store$.select(SignInSelectors.selectCartId).subscribe(id => {
-      console.log(id)
       this.store$.dispatch(new CartsActions.LoadRequestAction({id}))
     })
     this.store$.select(CartsSelectors.selectData).subscribe(_ => {

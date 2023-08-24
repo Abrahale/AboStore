@@ -27,6 +27,8 @@ import { AuthGuard } from './Guards/authGuard.guard';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CookieService } from 'ngx-cookie-service';
+import { GerenralService } from './services/generalService.service';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,7 +49,8 @@ import { CookieService } from 'ngx-cookie-service';
             useClass: HttpLoadingInterceptor,
             multi: true,
           },
-          CookieService
+          CookieService,
+          GerenralService
     ],
     bootstrap: [AppComponent],
     imports: [

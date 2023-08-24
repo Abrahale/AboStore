@@ -17,6 +17,9 @@ export class AuthenticationService {
   signIn(singInModel: SignInRequestModel){
     return this.http.post<BaseResponseModel<AuthResponseModel>>(`${this.baseUrl}auth/login`,singInModel);
   }
+  refreshSession(id:string){
+    return this.http.post<BaseResponseModel<AuthResponseModel>>(`${this.baseUrl}auth/on-rf-session`,{id});
+  }
   signUp(username:string,email:string, password:string){
     return this.http.post<any>(`${this.baseUrl}users`,{username,first_name:"will implement",last_name:"will implement", email, password});
   }
