@@ -16,7 +16,6 @@ export enum editConstants {
   styleUrls: ['./edit-product.scss']
 })
 export class EditProductComponent implements OnInit {
-  BUCKET_URI = "https://abostorebucket.s3.af-south-1.amazonaws.com/"
   @Input()
   product;
   colorForm!: UntypedFormGroup;
@@ -32,7 +31,7 @@ export class EditProductComponent implements OnInit {
   ngOnInit(): void {
     this.store$.select(ProductsSelectors.selectFormProduct).subscribe(data =>{
       this.product = data 
-      this.imagePath = this.BUCKET_URI+data.image[0];
+      this.imagePath = data.image[0];
     })
     this.colorForm = this.formBuilder.group({
       color:['red']
@@ -43,7 +42,7 @@ export class EditProductComponent implements OnInit {
   }
 
   activeImage(imgsrc:string = ""):void{
-    this.imagePath = this.BUCKET_URI+imgsrc;
+    this.imagePath = imgsrc;
   }
 
   addToCart():void{

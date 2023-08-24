@@ -3,16 +3,17 @@ import { ActivatedRouteSnapshot, Router, RouterStateSnapshot } from '@angular/ro
 import { MatDialog } from '@angular/material/dialog';
 import { SignInComponent } from '../modules/customer/sign-in/sign-in.component';
 import { isTokenValid } from '../helpers/helper.functions';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard  {
 
-  constructor(private router: Router, private dialog: MatDialog) {}
+  constructor(private router: Router, private dialog: MatDialog, private cookieService:CookieService) {}
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    const authToken = localStorage.getItem('authToken');
+    const authToken = this.cookieService.get('_jtwot')
     if (authToken && isTokenValid(authToken)) {
       return true
     }

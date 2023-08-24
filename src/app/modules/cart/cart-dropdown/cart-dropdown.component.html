@@ -2,7 +2,7 @@
 <div class=" cart-dropdown-cont" *ngIf="(totalItems$ | async) ?? 0 > 0">
     <div class="cart-content">
         <div class="row border-bottom align-items-center ptb-10" *ngFor="let i of cartItem" >
-            <div class="col-3"><img class="img-fluid"  src="{{BUCKET_URI+i?.product?.image[0]}}"></div>
+            <div class="col-3"><img class="img-fluid"  [src]="i?.product?.image[0]"></div>
             <div class="col-9">
                 <div class="product-title" (click)="goToProductView(i)">{{i?.product?.title}}</div>
                 <div class="row">

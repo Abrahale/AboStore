@@ -26,7 +26,7 @@ import { ProductViewComponent } from './pages/product-view/product-view.componen
 import { AuthGuard } from './Guards/authGuard.guard';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-
+import { CookieService } from 'ngx-cookie-service';
 @NgModule({
     declarations: [
         AppComponent,
@@ -47,6 +47,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
             useClass: HttpLoadingInterceptor,
             multi: true,
           },
+          CookieService
     ],
     bootstrap: [AppComponent],
     imports: [

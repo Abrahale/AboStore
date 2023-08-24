@@ -7,10 +7,11 @@ import { catchError, map, switchMap } from "rxjs";
 import { SignInRequestModel } from "src/app/modules/customer/models/sign-in-request.model";
 import { baseEffects } from "../baseEffects";
 import { MessageService } from "src/app/modules/shared/services/message.service";
+import { CookieService } from "ngx-cookie-service";
 
 @Injectable()
 export class SignInEffects extends baseEffects {
-  constructor(private authService: AuthenticationService, private actoins$: Actions, private ms:MessageService ){
+  constructor(private authService: AuthenticationService, private actoins$: Actions, private ms:MessageService, private cookieService:CookieService ){
     super(ms)
   }
 
@@ -21,7 +22,8 @@ export class SignInEffects extends baseEffects {
     switchMap(action => this.authService.signIn(action.payload.signInRequestModel).pipe(
       map(data => {
         this.showMessage(data.message)
-        localStorage.setItem('authToken', data.result.token);
+       // localStorage.setItem('authToken', data.result.token);
+        this.cookieService.set('_jtwot',data.result.token)
         return new featureActions.LoadSuccessAction(data.result)
       }),
         catchError(error => 
