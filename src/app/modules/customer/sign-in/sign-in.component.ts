@@ -22,8 +22,8 @@ export class SignInComponent implements OnInit {
 
   ngOnInit(): void {
     this.singInForm = new FormGroup({
-      email: new FormControl('ab@abostore.com',[Validators.required, Validators.email]),
-      password: new FormControl('P@ssword123',[Validators.required]),
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required]),
     })
   }
   matcher = new AboErrorStateMatcher();
@@ -34,7 +34,6 @@ export class SignInComponent implements OnInit {
     };
     this.store$.dispatch(new SignInActions.LoadRequestAction({signInRequestModel:signInModel}));
     this.session = this.store$.select(SignInSelectors.selectSignInData).subscribe(a =>{
-      console.log(a)
       if(a.id){
         this.dialogRef.close('success') 
       }

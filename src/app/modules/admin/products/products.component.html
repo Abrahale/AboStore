@@ -29,7 +29,7 @@
                         {{d.title}}
                     </td>
 
-                    <td>{{d.description}}</td>
+                    <td>{{d.description.substring(0,150)}}</td>
                     <td>
                         <button type="button" class="btn btn-link btn-sm btn-rounded" (click)="onEditClick(d)">
                             Edit
