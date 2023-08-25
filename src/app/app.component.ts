@@ -23,8 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
       if(!this.cookieValue){
         this.cookieService.set('uit', uuidv4(),{secure:false});
       }
-      this.checkSession()
 
+      this.genS.authRefresh()
       }
   
   title = 'AboStore';
@@ -39,14 +39,6 @@ export class AppComponent implements OnInit, OnDestroy {
   
   ngOnDestroy() {
     window.removeEventListener('beforeunload', this.onBeforeUnload);
-  }
-
-  checkSession(){
-    //THIS is a dublicate, token is being decoded twice
-    const authToken = this.cookieService.get('_jtwot')
-    if (authToken && isTokenValid(authToken)) {
-      this.genS.authRefresh(authToken)
-    }
   }
 
 }
