@@ -28,6 +28,7 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CookieService } from 'ngx-cookie-service';
 import { GerenralService } from './services/generalService.service';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { GerenralService } from './services/generalService.service';
         SidenavMainComponent,
         PageNotFoundComponent,
         CartComponent,
-        ProductViewComponent
+        ProductViewComponent,
+        CheckoutPageComponent
         //Directives
     ],
     providers: [

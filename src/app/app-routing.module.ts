@@ -5,12 +5,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { AdminModule } from './modules/admin/admin.module';
 import { AdminComponent } from './modules/admin/admin.component';
 import { AuthGuard } from './Guards/authGuard.guard';
+import { CheckoutModule } from './modules/checkout/checkout.module';
 
 const productModule = () => import('./modules/product/product.module').then(m=>m.ProductModule);
 const customerModule = () => import('./modules/customer/customer.module').then(m=>m.CustomerModule);
 const cartModule = () => import('./modules/cart/cart.module').then(m=>m.CartModule);
 const adminModule = () => import('./modules/admin/admin.module').then(m => AdminModule)
-
+const checkoutModule = () => import('./modules/checkout/checkout.module').then(m=>CheckoutModule)
 const routes: Routes = [
   {path:'', redirectTo:'home', pathMatch:'full'},
   {
@@ -42,6 +43,13 @@ const routes: Routes = [
     children:[{
       path:'',
       loadChildren:customerModule
+    }]
+  },
+  {
+    path:'check-out',
+    children:[{
+      path:'',
+      loadChildren:checkoutModule
     }]
   },
   {

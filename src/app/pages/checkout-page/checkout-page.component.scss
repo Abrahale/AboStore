@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+
+.pname{
+  font-family: 'Lobster', cursive;
+}
+
+.check{
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(40,167,69)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-check-circle'><path d='M22 11.08V12a10 10 0 1 1-5.93-9.14'></path><polyline points='22 4 12 14.01 9 11.01'></polyline></svg>")  no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+.error{
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgb(220,53,69)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-alert-circle'><circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12' y2='16'></line></svg>")  no-repeat;
+  height: 24px;
+  width: 24px;
+}
+
+kendo-tabstrip p {
+            margin: 0;
+            padding: 8px;
+        }
